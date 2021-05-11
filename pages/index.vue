@@ -6,19 +6,24 @@
         Browse projects or hire a freelancer according to your location and
         skills.
       </h2>
+      <v-btn medium class="projects-btn">Projects</v-btn>
+      <v-btn medium class="freelancers-btn">Freelancers</v-btn>
     </div>
     <div class="work-svg">
       <WorkSvg />
     </div>
+    <ContactsFooter />
   </div>
 </template>
 
 <script>
 import WorkSvg from "../components/WorkSvg";
+import ContactsFooter from "../components/ContactsFooter";
 
 export default {
   components: {
     WorkSvg,
+    ContactsFooter,
   },
 };
 </script>
