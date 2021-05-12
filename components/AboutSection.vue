@@ -77,7 +77,7 @@ export default {
   border-radius: 5rem;
   height: 0.2rem;
   margin: 1.5rem 1rem 0 0;
-  width: 2rem;
+  min-width: 2rem;
 }
 .about {
   color: #5d5755;
