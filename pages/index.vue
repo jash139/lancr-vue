@@ -31,6 +31,7 @@
       </div>
       <ContactsFooter />
     </div>
+    <FeaturesSection />
     <ContactSection />
   </div>
 </template>
@@ -41,6 +42,7 @@ import ContactsFooter from "../components/ContactsFooter";
 import HomeNavBar from "../components/HomeNavBar";
 import LightDotsSvg from "../components/LightDotsSvg";
 import ContactSection from "../components/ContactSection";
+import FeaturesSection from "../components/FeaturesSection";
 
 export default {
   components: {
@@ -49,6 +51,7 @@ export default {
     HomeNavBar,
     LightDotsSvg,
     ContactSection,
+    FeaturesSection,
   },
 };
 </script>
