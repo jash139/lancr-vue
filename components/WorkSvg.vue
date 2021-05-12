@@ -1,7 +1,6 @@
 <template>
   <svg
-    width="500"
-    height="400"
+    class="work-svg"
     viewBox="0 0 702 474"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -870,4 +869,14 @@ export default {
 </script>
 
 <style>
+.work-svg {
+  height: 400px;
+  width: 500px;
+}
+@media only screen and (max-width: 960px) {
+  .work-svg {
+    height: 250px;
+    width: 300px;
+  }
+}
 </style>

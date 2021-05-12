@@ -81,10 +81,6 @@ export default {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  /* [theme.breakpoints.down("sm")]: {
-            display: "none",
-        },
-    } */
 }
 
 .links {
@@ -103,5 +99,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@media only screen and (max-width: 960px) {
+  .ul {
+    display: none;
+  }
 }
 </style>
