@@ -12,12 +12,12 @@
               according to your location and<br />
               skills.
             </p>
-            <div class="cta-btns">
+            <div class="btns">
               <div class="dots">
                 <LightDotsSvg />
               </div>
-              <v-btn medium class="projects-btn">Projects</v-btn>
-              <v-btn medium class="freelancers-btn">Freelancers</v-btn>
+              <button medium class="primary-btn cta-btn">Projects</button>
+              <button medium class="primary-btn cta-btn">Freelancers</button>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@ export default {
 }
 .main-heading {
   color: #050303;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   text-transform: uppercase;
 }
 .shift-right {
@@ -69,21 +69,27 @@ export default {
   background-color: #c21e39;
   border-radius: 5rem;
   height: 0.2rem;
-  margin: 0.5rem 1rem 0 0;
+  margin: 1.5rem 1rem 0 0;
   width: 2rem;
 }
 .sub-heading {
   color: #5d5755;
   font-size: 1rem;
   font-weight: 700;
+  margin: 1rem 0;
 }
-.cta-btns {
+.btns {
   position: relative;
 }
 .dots {
   bottom: -35px;
   left: -35px;
   position: absolute;
+}
+.cta-btn {
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  margin-right: 1rem;
+  width: 8.5rem;
 }
 @media only screen and (max-width: 960px) {
   .hero-section {
@@ -96,5 +102,15 @@ export default {
 <style>
 body {
   font-family: "Raleway", sans-serif;
+}
+.primary-btn {
+  background-color: #c21e39;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  outline: none;
+  padding: 0.6rem 1rem;
+  text-transform: none;
 }
 </style>
