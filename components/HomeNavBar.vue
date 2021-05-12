@@ -33,12 +33,9 @@
         </li>
         <div class="navbar-bubble" />
       </ul>
-      <!-- <div class="logo" onClick={() => scrollToTop()}>
-                    <Logo />
-                </div> -->
       <div class="right-section">
-        <v-btn elevation="0" class="sign-btn">Signin</v-btn>
-        <v-btn elevation="0" class="sign-btn"> Signup </v-btn>
+        <button elevation="0" class="btn outlined-btn sign-btn">Signin</button>
+        <button elevation="0" class="btn secondary-btn sign-btn">Signup</button>
       </div>
     </nav>
   </header>
@@ -58,6 +55,7 @@ export default {
 <style scoped>
 .header {
   background: transparent;
+  border-bottom: 2px solid #ffffff;
   backdrop-filter: blur(0.5rem);
   position: sticky;
   top: 0;
@@ -87,11 +85,9 @@ export default {
   display: block;
   color: #050303;
   cursor: pointer;
-  /* font-family: ; */
-  font-size: 12px;
-  font-weight: 600;
-  margin-right: 1.5rem;
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-left: 1.5rem;
   text-decoration: none;
 }
 

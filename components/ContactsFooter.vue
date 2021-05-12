@@ -32,6 +32,8 @@ export default {
 .contacts-footer {
   display: flex;
   align-items: center;
+  margin: auto;
+  max-width: 95%;
 }
 .stroke {
   background-color: #c21e39;

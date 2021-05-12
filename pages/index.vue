@@ -1,32 +1,36 @@
 <template>
   <div class="home">
-    <HomeNavBar />
-    <div class="hero-section">
-      <div class="cta-section">
-        <h1 class="main-heading">DESCRIBE YOUR APP <br />IN BOLD LETTERS</h1>
-        <div class="shift-right">
-          <div class="white-stroke" />
-          <div>
-            <p class="sub-heading">
-              Browse projects or hire a freelancer<br />
-              according to your location and<br />
-              skills.
-            </p>
-            <div class="btns">
-              <div class="dots">
-                <LightDotsSvg />
+    <div class="root">
+      <HomeNavBar />
+      <div class="hero-section">
+        <div class="cta-section">
+          <h1 class="main-heading">DESCRIBE YOUR APP <br />IN BOLD LETTERS</h1>
+          <div class="shift-right">
+            <div class="white-stroke" />
+            <div>
+              <p class="sub-heading">
+                Browse projects or hire a freelancer<br />
+                according to your location and<br />
+                skills.
+              </p>
+              <div class="btns">
+                <div class="dots">
+                  <LightDotsSvg />
+                </div>
+                <button medium class="btn primary-btn cta-btn">Projects</button>
+                <button medium class="btn primary-btn cta-btn">
+                  Freelancers
+                </button>
               </div>
-              <button medium class="primary-btn cta-btn">Projects</button>
-              <button medium class="primary-btn cta-btn">Freelancers</button>
             </div>
           </div>
         </div>
+        <div class="work-svg">
+          <WorkSvg />
+        </div>
       </div>
-      <div class="work-svg">
-        <WorkSvg />
-      </div>
+      <ContactsFooter />
     </div>
-    <ContactsFooter />
   </div>
 </template>
 
@@ -47,8 +51,12 @@ export default {
 </script>
 
 <style scoped>
-.home {
+.root {
+  background-color: #f2e9e6;
   min-height: 100vh;
+}
+.home {
+  /* min-height: 100vh; */
 }
 .hero-section {
   display: flex;
@@ -66,7 +74,7 @@ export default {
   display: flex;
 }
 .white-stroke {
-  background-color: #c21e39;
+  background-color: #ffffff;
   border-radius: 5rem;
   height: 0.2rem;
   margin: 1.5rem 1rem 0 0;
@@ -103,14 +111,25 @@ export default {
 body {
   font-family: "Raleway", sans-serif;
 }
-.primary-btn {
-  background-color: #c21e39;
+.btn {
   border-radius: 3px;
-  color: #ffffff;
   font-size: 0.8rem;
   font-weight: 600;
   outline: none;
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 2rem;
   text-transform: none;
+}
+.primary-btn {
+  background-color: #c21e39;
+  color: #ffffff;
+}
+.secondary-btn {
+  background-color: #050303;
+  color: #ffffff;
+}
+.outlined-btn {
+  border: 2px solid #050303;
+  color: #050303;
+  padding: 7.6px 2rem;
 }
 </style>
