@@ -1,5 +1,6 @@
 <template>
   <div class="hero-section">
+    <HomeNavBar />
     <div class="cta-section">
       <h1 class="main-heading">DESCRIBE YOUR APP IN BOLD LETTERS</h1>
       <h2 class="sub-heading">
@@ -19,11 +20,13 @@
 <script>
 import WorkSvg from "../components/WorkSvg";
 import ContactsFooter from "../components/ContactsFooter";
+import HomeNavBar from "../components/HomeNavBar";
 
 export default {
   components: {
     WorkSvg,
     ContactsFooter,
+    HomeNavBar,
   },
 };
 </script>
