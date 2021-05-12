@@ -1,6 +1,7 @@
 <template>
   <header class="header">
     <nav class="nav">
+      <Logo />
       <ul class="ul">
         <li class="homelink">
           <p datapage="home" class="links" onClick="scrollToSection('home')">
@@ -44,8 +45,13 @@
 </template>
 
 <script>
+import Logo from "./Logo";
+
 export default {
   name: "HomeNavBar",
+  components: {
+    Logo,
+  },
 };
 </script>
 
