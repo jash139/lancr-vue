@@ -49,13 +49,13 @@ export default {
 .content {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   max-width: 95%;
 }
 .pink-div {
   background-color: #c21e39;
-  height: 200px;
-  width: 300px;
+  height: 250px;
+  width: 500px;
   position: absolute;
   bottom: 0;
   left: 0;
