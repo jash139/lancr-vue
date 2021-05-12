@@ -31,6 +31,7 @@
       </div>
       <ContactsFooter />
     </div>
+    <AboutSection />
     <FeaturesSection />
     <ContactSection />
   </div>
@@ -41,8 +42,9 @@ import WorkSvg from "../components/WorkSvg";
 import ContactsFooter from "../components/ContactsFooter";
 import HomeNavBar from "../components/HomeNavBar";
 import LightDotsSvg from "../components/LightDotsSvg";
-import ContactSection from "../components/ContactSection";
+import AboutSection from "../components/AboutSection";
 import FeaturesSection from "../components/FeaturesSection";
+import ContactSection from "../components/ContactSection";
 
 export default {
   components: {
