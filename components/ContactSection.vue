@@ -45,7 +45,7 @@ export default {
 .contact-section {
   background-color: #050303;
   color: #ffffff;
-  padding: 4rem 0;
+  padding: 3rem 0 2rem;
   text-align: center;
 }
 .heading {
