@@ -3,7 +3,7 @@
     <h2 class="heading">Get in Touch</h2>
     <div class="contact-links">
       <div class="contact">
-        <v-btn icon class="contact-icon" onClick="handleEmailClick">
+        <v-btn icon class="contact-btn" onClick="handleEmailClick">
           <LinkedinIcon :light="true" />
         </v-btn>
         <p class="link" onClick="handleEmailClick">
@@ -11,7 +11,7 @@
         </p>
       </div>
       <div class="contact">
-        <v-btn icon class="contact-icon" onClick="openTab">
+        <v-btn icon class="contact-btn" onClick="openTab">
           <GithubIcon :light="true" />
         </v-btn>
         <p class="link" onClick="openTab">
@@ -19,7 +19,7 @@
         </p>
       </div>
       <div class="contact">
-        <v-btn icon class="contact-icon" onClick="openTab">
+        <v-btn icon class="contact-btn" onClick="openTab">
           <EmailIcon :light="true" />
         </v-btn>
         <p class="link" onClick="openTab">
@@ -76,16 +76,28 @@ export default {
   justify-content: space-evenly;
   padding: 2rem 0 1rem;
 }
+.contact {
+  width: 250px;
+}
+.contact-btn {
+  margin-bottom: 0.5rem;
+}
 .link {
   cursor: pointer;
   font-size: 0.9rem;
+  line-break: anywhere;
 }
 .link:hover {
   text-decoration: underline;
 }
 @media only screen and (max-width: 960px) {
   .contact-links {
-    display: unset;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .contact {
+    margin: 1rem 0;
   }
 }
 </style>

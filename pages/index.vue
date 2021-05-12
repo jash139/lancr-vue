@@ -104,9 +104,12 @@ export default {
   width: 8.5rem;
 }
 @media only screen and (max-width: 960px) {
-  .hero-section {
+  .main {
     flex-direction: column-reverse;
     text-align: center;
+  }
+  .white-stroke {
+    display: none;
   }
 }
 </style>
