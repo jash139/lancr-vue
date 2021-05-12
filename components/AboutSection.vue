@@ -1,6 +1,10 @@
 <template>
   <div class="about-section">
-    <div class="boy-svg"></div>
+    <div class="boy-svg-div">
+      <div class="boy-svg">
+        <BoySvg />
+      </div>
+    </div>
     <div class="about-errands">
       <h1 class="heading">What is Errands?</h1>
       <div class="shift-right">
@@ -23,8 +27,13 @@
 </template>
 
 <script>
+import BoySvg from "./BoySvg";
+
 export default {
   name: "AboutSection",
+  components: {
+    BoySvg,
+  },
 };
 </script>
 
@@ -32,6 +41,7 @@ export default {
 .about-section {
   background-color: #ffffff;
   min-height: 100vh;
+  position: relative;
 }
 .heading {
   color: #050303;
