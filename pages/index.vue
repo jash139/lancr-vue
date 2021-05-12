@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <div class="root">
-      <HomeNavBar />
-      <div class="hero-section">
+    <HomeNavBar />
+    <div class="hero-section">
+      <div class="main">
         <div class="cta-section">
           <h1 class="main-heading">DESCRIBE YOUR APP <br />IN BOLD LETTERS</h1>
           <div class="shift-right">
@@ -51,19 +51,19 @@ export default {
 </script>
 
 <style scoped>
-.root {
+.home {
   background-color: #f2e9e6;
   min-height: 100vh;
 }
-.home {
-  /* min-height: 100vh; */
-}
 .hero-section {
+  max-width: 95%;
+  margin: auto;
+}
+.main {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin: auto;
-  max-width: 95%;
+  min-height: 80vh;
 }
 .main-heading {
   color: #050303;

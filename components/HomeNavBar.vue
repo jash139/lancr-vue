@@ -62,7 +62,7 @@ export default {
   z-index: 5;
 }
 .sign-btn {
-  border-radius: 3px;
+  margin-left: 1.5rem;
 }
 .nav {
   display: flex;
