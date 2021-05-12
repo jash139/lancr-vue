@@ -7,20 +7,24 @@
           <LinkedinIcon :light="true" />
         </v-btn>
         <p class="link" onClick="handleEmailClick">
-          {homeContent.contactLinks.email}
+          {{ linkedin }}
         </p>
       </div>
       <div class="contact">
         <v-btn icon class="contact-icon" onClick="openTab">
           <GithubIcon :light="true" />
         </v-btn>
-        <p class="link" onClick="openTab">{homeContent.contactLinks.email}</p>
+        <p class="link" onClick="openTab">
+          {{ github }}
+        </p>
       </div>
       <div class="contact">
         <v-btn icon class="contact-icon" onClick="openTab">
           <EmailIcon :light="true" />
         </v-btn>
-        <p class="link" onClick="openTab">{homeContent.contactLinks.email}</p>
+        <p class="link" onClick="openTab">
+          {{ email }}
+        </p>
       </div>
     </div>
   </div>
@@ -30,13 +34,26 @@
 import LinkedinIcon from "./LinkedinIcon";
 import GithubIcon from "./GithubIcon";
 import EmailIcon from "./EmailIcon";
+import homeContent from "../static/homeContent";
 
 export default {
   name: "ContactSection",
+  data() {
+    return {
+      linkedin: "",
+      github: "",
+      email: "",
+    };
+  },
   components: {
     LinkedinIcon,
     GithubIcon,
     EmailIcon,
+  },
+  created() {
+    this.linkedin = homeContent.contactLinks.linkedin;
+    this.github = homeContent.contactLinks.github;
+    this.email = homeContent.contactLinks.email;
   },
 };
 </script>
