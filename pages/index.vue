@@ -31,6 +31,7 @@
       </div>
       <ContactsFooter />
     </div>
+    <ContactSection />
   </div>
 </template>
 
@@ -39,6 +40,7 @@ import WorkSvg from "../components/WorkSvg";
 import ContactsFooter from "../components/ContactsFooter";
 import HomeNavBar from "../components/HomeNavBar";
 import LightDotsSvg from "../components/LightDotsSvg";
+import ContactSection from "../components/ContactSection";
 
 export default {
   components: {
@@ -46,6 +48,7 @@ export default {
     ContactsFooter,
     HomeNavBar,
     LightDotsSvg,
+    ContactSection,
   },
 };
 </script>
@@ -58,6 +61,7 @@ export default {
 .hero-section {
   max-width: 95%;
   margin: auto;
+  min-height: 90vh;
 }
 .main {
   display: flex;
