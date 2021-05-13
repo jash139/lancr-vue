@@ -13,7 +13,10 @@
           <div class="details">
             <h2 class="name">Doggo Gang</h2>
             <p class="role">Mafia Leader</p>
-            <button class="btn primary-btn">Edit Details</button>
+            <p class="rating">8.2 / 10</p>
+            <button class="btn primary-btn btn-shadow edit-btn">
+              Edit Details
+            </button>
           </div>
         </div>
         <div class="divider" />
@@ -72,12 +75,19 @@ export default {
 .role {
   color: #5d5755;
   font-size: 1rem;
+  font-style: italic;
   font-weight: 700;
+  margin-top: 0.5rem;
+}
+.rating {
+  margin: 0.5rem 0 1rem;
+}
+.edit-btn {
 }
 .divider {
   background-color: #f2e9e6;
   border-radius: 2rem;
-  height: 85%;
+  height: 100%;
   width: 2px;
 }
 .details-div2 {
