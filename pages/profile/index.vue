@@ -82,7 +82,6 @@ export default {
   align-items: center;
   font-size: 1rem;
   font-weight: 700;
-  /* height: 220px; */
   margin: 1rem 0;
   padding: 2rem;
 }
