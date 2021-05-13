@@ -1,6 +1,9 @@
 <template>
   <div class="features-section">
     <div class="content">
+      <div class="dots-svg">
+        <DarkDotsSvg />
+      </div>
       <h1 class="heading">What makes us special?</h1>
       <div class="features">
         <div class="feature-card">
@@ -21,8 +24,13 @@
 </template>
 
 <script>
+import DarkDotsSvg from "./DarkDotsSvg";
+
 export default {
   name: "FeaturesSection",
+  components: {
+    DarkDotsSvg,
+  },
 };
 </script>
 
@@ -34,6 +42,16 @@ export default {
   justify-content: center;
   min-height: 100vh;
   padding: 3rem 0;
+}
+.content {
+  position: relative;
+  z-index: 1;
+}
+.dots-svg {
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
 }
 .heading {
   color: #050303;
