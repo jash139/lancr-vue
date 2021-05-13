@@ -20,7 +20,32 @@
           </div>
         </div>
         <div class="divider" />
-        <div class="details-div2">;sdsanf</div>
+        <div class="details-div2">
+          <div class="grid-item">
+            <p class="detail-heading">Location</p>
+          </div>
+          <div class="grid-item">
+            <p class="detail-info">Banashankari, Karnataka, India</p>
+          </div>
+          <div class="grid-item">
+            <p class="detail-heading">Phone</p>
+          </div>
+          <div class="grid-item">
+            <p class="detail-info">094 561 2378</p>
+          </div>
+          <div class="grid-item">
+            <p class="detail-heading">Email</p>
+          </div>
+          <div class="grid-item">
+            <p class="detail-info">freelancer@gmail.com</p>
+          </div>
+          <div class="grid-item">
+            <p class="detail-heading">Gender</p>
+          </div>
+          <div class="grid-item">
+            <p class="detail-info">Male</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -61,7 +86,10 @@ export default {
 .details-div1 {
   display: flex;
   align-items: center;
-  width: 40%;
+  width: 35%;
+}
+.details {
+  margin: 0 1rem;
 }
 .avatar {
   border-radius: 20rem;
@@ -91,5 +119,21 @@ export default {
   width: 2px;
 }
 .details-div2 {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: 0 1.5rem;
+}
+.grid-item {
+  margin: 0.5rem 2rem 0.5rem 0;
+}
+.detail-heading {
+  color: #5d5755;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.detail-info {
+  color: #5d5755;
+  font-size: 1rem;
+  font-weight: 400;
 }
 </style>
