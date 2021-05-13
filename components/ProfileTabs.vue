@@ -82,7 +82,6 @@ export default {
   border-radius: 3px;
   display: none;
   margin: 1.5rem 0;
-  padding: 2rem;
 }
 .activetab {
   display: block;

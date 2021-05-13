@@ -1,7 +1,7 @@
 <template>
   <v-expansion-panels>
-    <v-expansion-panel v-for="(item, i) in 5" :key="i">
-      <v-expansion-panel-header> Item </v-expansion-panel-header>
+    <v-expansion-panel v-for="(item, i) in 5" :key="i" class="content">
+      <v-expansion-panel-header> Project {{ i + 1 }} </v-expansion-panel-header>
       <v-expansion-panel-content>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -18,5 +18,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.content::before {
+  box-shadow: none;
+}
 </style>
