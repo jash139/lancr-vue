@@ -68,6 +68,7 @@ export default {
 .profile {
   background-color: #f2e9e6;
   min-height: 100vh;
+  padding-bottom: 1.5rem;
 }
 .content {
   max-width: 95%;

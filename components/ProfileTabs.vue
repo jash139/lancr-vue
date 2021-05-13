@@ -17,14 +17,19 @@
     </div>
 
     <div id="profile-tab-2" class="tabcontent">
-      <h1>Projects</h1>
+      <ProjectsTabContent />
     </div>
   </div>
 </template>
 
 <script>
+import ProjectsTabContent from "./ProjectsTabContent";
+
 export default {
   name: "ProfileTabs",
+  components: {
+    ProjectsTabContent,
+  },
   methods: {
     changeTab: (evt, cityName) => {
       var i, tabcontent, tablinks;
