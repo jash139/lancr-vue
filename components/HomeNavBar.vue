@@ -4,21 +4,19 @@
       <Logo />
       <ul class="ul">
         <li class="homelink">
-          <p datapage="home" class="links" onClick="scrollToSection('home')">
-            Home
-          </p>
+          <p datapage="home" class="links" @click="scrollToTop">Home</p>
         </li>
         <li>
           <p
             datapage="projects"
             class="links"
-            onClick="scrollToSection('features')"
+            @click="scrollToSection('features')"
           >
             Features
           </p>
         </li>
         <li>
-          <p datapage="skills" class="links" onClick="scrollToSection('about')">
+          <p datapage="skills" class="links" @click="scrollToSection('about')">
             About
           </p>
         </li>
@@ -26,7 +24,7 @@
           <p
             datapage="contact"
             class="links"
-            onClick="scrollToSection('contact')"
+            @click="scrollToSection('contact')"
           >
             Contact
           </p>
@@ -43,11 +41,16 @@
 
 <script>
 import Logo from "./Logo";
+import { scrollToTop, scrollToSection } from "../static/methods";
 
 export default {
   name: "HomeNavBar",
   components: {
     Logo,
+  },
+  methods: {
+    scrollToTop: () => scrollToTop(),
+    scrollToSection: () => scrollToSection(),
   },
 };
 </script>
