@@ -47,16 +47,19 @@
           </div>
         </div>
       </div>
+      <ProfileTabs />
     </div>
   </div>
 </template>
 
 <script>
 import AppBar from "../../components/AppBar";
+import ProfileTabs from "../../components/ProfileTabs";
 
 export default {
   components: {
     AppBar,
+    ProfileTabs,
   },
 };
 </script>
