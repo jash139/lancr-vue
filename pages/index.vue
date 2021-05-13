@@ -17,12 +17,16 @@
                 <div class="dots">
                   <LightDotsSvg />
                 </div>
-                <button class="btn primary-btn btn-shadow cta-btn">
-                  Projects
-                </button>
-                <button class="btn primary-btn btn-shadow cta-btn">
-                  Freelancers
-                </button>
+                <NuxtLink to="/projects">
+                  <button class="btn primary-btn btn-shadow cta-btn">
+                    Projects
+                  </button>
+                </NuxtLink>
+                <NuxtLink to="/freelancers">
+                  <button class="btn primary-btn btn-shadow cta-btn">
+                    Freelancers
+                  </button>
+                </NuxtLink>
               </div>
             </div>
           </div>
