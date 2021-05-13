@@ -13,6 +13,7 @@
           <div class="details">
             <h2 class="name">Doggo Gang</h2>
             <p class="role">Mafia Leader</p>
+            <button class="btn primary-btn">Edit Details</button>
           </div>
         </div>
         <div class="divider" />
