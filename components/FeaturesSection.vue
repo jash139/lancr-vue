@@ -29,12 +29,15 @@ export default {
 <style scoped>
 .features-section {
   background-color: #f2e9e6;
-  padding: 3rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: 100vh;
+  padding: 3rem 0;
 }
 .heading {
   color: #050303;
-  margin: 1rem 0;
+  margin: 1rem 0 3rem 0;
   text-transform: uppercase;
   text-align: center;
 }
