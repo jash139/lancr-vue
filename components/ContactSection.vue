@@ -62,7 +62,7 @@ export default {
 .contact-section {
   background-color: #050303;
   color: #ffffff;
-  padding: 3rem 0 2rem;
+  padding: 4rem 0 2rem;
   text-align: center;
 }
 .heading {
@@ -74,13 +74,16 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  padding: 2rem 0 1rem;
+  padding: 1rem 0;
 }
 .contact {
   width: 250px;
 }
 .contact-btn {
-  margin-bottom: 0.5rem;
+  border: 1px solid #ffffff;
+  margin-bottom: 1rem;
+  height: 45px;
+  width: 45px;
 }
 .link {
   cursor: pointer;
