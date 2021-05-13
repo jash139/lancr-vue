@@ -52,6 +52,7 @@ export default {
     ContactsFooter,
     HomeNavBar,
     LightDotsSvg,
+    AboutSection,
     ContactSection,
     FeaturesSection,
   },
