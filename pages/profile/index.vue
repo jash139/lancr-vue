@@ -1,10 +1,18 @@
 <template>
-  <h1>profile</h1>
+  <div class="profile">
+    <AppBar />
+  </div>
 </template>
 
 <script>
-export default {};
+import AppBar from "../../components/AppBar";
+
+export default {
+  components: {
+    AppBar,
+  },
+};
 </script>
 
-<style>
+<style scoped>
 </style>

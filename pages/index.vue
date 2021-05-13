@@ -119,33 +119,3 @@ export default {
   }
 }
 </style>
-
-<style>
-html {
-  scroll-behavior: smooth;
-}
-body {
-  font-family: "Raleway", sans-serif;
-}
-.btn {
-  border-radius: 3px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  outline: none;
-  padding: 0.6rem 2rem;
-  text-transform: none;
-}
-.primary-btn {
-  background-color: #c21e39;
-  color: #ffffff;
-}
-.secondary-btn {
-  background-color: #050303;
-  color: #ffffff;
-}
-.outlined-btn {
-  border: 2px solid #050303;
-  color: #050303;
-  padding: 7.6px 2rem;
-}
-</style>
