@@ -17,8 +17,12 @@
                 <div class="dots">
                   <LightDotsSvg />
                 </div>
-                <button class="btn primary-btn cta-btn">Projects</button>
-                <button class="btn primary-btn cta-btn">Freelancers</button>
+                <button class="btn primary-btn btn-shadow cta-btn">
+                  Projects
+                </button>
+                <button class="btn primary-btn btn-shadow cta-btn">
+                  Freelancers
+                </button>
               </div>
             </div>
           </div>
@@ -103,7 +107,6 @@ export default {
   position: absolute;
 }
 .cta-btn {
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   margin-right: 1rem;
   width: 8.5rem;
 }
