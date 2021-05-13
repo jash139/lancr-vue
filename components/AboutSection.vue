@@ -2,7 +2,9 @@
   <div class="about-section">
     <div class="pink-div" />
     <div class="content">
-      <BoySvg />
+      <div class="boy-svg">
+        <BoySvg />
+      </div>
       <div class="about-errands">
         <h1 class="heading">What is Errands?</h1>
         <div class="shift-right">
@@ -84,5 +86,16 @@ export default {
   font-size: 1rem;
   font-weight: 700;
   margin: 1rem 0;
+}
+@media only screen and (max-width: 960px) {
+  .content {
+    margin: auto;
+  }
+  .pink-div {
+    display: none;
+  }
+  .boy-svg {
+    display: none;
+  }
 }
 </style>
