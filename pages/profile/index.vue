@@ -77,11 +77,8 @@ export default {
   background-color: #ffffff;
   box-shadow: 0 10px 6px rgba(0, 0, 0, 0.05);
   border-radius: 3px;
-  color: #5d5755;
   display: flex;
   align-items: center;
-  font-size: 1rem;
-  font-weight: 700;
   margin: 1rem 0;
   padding: 2rem;
 }
@@ -110,6 +107,9 @@ export default {
   margin-top: 0.5rem;
 }
 .rating {
+  color: #5d5755;
+  font-size: 1rem;
+  font-weight: 700;
   margin: 0.5rem 0 1rem;
 }
 .edit-btn {
