@@ -79,14 +79,14 @@ export default {
   align-items: center;
   font-size: 1rem;
   font-weight: 700;
-  height: 220px;
+  /* height: 220px; */
   margin: 1rem 0;
   padding: 2rem;
 }
 .details-div1 {
   display: flex;
   align-items: center;
-  width: 35%;
+  width: 40%;
 }
 .details {
   margin: 0 1rem;
@@ -115,7 +115,7 @@ export default {
 .divider {
   background-color: #f2e9e6;
   border-radius: 2rem;
-  height: 100%;
+  height: 10rem;
   width: 2px;
 }
 .details-div2 {
@@ -135,5 +135,31 @@ export default {
   color: #5d5755;
   font-size: 1rem;
   font-weight: 400;
+}
+@media only screen and (max-width: 1280px) {
+  .details-div1 {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 960px) {
+  .divider {
+    display: none;
+  }
+  .details-div1 {
+    flex-direction: column;
+    width: unset;
+  }
+  .details {
+    text-align: center;
+  }
+  .avatar {
+    margin: 1rem 0;
+  }
+  .about-user {
+    flex-direction: column;
+  }
+  .details-div2 {
+    margin: 2rem 0 0;
+  }
 }
 </style>
