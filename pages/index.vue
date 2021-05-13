@@ -17,10 +17,8 @@
                 <div class="dots">
                   <LightDotsSvg />
                 </div>
-                <button medium class="btn primary-btn cta-btn">Projects</button>
-                <button medium class="btn primary-btn cta-btn">
-                  Freelancers
-                </button>
+                <button class="btn primary-btn cta-btn">Projects</button>
+                <button class="btn primary-btn cta-btn">Freelancers</button>
               </div>
             </div>
           </div>
