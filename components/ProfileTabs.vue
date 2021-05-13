@@ -45,6 +45,7 @@ export default {
 
 <style scoped>
 .tab {
+  border-bottom: 2px solid #ffffff;
   overflow: hidden;
 }
 .tab button {
@@ -57,7 +58,7 @@ export default {
   font-size: 1rem;
   font-weight: 700;
   outline: none;
-  padding: 14px 16px;
+  padding: 0.6rem 2rem;
   transition: all 0.2s ease;
 }
 .tab button:hover {
@@ -69,8 +70,6 @@ export default {
 }
 .tabcontent {
   display: none;
-  padding: 6px 12px;
-  border-top: none;
 }
 .activetab {
   display: block;
