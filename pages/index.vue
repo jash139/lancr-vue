@@ -121,6 +121,9 @@ export default {
 </style>
 
 <style>
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: "Raleway", sans-serif;
 }

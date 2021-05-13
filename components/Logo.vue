@@ -1,10 +1,15 @@
 <template>
-  <h2 class="logo"><span class="e">E</span>rrands</h2>
+  <h2 class="logo" @click="scrollToTop"><span class="e">E</span>rrands</h2>
 </template>
 
 <script>
+import { scrollToTop } from "../static/methods";
+
 export default {
   name: "Logo",
+  methods: {
+    scrollToTop: () => scrollToTop(),
+  },
 };
 </script>
 

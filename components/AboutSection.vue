@@ -1,5 +1,5 @@
 <template>
-  <div class="about-section">
+  <div class="about-section" id="about">
     <div class="pink-div" />
     <div class="content">
       <div class="boy-svg">

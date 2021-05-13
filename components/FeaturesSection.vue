@@ -1,5 +1,5 @@
 <template>
-  <div class="features-section">
+  <div class="features-section" id="features">
     <div class="content">
       <div class="dots-svg">
         <DarkDotsSvg />

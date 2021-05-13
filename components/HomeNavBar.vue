@@ -7,17 +7,17 @@
           <p datapage="home" class="links" @click="scrollToTop">Home</p>
         </li>
         <li>
+          <p datapage="skills" class="links" @click="scrollToSection('about')">
+            About
+          </p>
+        </li>
+        <li>
           <p
             datapage="projects"
             class="links"
             @click="scrollToSection('features')"
           >
             Features
-          </p>
-        </li>
-        <li>
-          <p datapage="skills" class="links" @click="scrollToSection('about')">
-            About
           </p>
         </li>
         <li>
@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     scrollToTop: () => scrollToTop(),
-    scrollToSection: () => scrollToSection(),
+    scrollToSection: (id) => scrollToSection(id),
   },
 };
 </script>
