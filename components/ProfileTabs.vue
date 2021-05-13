@@ -44,6 +44,9 @@ export default {
 </script>
 
 <style scoped>
+.profile-tabs {
+  margin-top: 3rem;
+}
 .tab {
   border-bottom: 2px solid #ffffff;
   overflow: hidden;
@@ -69,7 +72,12 @@ export default {
   color: #c21e39;
 }
 .tabcontent {
+  background-color: #ffffff;
+  box-shadow: 0 10px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
   display: none;
+  margin: 1.5rem 0;
+  padding: 2rem;
 }
 .activetab {
   display: block;
