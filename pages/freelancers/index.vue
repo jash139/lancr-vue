@@ -2,7 +2,15 @@
   <div class="root">
     <AppBar />
     <div class="content">
-      <FreelancerCard />
+      <div class="freelancers">
+        <FreelancerCard />
+        <FreelancerCard />
+        <FreelancerCard />
+        <FreelancerCard />
+        <FreelancerCard />
+        <FreelancerCard />
+        <FreelancerCard />
+      </div>
     </div>
   </div>
 </template>
@@ -27,5 +35,10 @@ export default {
 .content {
   max-width: 95%;
   margin: auto;
+}
+.freelancers {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: auto auto auto auto;
 }
 </style>
