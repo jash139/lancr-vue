@@ -5,9 +5,9 @@
       <div class="card">
         <h2 class="heading">Sign up</h2>
         <p class="top-message">Welcome! Sign up to get started</p>
-        <v-text-field class="text-field" v-model="email" label="Email" />
+        <v-text-field class="sign-text-field" v-model="email" label="Email" />
         <v-text-field
-          class="text-field"
+          class="sign-text-field"
           v-model="password"
           :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
           :type="show ? 'text' : 'password'"
@@ -24,7 +24,7 @@
         </button>
         <p class="account-message">
           Already have an account?
-          <NuxtLink to="/signup" class="link">Sign in</NuxtLink>
+          <NuxtLink to="/signin" class="link">Sign in</NuxtLink>
         </p>
       </div>
     </div>
@@ -83,22 +83,6 @@ export default {
 }
 .account-message {
   color: #5d5755;
-  font-size: 0.9rem;
-  font-weight: 700;
-}
-.text-field {
-  color: #c21e39 !important;
-}
-.text-field .v-label {
-  color: #c21e39;
-  font-size: 1rem;
-  font-weight: 700;
-}
-.text-field .v-label--active {
-  transform: translate(-8px, -18px) scale(0.75);
-}
-.text-field input {
-  color: #5d5755 !important;
   font-size: 0.9rem;
   font-weight: 700;
 }
