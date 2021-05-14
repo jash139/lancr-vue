@@ -52,7 +52,7 @@ export default {
 .freelancer-card {
   background-color: #ffffff;
   border-radius: 3px;
-  max-width: 320px;
+  max-width: 380px;
   padding: 1.5rem;
 }
 .card-header {
