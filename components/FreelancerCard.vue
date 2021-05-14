@@ -31,17 +31,22 @@
         <h4 class="heading">Skills</h4>
         <div class="stroke" />
       </div>
-      <div class="skills-chip">React</div>
-      <div class="skills-chip">Vue</div>
-      <div class="skills-chip">+4</div>
+      <Chip text="React" />
+      <Chip text="Vue" />
+      <Chip text="+4" />
     </div>
     <button class="view-btn btn primary-btn btn-shadow">View Profile</button>
   </div>
 </template>
 
 <script>
+import Chip from "./Chip";
+
 export default {
   name: "FreelancerCard",
+  components: {
+    Chip,
+  },
 };
 </script>
 
