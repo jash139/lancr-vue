@@ -1,5 +1,7 @@
 <template>
-  <h2 class="logo" @click="scrollToTop"><span class="e">E</span>rrands</h2>
+  <NuxtLink to="/" class="link">
+    <h2 class="logo" @click="scrollToTop"><span class="e">E</span>rrands</h2>
+  </NuxtLink>
 </template>
 
 <script>
