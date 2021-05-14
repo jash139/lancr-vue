@@ -41,4 +41,19 @@ export default {
   grid-gap: 2rem;
   grid-template-columns: auto auto auto auto;
 }
+@media only screen and (max-width: 1400px) {
+  .freelancers {
+    grid-template-columns: auto auto auto;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .freelancers {
+    grid-template-columns: auto auto;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .freelancers {
+    grid-template-columns: auto;
+  }
+}
 </style>
