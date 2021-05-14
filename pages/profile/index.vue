@@ -17,7 +17,7 @@
         </svg>
         Back
       </p>
-      <div class="about-user">
+      <div class="about-user card-shadow">
         <div class="details-div1">
           <img
             src="https://images.unsplash.com/photo-1562347851-32d44aa232ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
@@ -101,7 +101,6 @@ export default {
 }
 .about-user {
   background-color: #ffffff;
-  box-shadow: 0 10px 6px rgba(0, 0, 0, 0.05);
   border-radius: 3px;
   display: flex;
   align-items: center;
