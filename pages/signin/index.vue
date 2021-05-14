@@ -4,16 +4,15 @@
     <div class="content">
       <div class="card">
         <h2 class="heading">Sign in</h2>
-        <p class="message">
+        <p class="top-message">
           Welcome back!<br />Did you
           <NuxtLink to="/forget-password" class="link">
             forget your password?
           </NuxtLink>
         </p>
-        <!-- <p class="error">{{ error }}</p> -->
-
-        <v-text-field v-model="email" label="Email" />
+        <v-text-field class="text-field" v-model="email" label="Email" />
         <v-text-field
+          class="text-field"
           v-model="password"
           :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
           :type="show ? 'text' : 'password'"
@@ -22,14 +21,13 @@
           counter
           @click:append="show = !show"
         />
-
         <button
           class="btn primary-btn btn-shadow login-btn"
           @click="handleSubmit"
         >
-          Login
+          Sign in
         </button>
-        <p class="message">
+        <p class="account-message">
           Don't have an account?
           <NuxtLink to="/signup" class="link">Create a new account</NuxtLink>
         </p>
@@ -44,7 +42,7 @@ import AppBar from "../../components/AppBar";
 export default {
   data() {
     return {
-      show: true,
+      show: false,
       email: "",
       password: "",
     };
@@ -79,16 +77,38 @@ export default {
 .heading {
   color: #c21e39;
   font-size: 1.6rem;
-  margin: 1rem 0;
+  margin: 0.8rem 0;
 }
-.message {
+.top-message {
   color: #5d5755;
   font-size: 0.9rem;
   font-weight: 700;
   line-height: 1.5;
+  margin: 1rem 0 1.5rem;
+}
+.account-message {
+  color: #5d5755;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.text-field {
+  color: #c21e39 !important;
+}
+.text-field .v-label {
+  color: #c21e39;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.text-field .v-label--active {
+  transform: translate(-8px, -18px) scale(0.75);
+}
+.text-field input {
+  color: #5d5755 !important;
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 .login-btn {
-  margin: 1rem 0;
+  margin: 1rem 0 0.5rem;
   width: 100%;
 }
 .link {
