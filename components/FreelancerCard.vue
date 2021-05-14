@@ -21,9 +21,9 @@
       </div>
       <div class="contacts">
         <p>O</p>
-        <p class="phone">012 345 6789</p>
+        <p class="contact-info">012 345 6789</p>
         <p>O</p>
-        <p class="email">freelancer@gmail.com</p>
+        <p class="contact-info">freelancer@gmail.com</p>
       </div>
     </div>
     <div class="skills">
@@ -81,7 +81,12 @@ export default {
 }
 .contacts {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 15% auto;
+}
+.contact-info {
+  color: #939498;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 .view-btn {
   width: 100%;
