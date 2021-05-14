@@ -57,7 +57,6 @@ export default {
 }
 .card-header {
   display: flex;
-  align-items: center;
 }
 .avatar {
   border-radius: 20rem;
@@ -67,6 +66,11 @@ export default {
   color: #c21e39;
   font-size: 1.5rem;
 }
+.location {
+  color: #5d5755;
+  font-size: 1rem;
+  font-weight: 700;
+}
 .role {
   background-color: #c21e39;
   border-radius: 5rem;
@@ -74,9 +78,13 @@ export default {
   display: inline-block;
   font-size: 0.7rem;
   font-weight: 600;
-  padding: 0.2rem 1.2rem;
+  padding: 0.3rem 1.2rem;
 }
 .main-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
   margin-left: 1rem;
 }
 .card-body {
