@@ -3,8 +3,12 @@
     <nav class="nav">
       <Logo />
       <div class="right-section">
-        <button elevation="0" class="btn outlined-btn sign-btn">Signin</button>
-        <button elevation="0" class="btn secondary-btn sign-btn">Signup</button>
+        <NuxtLink to="/signin">
+          <button class="btn outlined-btn sign-btn">Signin</button>
+        </NuxtLink>
+        <NuxtLink to="/signup">
+          <button class="btn secondary-btn sign-btn">Signup</button>
+        </NuxtLink>
       </div>
     </nav>
   </header>
