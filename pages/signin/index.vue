@@ -1,5 +1,5 @@
 <template>
-  <div class="root">
+  <div>
     <AppBar />
     <div class="content">
       <div class="card">
@@ -59,11 +59,14 @@ export default {
 </script>
 
 <style>
-.root {
-}
 .content {
-  max-width: 95%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: auto;
+  max-width: 95%;
 }
 .card {
   background-color: #ffffff;
