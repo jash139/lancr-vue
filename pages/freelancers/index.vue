@@ -1,9 +1,15 @@
 <template>
-  <h1>freelancers</h1>
+  <FreelancerCard />
 </template>
 
 <script>
-export default {};
+import FreelancerCard from "../../components/FreelancerCard";
+
+export default {
+  components: {
+    FreelancerCard,
+  },
+};
 </script>
 
 <style>
