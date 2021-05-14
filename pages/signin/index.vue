@@ -22,7 +22,7 @@
           @click:append="show = !show"
         />
         <button
-          class="btn primary-btn btn-shadow login-btn"
+          class="btn primary-btn btn-shadow signin-btn"
           @click="handleSubmit"
         >
           Sign in
@@ -56,7 +56,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .content {
   min-height: 90vh;
   display: flex;
@@ -70,9 +70,9 @@ export default {
   background-color: #ffffff;
   box-shadow: 0 10px 6px rgba(0, 0, 0, 0.05);
   border-radius: 3px;
-  max-width: 450px;
   padding: 2rem;
   text-align: center;
+  width: 400px;
 }
 .heading {
   color: #c21e39;
@@ -107,12 +107,17 @@ export default {
   font-size: 0.9rem;
   font-weight: 700;
 }
-.login-btn {
+.signin-btn {
   margin: 1rem 0 0.5rem;
   width: 100%;
 }
 .link {
   color: #c21e39;
   text-decoration: none;
+}
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 100%;
+  }
 }
 </style>
