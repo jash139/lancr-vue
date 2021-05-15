@@ -73,7 +73,11 @@
             <h4 class="heading">Applicants</h4>
             <div class="stroke" />
           </div>
-          <div class="applicant-card">Applicant card</div>
+          <ApplicantCard />
+          <ApplicantCard />
+          <ApplicantCard />
+          <ApplicantCard />
+          <ApplicantCard />
         </div>
       </div>
     </div>
@@ -84,12 +88,14 @@
 import AppBar from "../../../components/AppBar";
 import BackButton from "../../../components/BackButton";
 import Chip from "../../../components/Chip";
+import ApplicantCard from "../../../components/ApplicantCard";
 
 export default {
   components: {
     AppBar,
     BackButton,
     Chip,
+    ApplicantCard,
   },
 };
 </script>
