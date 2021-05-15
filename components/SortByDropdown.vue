@@ -1,6 +1,6 @@
 <template>
   <div class="dropdown">
-    <button @click="toggleMenu()" class="dropdown-btn btn">
+    <button @click="toggleMenu" class="dropdown-btn btn">
       {{ selectedOption }}
       <div class="drop-icon">
         <svg
@@ -18,10 +18,10 @@
       </div>
     </button>
     <div id="sortby-dropdown" class="dropdown-content card-shadow">
-      <p class="dropdown-item">None</p>
-      <p class="dropdown-item">Active</p>
-      <p class="dropdown-item">Closed</p>
-      <p class="dropdown-item">Recent</p>
+      <p class="dropdown-item" @click="setSelectedOption('None')">None</p>
+      <p class="dropdown-item" @click="setSelectedOption('Active')">Active</p>
+      <p class="dropdown-item" @click="setSelectedOption('Closed')">Closed</p>
+      <p class="dropdown-item" @click="setSelectedOption('Recent')">Recent</p>
     </div>
   </div>
 </template>
@@ -31,12 +31,15 @@ export default {
   name: "SortByDropdown",
   data() {
     return {
-      selectedOption: "Closed",
+      selectedOption: "None",
     };
   },
   methods: {
-    toggleMenu: () => {
+    toggleMenu() {
       document.getElementById("sortby-dropdown").classList.toggle("show");
+    },
+    setSelectedOption(option) {
+      this.selectedOption = option;
     },
   },
   mounted() {
