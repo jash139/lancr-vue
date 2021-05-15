@@ -53,7 +53,7 @@ export default {
   background-color: #ffffff;
   border-radius: 3px;
   max-width: 380px;
-  min-width: 330px;
+  min-width: 300px;
   margin: auto;
   padding: 1.5rem;
 }
