@@ -2,6 +2,7 @@
   <div class="root">
     <AppBar />
     <div class="content">
+      <BackButton />
       <div class="projects-card card-shadow">
         <div class="header">
           <h2 class="title">Project Title</h2>
@@ -81,11 +82,13 @@
 
 <script>
 import AppBar from "../../../components/AppBar";
+import BackButton from "../../../components/BackButton";
 import Chip from "../../../components/Chip";
 
 export default {
   components: {
     AppBar,
+    BackButton,
     Chip,
   },
 };
