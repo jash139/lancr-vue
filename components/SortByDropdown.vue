@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown">
-    <button @click="toggleMenu()" class="dropbtn">Dropdown</button>
-    <div id="myDropdown" class="dropdown-content">
+    <button @click="toggleMenu()" class="dropdown-btn btn">Dropdown</button>
+    <div id="myDropdown" class="dropdown-content card-shadow">
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
@@ -20,7 +20,7 @@ export default {
   mounted() {
     this.$nextTick(function () {
       window.onclick = (event) => {
-        if (!event.target.matches(".dropbtn")) {
+        if (!event.target.matches(".dropdown-btn")) {
           var dropdowns = document.getElementsByClassName("dropdown-content");
           var i;
           for (i = 0; i < dropdowns.length; i++) {
@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style scoped>
-.dropbtn {
+.dropdown-btn {
   background-color: #3498db;
   color: white;
   padding: 16px;
@@ -45,9 +45,7 @@ export default {
   border: none;
   cursor: pointer;
 }
-
-.dropbtn:hover,
-.dropbtn:focus {
+.dropdown-btn:focus {
   background-color: #2980b9;
 }
 
@@ -62,7 +60,7 @@ export default {
   background-color: #f1f1f1;
   min-width: 160px;
   overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
   z-index: 1;
 }
 

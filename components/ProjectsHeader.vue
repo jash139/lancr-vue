@@ -1,10 +1,17 @@
 <template>
-  <h2>Projects header</h2>
+  <div class="projects-header">
+    <SortByDropdown />
+  </div>
 </template>
 
 <script>
+import SortByDropdown from "./SortByDropdown";
+
 export default {
   name: "ProjectsHeader",
+  components: {
+    SortByDropdown,
+  },
 };
 </script>
 
