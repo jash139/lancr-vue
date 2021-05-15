@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown">
     <button @click="toggleMenu()" class="dropdown-btn btn">
-      Dropdown
+      {{ selectedOption }}
       <div class="drop-icon">
         <svg
           width="10"
@@ -29,6 +29,11 @@
 <script>
 export default {
   name: "SortByDropdown",
+  data() {
+    return {
+      selectedOption: "Closed",
+    };
+  },
   methods: {
     toggleMenu: () => {
       document.getElementById("sortby-dropdown").classList.toggle("show");
@@ -65,8 +70,10 @@ export default {
   color: #5d5755;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 0.8rem;
   font-weight: 700;
+  min-width: 6rem;
   outline: none;
   padding: 0.4rem 1rem;
   text-transform: none;
