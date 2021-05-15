@@ -73,11 +73,23 @@
             <h4 class="heading">Applicants</h4>
             <div class="stroke" />
           </div>
-          <ApplicantCard />
-          <ApplicantCard />
-          <ApplicantCard />
-          <ApplicantCard />
-          <ApplicantCard />
+          <div class="applicants">
+            <ApplicantCard />
+            <ApplicantCard />
+            <ApplicantCard />
+            <ApplicantCard />
+            <ApplicantCard />
+            <ApplicantCard />
+            <ApplicantCard />
+            <ApplicantCard />
+            <ApplicantCard />
+            <ApplicantCard />
+            <ApplicantCard />
+            <ApplicantCard />
+            <ApplicantCard />
+            <ApplicantCard />
+            <ApplicantCard />
+          </div>
         </div>
       </div>
     </div>
@@ -160,5 +172,18 @@ export default {
   font-weight: 600;
   line-height: 1.4;
   margin: 1rem 0;
+}
+.applicants {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.applicants::-webkit-scrollbar {
+  width: 1.5rem;
+}
+.applicants::-webkit-scrollbar-thumb {
+  background-color: #e5ecee;
+  border-radius: 1rem;
+  border: 9px solid transparent;
+  background-clip: content-box;
 }
 </style>
