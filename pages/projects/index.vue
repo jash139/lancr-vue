@@ -2,6 +2,7 @@
   <div class="root">
     <AppBar />
     <div class="content">
+      <ProjectsHeader />
       <div class="projects">
         <ProjectCard />
         <ProjectCard />
@@ -17,11 +18,13 @@
 
 <script>
 import AppBar from "../../components/AppBar";
+import ProjectsHeader from "../../components/ProjectsHeader";
 import ProjectCard from "../../components/ProjectCard";
 
 export default {
   components: {
     AppBar,
+    ProjectsHeader,
     ProjectCard,
   },
 };
