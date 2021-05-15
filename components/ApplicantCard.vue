@@ -92,7 +92,6 @@ export default {
   background-color: #f2e9e6;
   border-radius: 2rem;
   height: 0.5px;
-  margin-left: 1rem;
   width: 100%;
 }
 </style>
