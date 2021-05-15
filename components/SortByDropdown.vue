@@ -54,6 +54,10 @@ export default {
 </script>
 
 <style scoped>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 .dropdown-btn {
   background-color: #ffffff;
   border: 1px solid #cdcdcd;
@@ -72,10 +76,6 @@ export default {
 }
 .dropdown-btn:focus {
   background-color: #fcfcfc;
-}
-.dropdown {
-  position: relative;
-  display: inline-block;
 }
 .dropdown-content {
   background-color: #ffffff;
