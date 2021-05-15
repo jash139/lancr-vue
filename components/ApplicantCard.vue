@@ -1,5 +1,11 @@
 <template>
-  <h2>Applicant card</h2>
+  <div class="applicant-card">
+    <div class="details">
+      <h2 class="name">Doggo Gang</h2>
+      <div class="role">Underworld don</div>
+    </div>
+    <div class="divider" />
+  </div>
 </template>
 
 <script>
