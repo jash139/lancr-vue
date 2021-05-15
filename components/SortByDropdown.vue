@@ -2,23 +2,26 @@
   <div class="dropdown">
     <button @click="toggleMenu()" class="dropdown-btn btn">
       Dropdown
-      <svg
-        width="10"
-        height="10"
-        viewBox="0 0 25 17"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M1.05362 3.63029C0.738528 3.27624 0.564453 2.8188 0.564453 2.34484V2.34484C0.564452 0.589392 2.71518 -0.257682 3.91227 1.02629L12.5645 10.3065L21.2166 1.02629C22.4137 -0.257682 24.5645 0.589391 24.5645 2.34484V2.34484C24.5645 2.8188 24.3904 3.27624 24.0753 3.63029L13.3115 15.7251C12.9137 16.1721 12.2152 16.172 11.8174 15.7251L1.05362 3.63029Z"
-          fill="#5D5755"
-        />
-      </svg>
+      <div class="drop-icon">
+        <svg
+          width="10"
+          height="10"
+          viewBox="0 0 25 17"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1.05362 3.63029C0.738528 3.27624 0.564453 2.8188 0.564453 2.34484V2.34484C0.564452 0.589392 2.71518 -0.257682 3.91227 1.02629L12.5645 10.3065L21.2166 1.02629C22.4137 -0.257682 24.5645 0.589391 24.5645 2.34484V2.34484C24.5645 2.8188 24.3904 3.27624 24.0753 3.63029L13.3115 15.7251C12.9137 16.1721 12.2152 16.172 11.8174 15.7251L1.05362 3.63029Z"
+            fill="#cdcdcd"
+          />
+        </svg>
+      </div>
     </button>
-    <div id="myDropdown" class="dropdown-content card-shadow">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+    <div id="sortby-dropdown" class="dropdown-content card-shadow">
+      <p class="dropdown-item">None</p>
+      <p class="dropdown-item">Active</p>
+      <p class="dropdown-item">Closed</p>
+      <p class="dropdown-item">Recent</p>
     </div>
   </div>
 </template>
@@ -28,7 +31,7 @@ export default {
   name: "SortByDropdown",
   methods: {
     toggleMenu: () => {
-      document.getElementById("myDropdown").classList.toggle("show");
+      document.getElementById("sortby-dropdown").classList.toggle("show");
     },
   },
   mounted() {
@@ -52,7 +55,8 @@ export default {
 
 <style scoped>
 .dropdown-btn {
-  border: 1px solid #5d5755;
+  background-color: #ffffff;
+  border: 1px solid #cdcdcd;
   border-radius: 5rem;
   color: #5d5755;
   display: flex;
@@ -63,36 +67,35 @@ export default {
   padding: 0.4rem 1rem;
   text-transform: none;
 }
-.dropdown-btn:focus {
-  background-color: #2980b9;
+.drop-icon {
+  margin-left: 0.5rem;
 }
-
+.dropdown-btn:focus {
+  background-color: #fcfcfc;
+}
 .dropdown {
   position: relative;
   display: inline-block;
 }
-
 .dropdown-content {
   background-color: #ffffff;
   border-radius: 3px;
   display: none;
-  min-width: 160px;
+  min-width: 150px;
   overflow: auto;
   position: absolute;
   z-index: 1;
 }
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+.dropdown-item {
+  color: #5d5755;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
 }
-
-.dropdown a:hover {
-  background-color: #ddd;
+.dropdown-item:hover {
+  background-color: #ececec;
 }
-
 .show {
   display: block;
 }
