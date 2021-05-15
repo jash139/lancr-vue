@@ -115,6 +115,16 @@ export default {
   font-size: 1.5rem;
   margin: 0.5rem 0;
 }
+.apply-btn {
+  margin-right: 1rem;
+  width: 7rem;
+}
+.client-btn {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 7rem;
+}
 .card-section {
   margin: 2rem 0;
 }
