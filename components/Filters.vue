@@ -20,14 +20,16 @@ export default {
 </script>
 
 <style scoped>
+.filters {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
 .filter {
   color: #5d5755;
   font-size: 0.9rem;
   font-weight: 600;
   margin-right: 0.5rem;
-}
-.filters {
-  display: flex;
-  align-items: center;
+  margin-bottom: 0 !important;
 }
 </style>
