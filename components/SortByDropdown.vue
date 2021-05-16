@@ -19,7 +19,7 @@
           </svg>
         </div>
       </button>
-      <div v-show="showSkills" class="dropdown-content card-shadow">
+      <div v-show="showOptions" class="dropdown-content card-shadow">
         <p class="dropdown-item" @click="setSelectedOption('None')">None</p>
         <p class="dropdown-item" @click="setSelectedOption('Active')">Active</p>
         <p class="dropdown-item" @click="setSelectedOption('Closed')">Closed</p>
@@ -35,12 +35,12 @@ export default {
   data() {
     return {
       selectedOption: "None",
-      showSkills: false,
+      showOptions: false,
     };
   },
   methods: {
     toggleMenu() {
-      this.showSkills = !this.showSkills;
+      this.showOptions = !this.showOptions;
     },
     setSelectedOption(option) {
       this.selectedOption = option;
@@ -50,7 +50,7 @@ export default {
     this.$nextTick(function () {
       window.onclick = (event) => {
         if (!event.target.matches(".sortby-dropdown-btn")) {
-          this.showSkills = false;
+          this.showOptions = false;
         }
       };
     });
