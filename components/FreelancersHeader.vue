@@ -3,17 +3,20 @@
     <h2 class="heading">Freelancers</h2>
     <div class="actions">
       <SortByDropdown />
+      <Filters />
     </div>
   </div>
 </template>
 
 <script>
 import SortByDropdown from "./SortByDropdown";
+import Filters from "./Filters";
 
 export default {
   name: "FreelancersHeader",
   components: {
     SortByDropdown,
+    Filters,
   },
 };
 </script>
