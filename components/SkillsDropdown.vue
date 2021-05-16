@@ -63,8 +63,9 @@ export default {
 
 <style scoped>
 .dropdown {
-  position: relative;
   display: inline-block;
+  margin-right: 1rem;
+  position: relative;
 }
 .dropdown:hover .dropdown-content {
   display: block;
