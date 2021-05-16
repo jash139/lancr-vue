@@ -19,11 +19,7 @@
           </svg>
         </div>
       </button>
-      <div
-        v-show="showSkills"
-        id="sortby-dropdown"
-        class="dropdown-content card-shadow"
-      >
+      <div v-show="showSkills" class="dropdown-content card-shadow">
         <p class="dropdown-item" @click="setSelectedOption('None')">None</p>
         <p class="dropdown-item" @click="setSelectedOption('Active')">Active</p>
         <p class="dropdown-item" @click="setSelectedOption('Closed')">Closed</p>
