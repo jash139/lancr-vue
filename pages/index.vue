@@ -2,7 +2,7 @@
   <div class="home">
     <HomeNavBar />
     <div class="hero-section">
-      <div class="main">
+      <div class="content">
         <div class="cta-section">
           <h1 class="main-heading">DESCRIBE YOUR APP <br />IN BOLD LETTERS</h1>
           <div class="shift-right">
@@ -75,11 +75,12 @@ export default {
   margin: auto;
   min-height: 90vh;
 }
-.main {
+.content {
   display: flex;
   align-items: center;
   justify-content: space-around;
   min-height: 80vh;
+  margin-bottom: 0;
 }
 .main-heading {
   color: #050303;
