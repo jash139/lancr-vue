@@ -1,5 +1,9 @@
 <template>
-  <b-dropdown :scrollable="isScrollable" :max-height="maxHeight">
+  <b-dropdown
+    :scrollable="isScrollable"
+    :max-height="maxHeight"
+    :close-on-click="false"
+  >
     <template #trigger>
       <b-button
         class="skills-dropdown-btn btn"
