@@ -1,6 +1,6 @@
 <template>
   <div class="project-card card-shadow">
-    <div class="card-header">
+    <div class="project-card-header">
       <img
         src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
         alt="Avatar"
@@ -36,7 +36,7 @@ export default {
   margin: auto;
   padding: 1.5rem;
 }
-.card-header {
+.project-card-header {
   display: flex;
   justify-content: space-between;
 }
