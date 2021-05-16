@@ -26,4 +26,8 @@ export default {
   font-weight: 600;
   margin-right: 0.5rem;
 }
+.filters {
+  display: flex;
+  align-items: center;
+}
 </style>
