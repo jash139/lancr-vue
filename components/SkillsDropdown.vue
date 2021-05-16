@@ -19,10 +19,14 @@
     </button>
     <div v-show="showOptions" class="dropdown-content card-shadow">
       <p
-        class="dropdown-item"
+        :class="
+          selectedOptions.includes(option)
+            ? 'dropdown-item item-selected'
+            : 'dropdown-item'
+        "
         v-for="option in options"
         :key="option"
-        @click="setSelectedOption(option)"
+        @click="setSelectedOption($event, option)"
       >
         {{ option }}
       </p>
@@ -46,13 +50,13 @@ export default {
     toggleMenu() {
       this.showOptions = !this.showOptions;
     },
-    setSelectedOption(option) {
+    setSelectedOption(event, option) {
+      event.stopPropagation();
       if (this.selectedOptions.includes(option)) {
         this.selectedOptions.splice(this.selectedOptions.indexOf(option), 1);
       } else {
         this.selectedOptions.push(option);
       }
-      console.log(this.selectedOptions);
     },
   },
   mounted() {
@@ -85,7 +89,6 @@ export default {
   justify-content: space-between;
   font-size: 0.8rem;
   font-weight: 700;
-  min-width: 6rem;
   outline: none;
   padding: 0.4rem 1rem;
   text-transform: none;
@@ -100,7 +103,7 @@ export default {
   background-color: #ffffff;
   border-radius: 3px;
   max-height: 300px;
-  min-width: 150px;
+  min-width: 160px;
   overflow: auto;
   position: absolute;
   z-index: 1;
@@ -111,6 +114,9 @@ export default {
   font-size: 0.9rem;
   font-weight: 600;
   padding: 0.6rem 1rem;
+}
+.item-selected {
+  background-color: #ececec;
 }
 .dropdown-item:hover {
   background-color: #ececec;
