@@ -7,15 +7,15 @@
       <h1 class="heading">What makes us special?</h1>
       <div class="features">
         <div class="feature-card">
-          <p class="number">01</p>
+          <p class="number-indicator">01</p>
           <p class="feature">Find services or jobs near you</p>
         </div>
         <div class="feature-card">
-          <p class="number">02</p>
+          <p class="number-indicator">02</p>
           <p class="feature">Browse projects according to your skillset</p>
         </div>
         <div class="feature-card">
-          <p class="number">03</p>
+          <p class="number-indicator">03</p>
           <p class="feature">One platform to earn or hire</p>
         </div>
       </div>
@@ -84,8 +84,8 @@ export default {
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   color: #ffffff;
 }
-.number {
-  height: 135px;
+.number-indicator {
+  height: 125px;
 }
 @media only screen and (max-width: 960px) {
   .features {
