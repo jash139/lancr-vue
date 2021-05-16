@@ -75,6 +75,7 @@ export default {
   background-color: #ffffff;
   border-radius: 3px;
   display: none;
+  max-height: 300px;
   min-width: 150px;
   overflow: auto;
   position: absolute;
