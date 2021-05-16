@@ -80,7 +80,6 @@ export default {
 }
 .dropdown-item {
   color: #5d5755;
-  cursor: pointer;
   font-size: 0.9rem;
   font-weight: 500;
 }
