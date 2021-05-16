@@ -2,6 +2,7 @@
   <div class="root">
     <AppBar />
     <div class="content">
+      <FreelancersHeader />
       <div class="freelancers">
         <FreelancerCard />
         <FreelancerCard />
@@ -17,11 +18,13 @@
 
 <script>
 import AppBar from "../../components/AppBar";
+import FreelancersHeader from "../../components/FreelancersHeader";
 import FreelancerCard from "../../components/FreelancerCard";
 
 export default {
   components: {
     AppBar,
+    FreelancersHeader,
     FreelancerCard,
   },
 };
