@@ -2,7 +2,7 @@
   <div class="sort-by-dropdown">
     <p class="sortby">Sort By</p>
     <div class="dropdown">
-      <button @click="toggleMenu" class="dropdown-btn btn">
+      <button @click="toggleMenu" class="sortby-dropdown-btn btn">
         {{ selectedOption }}
         <div class="drop-icon">
           <svg
@@ -19,7 +19,11 @@
           </svg>
         </div>
       </button>
-      <div id="sortby-dropdown" class="dropdown-content card-shadow">
+      <div
+        v-show="showSkills"
+        id="sortby-dropdown"
+        class="dropdown-content card-shadow"
+      >
         <p class="dropdown-item" @click="setSelectedOption('None')">None</p>
         <p class="dropdown-item" @click="setSelectedOption('Active')">Active</p>
         <p class="dropdown-item" @click="setSelectedOption('Closed')">Closed</p>
@@ -35,11 +39,12 @@ export default {
   data() {
     return {
       selectedOption: "None",
+      showSkills: false,
     };
   },
   methods: {
     toggleMenu() {
-      document.getElementById("sortby-dropdown").classList.toggle("show");
+      this.showSkills = !this.showSkills;
     },
     setSelectedOption(option) {
       this.selectedOption = option;
@@ -48,15 +53,8 @@ export default {
   mounted() {
     this.$nextTick(function () {
       window.onclick = (event) => {
-        if (!event.target.matches(".dropdown-btn")) {
-          var dropdowns = document.getElementsByClassName("dropdown-content");
-          var i;
-          for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains("show")) {
-              openDropdown.classList.remove("show");
-            }
-          }
+        if (!event.target.matches(".sortby-dropdown-btn")) {
+          this.showSkills = false;
         }
       };
     });
@@ -79,7 +77,7 @@ export default {
   position: relative;
   display: inline-block;
 }
-.dropdown-btn {
+.sortby-dropdown-btn {
   background-color: #ffffff;
   border: 1px solid #cdcdcd;
   border-radius: 5rem;
@@ -97,13 +95,13 @@ export default {
 .drop-icon {
   margin-left: 0.5rem;
 }
-.dropdown-btn:focus {
+.sortby-dropdown-btn:focus {
   background-color: #fcfcfc;
 }
 .dropdown-content {
   background-color: #ffffff;
   border-radius: 3px;
-  display: none;
+  /* display: none; */
   min-width: 150px;
   overflow: auto;
   position: absolute;
