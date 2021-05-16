@@ -18,19 +18,26 @@
       </div>
     </button>
     <div v-show="showOptions" class="dropdown-content card-shadow">
-      <p class="dropdown-item" @click="setSelectedOption('None')">None</p>
-      <p class="dropdown-item" @click="setSelectedOption('Active')">Active</p>
-      <p class="dropdown-item" @click="setSelectedOption('Closed')">Closed</p>
-      <p class="dropdown-item" @click="setSelectedOption('Recent')">Recent</p>
+      <p
+        class="dropdown-item"
+        v-for="option in options"
+        :key="option"
+        @click="setSelectedOption(option)"
+      >
+        {{ option }}
+      </p>
     </div>
   </div>
 </template>
 
 <script>
+import skills from "../assets/skills";
+
 export default {
   name: "SkillsDropdown",
   data() {
     return {
+      options: [],
       showOptions: false,
       selectedOptions: [],
     };
@@ -56,6 +63,9 @@ export default {
         }
       };
     });
+  },
+  created() {
+    this.options = skills;
   },
 };
 </script>
@@ -89,6 +99,7 @@ export default {
 .dropdown-content {
   background-color: #ffffff;
   border-radius: 3px;
+  max-height: 300px;
   min-width: 150px;
   overflow: auto;
   position: absolute;
