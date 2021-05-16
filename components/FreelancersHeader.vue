@@ -33,4 +33,8 @@ export default {
   font-size: 1.6rem;
   font-weight: 600;
 }
+.actions {
+  display: flex;
+  align-items: center;
+}
 </style>
