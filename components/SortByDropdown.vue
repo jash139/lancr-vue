@@ -2,7 +2,7 @@
   <div class="sort-by-dropdown">
     <p class="sortby">Sort By</p>
     <div class="dropdown">
-      <button @click="toggleMenu" class="sortby-dropdown-btn btn">
+      <button class="sortby-dropdown-btn btn">
         {{ selectedOption }}
         <div class="drop-icon">
           <svg
@@ -19,7 +19,7 @@
           </svg>
         </div>
       </button>
-      <div v-show="showOptions" class="dropdown-content card-shadow">
+      <div class="dropdown-content card-shadow">
         <p class="dropdown-item" @click="setSelectedOption('None')">None</p>
         <p class="dropdown-item" @click="setSelectedOption('Active')">Active</p>
         <p class="dropdown-item" @click="setSelectedOption('Closed')">Closed</p>
@@ -35,25 +35,12 @@ export default {
   data() {
     return {
       selectedOption: "None",
-      showOptions: false,
     };
   },
   methods: {
-    toggleMenu() {
-      this.showOptions = !this.showOptions;
-    },
     setSelectedOption(option) {
       this.selectedOption = option;
     },
-  },
-  mounted() {
-    this.$nextTick(function () {
-      window.onclick = (event) => {
-        if (!event.target.matches(".sortby-dropdown-btn")) {
-          this.showOptions = false;
-        }
-      };
-    });
   },
 };
 </script>
@@ -72,6 +59,9 @@ export default {
 .dropdown {
   position: relative;
   display: inline-block;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 .sortby-dropdown-btn {
   background-color: #ffffff;
@@ -97,6 +87,7 @@ export default {
 .dropdown-content {
   background-color: #ffffff;
   border-radius: 3px;
+  display: none;
   min-width: 150px;
   overflow: auto;
   position: absolute;
