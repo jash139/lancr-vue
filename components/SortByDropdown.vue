@@ -58,7 +58,6 @@ export default {
   font-size: 0.9rem;
   font-weight: 600;
   margin-right: 0.5rem;
-  margin-bottom: 0 !important;
 }
 .sortby-dropdown-btn {
   background-color: #ffffff;
