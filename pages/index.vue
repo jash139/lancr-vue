@@ -104,6 +104,7 @@ export default {
   margin: 1rem 0;
 }
 .btns {
+  margin-top: 2rem;
   position: relative;
 }
 .dots {
