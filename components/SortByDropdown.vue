@@ -113,7 +113,4 @@ export default {
 .dropdown-item:hover {
   background-color: #ececec;
 }
-.show {
-  display: block;
-}
 </style>
