@@ -1,51 +1,86 @@
 <template>
-  <b-dropdown
-    :scrollable="isScrollable"
-    :max-height="maxHeight"
-    v-model="selectedOption"
-  >
-    <template #trigger>
-      <b-button
-        class="location-dropdown-btn btn"
-        :label="selectedOption"
-        icon-right="menu-down"
-      />
-    </template>
+  <div class="location-dropdown">
+    <b-dropdown
+      :scrollable="isScrollable"
+      :max-height="maxHeight"
+      v-model="state"
+    >
+      <template #trigger>
+        <b-button
+          class="location-dropdown-btn btn"
+          :label="state"
+          icon-right="menu-down"
+        />
+      </template>
 
-    <b-dropdown-item @click="setSelectedOption('None')">
-      <p class="dropdown-item">None</p>
-    </b-dropdown-item>
-    <b-dropdown-item @click="setSelectedOption('Active')">
-      <p class="dropdown-item">Active</p>
-    </b-dropdown-item>
-    <b-dropdown-item @click="setSelectedOption('Closed')">
-      <p class="dropdown-item">Closed</p>
-    </b-dropdown-item>
-    <b-dropdown-item @click="setSelectedOption('Recent')">
-      <p class="dropdown-item">Recent</p>
-    </b-dropdown-item>
-  </b-dropdown>
+      <b-dropdown-item
+        v-for="state in states"
+        :key="state"
+        @click="setState(state)"
+      >
+        <p class="dropdown-item">{{ state }}</p>
+      </b-dropdown-item>
+    </b-dropdown>
+    <b-dropdown
+      :scrollable="isScrollable"
+      :max-height="maxHeight"
+      v-model="city"
+    >
+      <template #trigger>
+        <b-button
+          class="location-dropdown-btn btn"
+          :label="city"
+          icon-right="menu-down"
+        />
+      </template>
+
+      <b-dropdown-item
+        v-for="city in cities"
+        :key="city"
+        @click="setCity(city)"
+      >
+        <p class="dropdown-item">{{ city }}</p>
+      </b-dropdown-item>
+    </b-dropdown>
+  </div>
 </template>
 
 <script>
+import stateCity from "../assets/state-city";
+
 export default {
   name: "LocationDropdown",
   data() {
     return {
       isScrollable: true,
       maxHeight: 300,
-      selectedOption: "Country",
+      city: "City",
+      state: "State",
+      states: Object.keys(stateCity),
     };
   },
+  computed: {
+    cities() {
+      return stateCity[this.state];
+    },
+  },
   methods: {
-    setSelectedOption(option) {
-      this.selectedOption = option;
+    setState(state) {
+      this.state = state;
+    },
+    setCity(city) {
+      this.city = city;
     },
   },
 };
 </script>
 
 <style scoped>
+.location-dropdown {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
 .location-dropdown-btn {
   background-color: #ffffff;
   border: 1px solid #cdcdcd;
