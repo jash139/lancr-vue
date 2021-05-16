@@ -19,4 +19,15 @@ export default {
 </script>
 
 <style scoped>
+.freelancers-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+.heading {
+  color: #050303;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
 </style>
