@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown">
-    <button @click="toggleMenu" class="skills-dropdown-btn btn">
-      {{ selectedOptions.length }} selected
+    <button class="skills-dropdown-btn btn">
+      Skills ({{ selectedOptions.length }})
       <div class="drop-icon">
         <svg
           width="10"
@@ -17,7 +17,7 @@
         </svg>
       </div>
     </button>
-    <div v-show="showOptions" class="dropdown-content card-shadow">
+    <div class="dropdown-content card-shadow">
       <p
         :class="
           selectedOptions.includes(option)
@@ -42,14 +42,10 @@ export default {
   data() {
     return {
       options: [],
-      showOptions: false,
       selectedOptions: [],
     };
   },
   methods: {
-    toggleMenu() {
-      this.showOptions = !this.showOptions;
-    },
     setSelectedOption(event, option) {
       event.stopPropagation();
       if (this.selectedOptions.includes(option)) {
@@ -58,15 +54,6 @@ export default {
         this.selectedOptions.push(option);
       }
     },
-  },
-  mounted() {
-    this.$nextTick(function () {
-      window.onclick = (event) => {
-        if (!event.target.matches(".skills-dropdown-btn")) {
-          this.showOptions = false;
-        }
-      };
-    });
   },
   created() {
     this.options = skills;
@@ -78,6 +65,9 @@ export default {
 .dropdown {
   position: relative;
   display: inline-block;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 .skills-dropdown-btn {
   background-color: #ffffff;
@@ -102,6 +92,7 @@ export default {
 .dropdown-content {
   background-color: #ffffff;
   border-radius: 3px;
+  display: none;
   max-height: 300px;
   min-width: 160px;
   overflow: auto;
