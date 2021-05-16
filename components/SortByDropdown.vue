@@ -97,7 +97,6 @@ export default {
 .dropdown-content {
   background-color: #ffffff;
   border-radius: 3px;
-  /* display: none; */
   min-width: 150px;
   overflow: auto;
   position: absolute;
