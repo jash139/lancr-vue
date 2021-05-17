@@ -84,6 +84,21 @@
       <Chip text="Css" />
       <Chip text="Javascript" />
     </div>
+    <div class="card-section">
+      <div class="heading-div">
+        <h4 class="heading">About</h4>
+        <div class="stroke" />
+      </div>
+      <p class="details-info">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit, sed do eiusmod magna aliqua. Ut enim
+        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+        aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod magna aliqua.
+      </p>
+    </div>
   </div>
 </template>
 
@@ -157,5 +172,11 @@ export default {
   border-radius: 1rem;
   border: 9px solid transparent;
   background-clip: content-box;
+}
+.details-info {
+  color: #5d5755;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
 }
 </style>
