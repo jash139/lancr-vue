@@ -10,6 +10,9 @@
       <button class="tablinks" @click="changeTab($event, 'profile-tab-2')">
         Projects
       </button>
+      <button class="tablinks" @click="changeTab($event, 'profile-tab-3')">
+        Connections
+      </button>
     </div>
 
     <div id="profile-tab-1" class="tabcontent activetab">
@@ -19,18 +22,24 @@
     <div id="profile-tab-2" class="tabcontent">
       <ProjectsTabContent />
     </div>
+
+    <div id="profile-tab-3" class="tabcontent">
+      <ConnectionsTabContent />
+    </div>
   </div>
 </template>
 
 <script>
 import ProfileTabContent from "./ProfileTabContent";
 import ProjectsTabContent from "./ProjectsTabContent";
+import ConnectionsTabContent from "./ConnectionsTabContent";
 
 export default {
   name: "ProfileTabs",
   components: {
     ProfileTabContent,
     ProjectsTabContent,
+    ConnectionsTabContent,
   },
   methods: {
     changeTab: (evt, cityName) => {
