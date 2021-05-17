@@ -206,7 +206,7 @@ export default {
   line-height: 1.4;
 }
 .applicants {
-  max-height: 70vh;
+  max-height: 500px;
   overflow-y: auto;
 }
 .applicants::-webkit-scrollbar {
