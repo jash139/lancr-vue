@@ -5,18 +5,10 @@
       <BackButton />
       <div class="chat-card card-shadow">
         <div class="profiles-desktop">
-          <div class="profiles-list">
-            profiles kjf k;sa lkds jlasflkakjdkl fewlk alj esd sl; fl adesktop
-          </div>
-          <div class="divider" />
+          profiles kjf k;sa lkds jlasflkakjdkl fewlk alj esd sl; fl adesktop
         </div>
         <div class="chat-section">chats</div>
-        <div class="profile">
-          <div class="divider" />
-          <div class="profile-details">
-            Profidf lksdlsd jflkeahfn. wemalkfh ulje gle
-          </div>
-        </div>
+        <div class="profile">Profidf lksdlsd jflkeahfn. wemalkfh ulje gle</div>
       </div>
     </div>
   </div>
@@ -44,25 +36,18 @@ export default {
 .chat-card {
   background-color: #ffffff;
   border-radius: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 25% auto 25%;
   margin-top: 1rem;
   min-height: 75vh;
   padding: 2rem;
 }
-.divider {
-  background-color: red;
-  border-radius: 2rem;
-  margin: 0 1rem;
-  min-height: 70vh;
-  width: 2px;
+.profiles-desktop {
+  border-right: 2px solid #f2e9e6;
+  padding: 1rem;
 }
-.profiles-desktop,
 .profile {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 320px;
+  border-left: 2px solid #f2e9e6;
+  padding: 1rem;
 }
 </style>
