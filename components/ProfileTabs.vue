@@ -13,7 +13,7 @@
     </div>
 
     <div id="profile-tab-1" class="tabcontent activetab">
-      <h1>Profile</h1>
+      <ProfileTabContent />
     </div>
 
     <div id="profile-tab-2" class="tabcontent">
@@ -23,11 +23,13 @@
 </template>
 
 <script>
+import ProfileTabContent from "./ProfileTabContent";
 import ProjectsTabContent from "./ProjectsTabContent";
 
 export default {
   name: "ProfileTabs",
   components: {
+    ProfileTabContent,
     ProjectsTabContent,
   },
   methods: {
