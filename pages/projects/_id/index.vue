@@ -116,13 +116,13 @@ export default {
 .content {
   max-width: 95%;
   margin: auto;
+  padding-bottom: 2rem;
 }
 .projects-card {
   background-color: #ffffff;
   border-radius: 3px;
   margin: auto;
   margin-top: 2rem;
-  margin-bottom: 2rem;
   max-width: 900px;
   padding: 2rem;
 }
