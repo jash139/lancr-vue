@@ -149,6 +149,13 @@ export default {
 .card-section {
   margin: 2rem 0;
 }
+.section-content {
+  display: grid;
+  grid-template-columns: 15% auto;
+}
+.grid-item {
+  margin: 0.5rem 0;
+}
 .heading-div {
   display: flex;
   align-items: center;
@@ -171,7 +178,6 @@ export default {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
-  margin: 1rem 0;
 }
 .applicants {
   max-height: 70vh;
