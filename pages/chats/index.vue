@@ -3,13 +3,19 @@
     <AppBar />
     <div class="content">
       <BackButton />
-      chats
+      <ChatSvg />
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import ChatSvg from "../../components/ChatSvg";
+
+export default {
+  components: {
+    ChatSvg,
+  },
+};
 </script>
 
 <style scoped>
