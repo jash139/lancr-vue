@@ -330,8 +330,8 @@ export default {
 
 <style scoped>
 .chat-svg {
-  height: 400px;
-  width: 500px;
+  height: 350px;
+  width: 400px;
 }
 @media only screen and (max-width: 960px) {
   .chat-svg {

@@ -7,7 +7,10 @@
         <div class="profiles-desktop">
           profiles kjf k;sa lkds jlasflkakjdkl fewlk alj esd sl; fl adesktop
         </div>
-        <div class="chat-section">chats</div>
+        <div class="chat-section">
+          <ChatSvg />
+          <h2 class="select-profile">Select a profile</h2>
+        </div>
         <div class="profile">Profidf lksdlsd jflkeahfn. wemalkfh ulje gle</div>
       </div>
     </div>
@@ -45,6 +48,16 @@ export default {
 .profiles-desktop {
   border-right: 2px solid #f2e9e6;
   padding: 1rem;
+}
+.chat-section {
+  margin: auto;
+  text-align: center;
+}
+.select-profile {
+  color: #c21e39;
+  font-size: 1.6rem;
+  font-weight: 700;
+  opacity: 0.3;
 }
 .profile {
   border-left: 2px solid #f2e9e6;
