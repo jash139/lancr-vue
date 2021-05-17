@@ -24,7 +24,7 @@
             </p>
           </b-field>
         </div>
-        <div class="profile">Profidf lksdlsd jflkeahfn. wemalkfh ulje gle</div>
+        <ChatProfile />
       </div>
     </div>
   </div>
@@ -32,6 +32,7 @@
 
 <script>
 import ChatSvg from "../../components/ChatSvg";
+import ChatProfile from "../../components/ChatProfile";
 
 export default {
   data() {
@@ -41,6 +42,7 @@ export default {
   },
   components: {
     ChatSvg,
+    ChatProfile,
   },
 };
 </script>
@@ -91,9 +93,5 @@ export default {
   font-weight: 700;
   opacity: 0.3;
   text-align: center;
-}
-.profile {
-  border-left: 2px solid #f2e9e6;
-  padding: 1rem;
 }
 </style>
