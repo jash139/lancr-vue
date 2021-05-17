@@ -99,6 +99,24 @@
         adipiscing elit, sed do eiusmod magna aliqua.
       </p>
     </div>
+    <div class="card-section">
+      <div class="heading-div">
+        <h4 class="heading">Languages</h4>
+        <div class="stroke" />
+      </div>
+      <div class="language">
+        French
+        <div class="divider" />
+      </div>
+      <div class="language">
+        German
+        <div class="divider" />
+      </div>
+      <div class="language">
+        Bhojpuri
+        <div class="divider" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -178,5 +196,19 @@ export default {
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.4;
+}
+.language {
+  color: #5d5755;
+  font-size: 1rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+.divider {
+  background-color: #f2e9e6;
+  border-radius: 2rem;
+  height: 1.5rem;
+  margin: 0 1.5rem;
+  width: 0.5px;
 }
 </style>
