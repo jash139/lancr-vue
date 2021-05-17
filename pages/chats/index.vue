@@ -4,9 +4,7 @@
     <div class="content">
       <BackButton />
       <div class="chat-card card-shadow">
-        <div class="profiles-desktop">
-          profiles kjf k;sa lkds jlasflkakjdkl fewlk alj esd sl; fl adesktop
-        </div>
+        <ChatProfileList />
         <div class="chat-section">
           <div class="chat-svg">
             <ChatSvg />
@@ -31,6 +29,7 @@
 </template>
 
 <script>
+import ChatProfileList from "../../components/ChatProfileList";
 import ChatSvg from "../../components/ChatSvg";
 import ChatProfile from "../../components/ChatProfile";
 
@@ -41,6 +40,7 @@ export default {
     };
   },
   components: {
+    ChatProfileList,
     ChatSvg,
     ChatProfile,
   },
@@ -64,10 +64,6 @@ export default {
   margin-top: 1rem;
   min-height: 75vh;
   padding: 2rem;
-}
-.profiles-desktop {
-  border-right: 2px solid #f2e9e6;
-  padding: 1rem;
 }
 .chat-section {
   display: flex;
