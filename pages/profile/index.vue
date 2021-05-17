@@ -111,9 +111,9 @@ export default {
   color: #5d5755;
   font-size: 1rem;
   font-weight: 700;
-  margin: 0.5rem 0 1rem;
 }
 .edit-btn {
+  margin-top: 0.5rem;
 }
 .divider {
   background-color: #f2e9e6;
