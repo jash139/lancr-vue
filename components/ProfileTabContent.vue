@@ -6,12 +6,37 @@
         <div class="stroke" />
       </div>
     </div>
+    <div class="card-section">
+      <div class="heading-div">
+        <h4 class="heading">Skills</h4>
+        <div class="stroke" />
+      </div>
+      <Chip text="React" />
+      <Chip text="Redux" />
+      <Chip text="Vue" />
+      <Chip text="Vuex" />
+      <Chip text="Html" />
+      <Chip text="Css" />
+      <Chip text="Javascript" />
+      <Chip text="React" />
+      <Chip text="Redux" />
+      <Chip text="Vue" />
+      <Chip text="Vuex" />
+      <Chip text="Html" />
+      <Chip text="Css" />
+      <Chip text="Javascript" />
+    </div>
   </div>
 </template>
 
 <script>
+import Chip from "./Chip";
+
 export default {
   name: "ProfileTabContent",
+  components: {
+    Chip,
+  },
 };
 </script>
 
@@ -20,6 +45,9 @@ export default {
   margin: auto;
   max-width: 900px;
   padding: 2rem;
+}
+.card-section {
+  margin: 2rem 0;
 }
 .heading-div {
   display: flex;
