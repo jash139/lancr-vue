@@ -1,22 +1,18 @@
 <template>
-  <NuxtLink to="/chats/123userid">
-    <div>
-      <div class="chat-profile-card">
-        <div class="body">
-          <img
-            src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-            alt="Avatar"
-            class="avatar"
-          />
-          <div class="details">
-            <h2 class="name">Doggo Gang</h2>
-            <div class="role">Underworld don</div>
-          </div>
-        </div>
+  <div class="chat-profile-card">
+    <div class="body">
+      <img
+        src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+        alt="Avatar"
+        class="avatar"
+      />
+      <div class="details">
+        <h2 class="name">Doggo Gang</h2>
+        <div class="role">Underworld don</div>
       </div>
-      <div class="divider" />
     </div>
-  </NuxtLink>
+    <div class="divider" />
+  </div>
 </template>
 
 <script>
@@ -27,10 +23,11 @@ export default {
 
 <style scoped>
 .chat-profile-card {
-  margin: 1rem 0;
+  cursor: pointer;
 }
 .body {
   display: flex;
+  padding: 1rem 0;
 }
 .details {
   display: flex;
