@@ -36,6 +36,32 @@
             <h4 class="heading">Details</h4>
             <div class="stroke" />
           </div>
+          <div class="section-content">
+            <div class="grid-item">
+              <p class="detail-heading">Posted on</p>
+            </div>
+            <div class="grid-item">
+              <p class="detail-info">10.01.2021</p>
+            </div>
+            <div class="grid-item">
+              <p class="detail-heading">Start Date</p>
+            </div>
+            <div class="grid-item">
+              <p class="detail-info">10.01.2021</p>
+            </div>
+            <div class="grid-item">
+              <p class="detail-heading">End Date</p>
+            </div>
+            <div class="grid-item">
+              <p class="detail-info">10.01.2021</p>
+            </div>
+            <div class="grid-item">
+              <p class="detail-heading">Amount</p>
+            </div>
+            <div class="grid-item">
+              <p class="detail-info">$300 - 400</p>
+            </div>
+          </div>
         </div>
         <div class="card-section">
           <div class="heading-div">
@@ -154,7 +180,7 @@ export default {
   grid-template-columns: 15% auto;
 }
 .grid-item {
-  margin: 0.5rem 0;
+  margin: 0.3rem 0;
 }
 .heading-div {
   display: flex;
