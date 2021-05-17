@@ -8,12 +8,19 @@
           profiles kjf k;sa lkds jlasflkakjdkl fewlk alj esd sl; fl adesktop
         </div>
         <div class="chat-section">
-          <ChatSvg />
+          <div class="chat-svg">
+            <ChatSvg />
+          </div>
           <h2 class="select-profile">Select a profile</h2>
-          <b-field grouped>
-            <b-input placeholder="Message" expanded v-model="message"></b-input>
+          <b-field grouped class="message-field">
+            <b-input
+              placeholder="Message"
+              expanded
+              v-model="message"
+              disabled
+            ></b-input>
             <p class="control">
-              <b-button icon-right="send" class="send-btn" />
+              <b-button icon-right="send" class="send-btn" disabled />
             </p>
           </b-field>
         </div>
@@ -61,7 +68,16 @@ export default {
   padding: 1rem;
 }
 .chat-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 0 1rem;
+}
+.chat-svg {
+  margin: auto;
+}
+.message-field {
+  margin-top: 2rem;
 }
 .send-btn {
   background-color: #c21e39;
@@ -74,6 +90,7 @@ export default {
   font-size: 1.6rem;
   font-weight: 700;
   opacity: 0.3;
+  text-align: center;
 }
 .profile {
   border-left: 2px solid #f2e9e6;
