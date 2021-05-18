@@ -50,4 +50,12 @@ export default {
   border: 9px solid transparent;
   background-clip: content-box;
 }
+@media only screen and (max-width: 1000px) {
+  .chat-profile-list {
+    border: none;
+  }
+  .profile-list {
+    max-height: unset;
+  }
+}
 </style>

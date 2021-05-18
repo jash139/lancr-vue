@@ -10,7 +10,7 @@
         :right="false"
         v-model="sidebarOpen"
       >
-        sidebar
+        <ChatProfileList />
       </b-sidebar>
       <BackButton />
       <div class="chat-card card-shadow">
