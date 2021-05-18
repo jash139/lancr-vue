@@ -1,13 +1,21 @@
 <template>
   <div class="chats-page">
     <AppBar />
-    <div class="content">
+    <div class="chats-content">
       <BackButton />
       <div class="chat-card card-shadow">
         <div class="profile-list">
           <ChatProfileList />
         </div>
         <div class="chat-section">
+          <div class="chat-header">
+            <img
+              src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              alt="Avatar"
+              class="avatar"
+            />
+            <h2 class="name">Doggo Gang</h2>
+          </div>
           <div class="chat-svg">
             <ChatSvg />
           </div>
@@ -58,7 +66,7 @@ export default {
 .chats-page {
   min-height: 100vh;
 }
-.content {
+.chats-content {
   max-width: 95%;
   margin: auto;
   padding-bottom: 2rem;
@@ -77,6 +85,22 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   padding: 0 1rem;
+}
+.chat-header {
+  border-bottom: 2px solid #f2e9e6;
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.5rem;
+}
+.avatar {
+  border-radius: 20rem;
+  margin-right: 1rem;
+  max-width: 40px;
+}
+.name {
+  color: #c21e39;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 .chat-svg {
   margin: auto;
