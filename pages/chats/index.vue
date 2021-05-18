@@ -141,7 +141,7 @@ export default {
   color: #c21e39;
   font-size: 1.6rem;
   font-weight: 700;
-  opacity: 0.3;
+  opacity: 0.5;
   text-align: center;
 }
 @media only screen and (max-width: 1000px) {
