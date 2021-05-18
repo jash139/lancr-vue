@@ -23,8 +23,6 @@ export default {
 <style scoped>
 .chat-profile {
   border-left: 2px solid #f2e9e6;
-  padding: 1rem;
-  padding-left: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,7 +59,7 @@ export default {
   padding: 0.3rem 1.2rem;
 }
 .view-btn {
-  width: 100%;
+  width: 50%;
 }
 @media only screen and (max-width: 1000px) {
   .chat-profile {
