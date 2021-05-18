@@ -1,5 +1,5 @@
 <template>
-  <h2>profile edit button</h2>
+  <button class="btn primary-btn btn-shadow edit-btn">Edit Details</button>
 </template>
 
 <script>
@@ -9,4 +9,7 @@ export default {
 </script>
 
 <style scoped>
+.edit-btn {
+  margin-top: 0.5rem;
+}
 </style>

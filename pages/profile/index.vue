@@ -15,9 +15,7 @@
             <h2 class="name">Doggo Gang</h2>
             <p class="role">Mafia Leader</p>
             <p class="rating">8.2 / 10</p>
-            <button class="btn primary-btn btn-shadow edit-btn">
-              Edit Details
-            </button>
+            <ProfileEditButton />
           </div>
         </div>
         <div class="divider" />
@@ -57,6 +55,7 @@
 import ChatButton from "../../components/ChatButton";
 import AppBar from "../../components/AppBar";
 import BackButton from "../../components/BackButton";
+import ProfileEditButton from "../../components/ProfileEditButton";
 import ProfileTabs from "../../components/ProfileTabs";
 
 export default {
@@ -64,6 +63,7 @@ export default {
     ChatButton,
     AppBar,
     BackButton,
+    ProfileEditButton,
     ProfileTabs,
   },
 };
