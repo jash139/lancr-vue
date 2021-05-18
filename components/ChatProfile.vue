@@ -62,4 +62,9 @@ export default {
 .view-btn {
   width: 100%;
 }
+@media only screen and (max-width: 1000px) {
+  .chat-profile {
+    display: none;
+  }
+}
 </style>

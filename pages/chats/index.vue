@@ -4,7 +4,9 @@
     <div class="content">
       <BackButton />
       <div class="chat-card card-shadow">
-        <ChatProfileList />
+        <div class="profile-list">
+          <ChatProfileList />
+        </div>
         <div class="chat-section">
           <div class="chat-svg">
             <ChatSvg />
@@ -89,5 +91,13 @@ export default {
   font-weight: 700;
   opacity: 0.3;
   text-align: center;
+}
+@media only screen and (max-width: 1000px) {
+  .profile-list {
+    display: none;
+  }
+  .chat-card {
+    grid-template-columns: auto;
+  }
 }
 </style>
