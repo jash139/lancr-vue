@@ -17,10 +17,14 @@
               placeholder="Message"
               expanded
               v-model="message"
-              disabled
+              :disabled="enabled"
             ></b-input>
             <p class="control">
-              <b-button icon-right="send" class="send-btn" disabled />
+              <b-button
+                icon-right="send"
+                class="send-btn"
+                :disabled="enabled"
+              />
             </p>
           </b-field>
         </div>
@@ -38,6 +42,7 @@ import ChatProfile from "../../components/ChatProfile";
 export default {
   data() {
     return {
+      enabled: true,
       message: "",
     };
   },
