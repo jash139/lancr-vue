@@ -6,7 +6,7 @@
     >
       Edit Details
     </button>
-    <b-modal v-model="isModalActive" :width="640" scroll="keep">
+    <b-modal v-model="isModalActive" :width="640" scroll="keep" full-screen>
       <div class="edit-modal">card content</div>
     </b-modal>
   </div>
