@@ -32,7 +32,15 @@
             <h2 class="name">Doggo Gang</h2>
           </div>
           <div class="chat-svg">
-            <ChatSvg />
+            <div class="sender-message">Heya! How you doing?</div>
+            <div class="receiver-message">
+              I'm good. Lorem ipsum? Yeah, yeah lorem ipsum. Lo lo lo lo lo ip
+              ip ip ip lorem ipsum. Good?
+            </div>
+            <div class="sender-message">
+              Good. lorem ipsum. Lo lo lo lo lo ip ip ip ip lorem ipsum.
+            </div>
+            <!-- <ChatSvg /> -->
           </div>
           <h2 class="select-profile">Select a profile</h2>
           <b-field grouped class="message-field">
@@ -109,6 +117,28 @@ export default {
   display: flex;
   align-items: center;
   padding-bottom: 0.5rem;
+}
+.sender-message {
+  background-color: #c21e39;
+  border-radius: 0.6rem 0.6rem 0 0.6rem;
+  color: #ffffff;
+  float: right;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  max-width: 80%;
+  padding: 1rem;
+}
+.receiver-message {
+  border: 1px solid #939498;
+  border-radius: 0.6rem 0.6rem 0.6rem 0;
+  color: #050303;
+  float: left;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  max-width: 80%;
+  padding: 1rem;
 }
 .sidebar-btn {
   border-radius: 5rem;
