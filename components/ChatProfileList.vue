@@ -31,6 +31,8 @@ export default {
 
 <style scoped>
 .chat-heading {
+  font-size: 1.3rem;
+  font-weight: 700;
   padding-bottom: 1rem;
 }
 .chat-profile-list {

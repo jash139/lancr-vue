@@ -37,12 +37,13 @@ export default {
 }
 .avatar {
   border-radius: 20rem;
+  margin-bottom: 1rem;
   max-width: 140px;
 }
 .name {
   color: #c21e39;
   font-size: 1.5rem;
-  padding-bottom: 0.5rem;
+  font-weight: 600;
 }
 .location {
   color: #5d5755;
