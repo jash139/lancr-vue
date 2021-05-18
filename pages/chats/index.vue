@@ -2,6 +2,16 @@
   <div class="chats-page">
     <AppBar />
     <div class="chats-content">
+      <b-sidebar
+        type="is-light"
+        :fullheight="true"
+        :fullwidth="false"
+        :overlay="false"
+        :right="false"
+        v-model="sidebarOpen"
+      >
+        sidebar
+      </b-sidebar>
       <BackButton />
       <div class="chat-card card-shadow">
         <div class="profile-list">
@@ -9,6 +19,11 @@
         </div>
         <div class="chat-section">
           <div class="chat-header">
+            <b-button
+              @click="sidebarOpen = true"
+              icon-right="menu"
+              class="sidebar-btn"
+            />
             <img
               src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
               alt="Avatar"
@@ -46,10 +61,12 @@
 import ChatProfileList from "../../components/ChatProfileList";
 import ChatSvg from "../../components/ChatSvg";
 import ChatProfile from "../../components/ChatProfile";
+import BackButton from "../../components/BackButton.vue";
 
 export default {
   data() {
     return {
+      sidebarOpen: false,
       enabled: true,
       message: "",
     };
@@ -58,6 +75,7 @@ export default {
     ChatProfileList,
     ChatSvg,
     ChatProfile,
+    BackButton,
   },
 };
 </script>
@@ -91,6 +109,11 @@ export default {
   display: flex;
   align-items: center;
   padding-bottom: 0.5rem;
+}
+.sidebar-btn {
+  border-radius: 5rem;
+  display: none;
+  margin-right: 1rem;
 }
 .avatar {
   border-radius: 20rem;
@@ -128,6 +151,9 @@ export default {
   .chat-card {
     grid-template-columns: auto;
     padding: 1rem 0;
+  }
+  .sidebar-btn {
+    display: block;
   }
 }
 </style>
