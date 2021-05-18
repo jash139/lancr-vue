@@ -3,7 +3,7 @@
     <AppBar />
     <div class="chats-content">
       <b-sidebar
-        type="is-light"
+        class="sidebar-profiles"
         :fullheight="true"
         :fullwidth="false"
         :overlay="false"
