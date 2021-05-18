@@ -37,4 +37,14 @@ export default {
   display: flex;
   align-items: center;
 }
+@media only screen and (max-width: 1100px) {
+  .projects-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
 </style>

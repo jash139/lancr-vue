@@ -82,4 +82,9 @@ export default {
   font-size: 0.9rem;
   font-weight: 500;
 }
+@media only screen and (max-width: 1100px) {
+  .sort-by-dropdown {
+    margin: 2rem 0 1rem;
+  }
+}
 </style>

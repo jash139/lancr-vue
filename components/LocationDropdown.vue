@@ -104,4 +104,18 @@ export default {
   font-size: 0.9rem;
   font-weight: 600;
 }
+@media only screen and (max-width: 1100px) {
+  .location-dropdown {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+  }
+  .location-dropdown-btn {
+    margin: 0;
+    margin-top: 0.5rem;
+  }
+  .dropdown + .dropdown {
+    margin-left: 0;
+  }
+}
 </style>

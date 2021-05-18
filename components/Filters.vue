@@ -31,4 +31,14 @@ export default {
   font-weight: 600;
   margin-right: 0.5rem;
 }
+@media only screen and (max-width: 1100px) {
+  .filters {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0.5rem 0;
+  }
+  .filter {
+    padding-bottom: 0.5rem;
+  }
+}
 </style>
