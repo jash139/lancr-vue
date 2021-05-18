@@ -33,14 +33,12 @@ export default {
 .chat-heading {
   font-size: 1.3rem;
   font-weight: 700;
-  padding-bottom: 1rem;
 }
 .chat-profile-list {
   border-right: 2px solid #f2e9e6;
-  padding: 1rem;
 }
 .profile-list {
-  max-height: 420px;
+  max-height: 470px;
   overflow-y: auto;
 }
 .profile-list::-webkit-scrollbar {
