@@ -336,7 +336,7 @@ export default {
 @media only screen and (max-width: 960px) {
   .chat-svg {
     height: 250px;
-    width: 300px;
+    width: 280px;
   }
 }
 </style>
