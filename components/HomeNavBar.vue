@@ -1,7 +1,14 @@
 <template>
   <header class="header">
     <nav class="nav">
-      <Logo />
+      <div class="logo">
+        <b-button
+          @click="sidebarOpen = true"
+          icon-right="menu"
+          class="sidebar-btn"
+        />
+        <Logo />
+      </div>
       <ul class="ul">
         <li class="homelink">
           <p datapage="home" class="links" @click="scrollToTop">Home</p>
@@ -33,10 +40,10 @@
       </ul>
       <div class="right-section">
         <NuxtLink to="/signin">
-          <button class="btn outlined-btn sign-btn">Signin</button>
+          <button class="btn outlined-btn">Signin</button>
         </NuxtLink>
         <NuxtLink to="/signup">
-          <button class="btn secondary-btn sign-btn">Signup</button>
+          <button class="btn secondary-btn signup-btn">Signup</button>
         </NuxtLink>
       </div>
     </nav>
@@ -68,8 +75,20 @@ export default {
   top: 0;
   z-index: 5;
 }
-.sign-btn {
-  margin-left: 1.5rem;
+.logo {
+  display: flex;
+  align-items: center;
+}
+.sidebar-btn {
+  background-color: transparent;
+  border: 1px solid #5d5755;
+  color: #5d5755;
+  border-radius: 5rem;
+  display: none;
+  margin-right: 1rem;
+}
+.signup-btn {
+  margin-left: 1rem;
 }
 .nav {
   display: flex;
@@ -106,6 +125,12 @@ export default {
 
 @media only screen and (max-width: 960px) {
   .ul {
+    display: none;
+  }
+  .sidebar-btn {
+    display: block;
+  }
+  .signup-btn {
     display: none;
   }
 }
