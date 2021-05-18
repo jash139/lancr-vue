@@ -2,6 +2,14 @@
   <header class="header">
     <nav class="nav">
       <div class="logo">
+        <b-sidebar
+          :fullheight="true"
+          :fullwidth="false"
+          :overlay="false"
+          :right="false"
+          v-model="sidebarOpen"
+          >sidebar
+        </b-sidebar>
         <b-button
           @click="sidebarOpen = true"
           icon-right="menu"
@@ -56,6 +64,11 @@ import { scrollToTop, scrollToSection } from "../static/methods";
 
 export default {
   name: "HomeNavBar",
+  data() {
+    return {
+      sidebarOpen: false,
+    };
+  },
   components: {
     Logo,
   },
