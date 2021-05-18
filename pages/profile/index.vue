@@ -1,5 +1,6 @@
 <template>
   <div class="profile">
+    <ChatButton />
     <AppBar />
     <div class="content">
       <BackButton />
@@ -53,12 +54,14 @@
 </template>
 
 <script>
+import ChatButton from "../../components/ChatButton";
 import AppBar from "../../components/AppBar";
 import BackButton from "../../components/BackButton";
 import ProfileTabs from "../../components/ProfileTabs";
 
 export default {
   components: {
+    ChatButton,
     AppBar,
     BackButton,
     ProfileTabs,

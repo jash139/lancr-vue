@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <ChatButton />
     <HomeNavBar />
     <div class="hero-section">
       <div class="content">
@@ -44,6 +45,7 @@
 </template>
 
 <script>
+import ChatButton from "../components/ChatButton";
 import WorkSvg from "../components/WorkSvg";
 import ContactsFooter from "../components/ContactsFooter";
 import HomeNavBar from "../components/HomeNavBar";
@@ -54,6 +56,7 @@ import ContactSection from "../components/ContactSection";
 
 export default {
   components: {
+    ChatButton,
     WorkSvg,
     ContactsFooter,
     HomeNavBar,
