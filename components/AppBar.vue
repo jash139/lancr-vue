@@ -1,25 +1,43 @@
 <template>
   <header class="header">
     <nav class="nav">
-      <Logo />
+      <div class="logo">
+        <b-sidebar
+          :fullheight="true"
+          :fullwidth="false"
+          :overlay="false"
+          :right="false"
+          v-model="sidebarOpen"
+        >
+          <SidebarNavContent />
+        </b-sidebar>
+        <b-button
+          @click="sidebarOpen = true"
+          icon-right="menu"
+          class="sidebar-btn"
+        />
+        <Logo />
+      </div>
       <div class="right-section">
-        <NuxtLink to="/signin">
-          <button class="btn outlined-btn sign-btn">Signin</button>
-        </NuxtLink>
-        <NuxtLink to="/signup">
-          <button class="btn secondary-btn sign-btn">Signup</button>
-        </NuxtLink>
+        <button class="btn outlined-btn logout-btn">Logout</button>
       </div>
     </nav>
   </header>
 </template>
 
 <script>
+import SidebarNavContent from "./SidebarNavContent";
 import Logo from "./Logo";
 
 export default {
   name: "AppBar",
+  data() {
+    return {
+      sidebarOpen: false,
+    };
+  },
   components: {
+    SidebarNavContent,
     Logo,
   },
 };
@@ -34,8 +52,17 @@ export default {
   top: 0;
   z-index: 5;
 }
-.sign-btn {
-  margin-left: 1.5rem;
+.logo {
+  display: flex;
+  align-items: center;
+}
+.sidebar-btn {
+  background-color: transparent;
+  border: 1px solid #5d5755;
+  color: #5d5755;
+  border-radius: 5rem;
+  display: none;
+  margin-right: 1rem;
 }
 .nav {
   display: flex;
@@ -50,5 +77,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+@media only screen and (max-width: 960px) {
+  .sidebar-btn {
+    display: block;
+  }
 }
 </style>
