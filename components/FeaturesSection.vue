@@ -71,6 +71,9 @@ export default {
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   color: #5d5755;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   font-size: 1rem;
   font-weight: 700;
   height: 220px;
@@ -83,9 +86,6 @@ export default {
   background-color: #c21e39;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   color: #ffffff;
-}
-.number-indicator {
-  height: 125px;
 }
 @media only screen and (max-width: 960px) {
   .features {
