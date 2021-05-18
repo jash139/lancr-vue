@@ -40,13 +40,13 @@
               placeholder="Message"
               expanded
               v-model="message"
-              :disabled="enabled"
+              :disabled="disabled"
             ></b-input>
             <p class="control">
               <b-button
                 icon-right="send"
                 class="send-btn"
-                :disabled="enabled"
+                :disabled="disabled"
               />
             </p>
           </b-field>
@@ -67,7 +67,7 @@ export default {
   data() {
     return {
       sidebarOpen: false,
-      enabled: true,
+      disabled: true,
       message: "",
     };
   },
