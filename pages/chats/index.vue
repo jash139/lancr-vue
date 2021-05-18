@@ -31,18 +31,20 @@
             />
             <h2 class="name">Doggo Gang</h2>
           </div>
-          <div class="chat-svg">
+          <div class="chat-area">
             <div class="sender-message">Heya! How you doing?</div>
             <div class="receiver-message">
               I'm good. Lorem ipsum? Yeah, yeah lorem ipsum. Lo lo lo lo lo ip
               ip ip ip lorem ipsum. Good?
             </div>
+            <div class="receiver-message">I'm good.</div>
             <div class="sender-message">
               Good. lorem ipsum. Lo lo lo lo lo ip ip ip ip lorem ipsum.
             </div>
+            <div class="sender-message">Good.</div>
             <!-- <ChatSvg /> -->
           </div>
-          <h2 class="select-profile">Select a profile</h2>
+          <!-- <h2 class="select-profile">Select a profile</h2> -->
           <b-field grouped class="message-field">
             <b-input
               placeholder="Message"
@@ -122,7 +124,7 @@ export default {
   background-color: #c21e39;
   border-radius: 0.6rem 0.6rem 0 0.6rem;
   color: #ffffff;
-  float: right;
+  margin-left: auto;
   font-size: 0.9rem;
   font-weight: 500;
   margin-top: 1rem;
@@ -133,7 +135,6 @@ export default {
   border: 1px solid #939498;
   border-radius: 0.6rem 0.6rem 0.6rem 0;
   color: #050303;
-  float: left;
   font-size: 0.9rem;
   font-weight: 500;
   margin-top: 1rem;
@@ -155,8 +156,21 @@ export default {
   font-size: 1.1rem;
   font-weight: 700;
 }
-.chat-svg {
+.chat-area {
   margin: auto;
+}
+.chat-area {
+  max-height: 470px;
+  overflow-y: auto;
+}
+.chat-area::-webkit-scrollbar {
+  width: 1.5rem;
+}
+.chat-area::-webkit-scrollbar-thumb {
+  background-color: #e5ecee;
+  border-radius: 1rem;
+  border: 9px solid transparent;
+  background-clip: content-box;
 }
 .message-field {
   margin-top: 2rem;
