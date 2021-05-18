@@ -173,7 +173,7 @@ export default {
   background-clip: content-box;
 }
 .message-field {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 }
 .send-btn {
   background-color: #c21e39;
