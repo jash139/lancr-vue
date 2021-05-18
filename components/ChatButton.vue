@@ -1,7 +1,9 @@
 <template>
-  <b-button type="is-light" size="is-medium" class="chat-button">
-    <b-icon icon="chat"> </b-icon>
-  </b-button>
+  <NuxtLink to="/chats">
+    <b-button type="is-light" size="is-medium" class="chat-button">
+      <b-icon icon="chat"> </b-icon>
+    </b-button>
+  </NuxtLink>
 </template>
 
 <script>
