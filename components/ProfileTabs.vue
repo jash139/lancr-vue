@@ -97,4 +97,9 @@ export default {
 .activetab {
   display: block;
 }
+@media only screen and (max-width: 600px) {
+  .tab button {
+    padding: 0.6rem 1rem;
+  }
+}
 </style>
