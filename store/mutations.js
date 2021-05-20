@@ -5,4 +5,7 @@ export default {
     setCurrentUser(state, user) {
         state.currentUser = user;
     },
+    setAllProjects(state, projects) {
+        state.allProjects = projects;
+    }
 };
