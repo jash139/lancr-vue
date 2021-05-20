@@ -51,32 +51,32 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/firebase',
+    // '@nuxtjs/firebase',
     ['nuxt-buefy', { css: true }],
   ],
 
-  firebase: {
-    config: {
-      apiKey: process.env.API_KEY,
-      authDomain: process.env.AUTH_DOMAIN,
-      projectId: process.env.PROJECT_ID,
-      storageBucket: process.env.STORAGE_BUCKET,
-      messagingSenderId: process.env.MESSAGING_SENDER_ID,
-      appId: process.env.APP_ID,
-      measurementId: process.env.MEASUREMENT_ID
-    },
-    services: {
-      auth: {
-        persistence: 'local',
-        initialize: {
-          onAuthStateChangedAction: 'authAction',
-          subscribeManually: false
-        },
-        ssr: false,
-      },
-      messaging: true
-    },
-  },
+  // firebase: {
+  //   config: {
+  //     apiKey: process.env.API_KEY,
+  //     authDomain: process.env.AUTH_DOMAIN,
+  //     projectId: process.env.PROJECT_ID,
+  //     storageBucket: process.env.STORAGE_BUCKET,
+  //     messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  //     appId: process.env.APP_ID,
+  //     measurementId: process.env.MEASUREMENT_ID
+  //   },
+  //   services: {
+  //     auth: {
+  //       persistence: 'local',
+  //       initialize: {
+  //         onAuthStateChangedAction: 'authAction',
+  //         subscribeManually: false
+  //       },
+  //       ssr: false,
+  //     },
+  //     messaging: true
+  //   },
+  // },
 
   env: {
     baseURL: process.env.BASE_URL || 'http://localhost:5000'
@@ -85,7 +85,6 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: process.env.BASE_URL || 'http://localhost:5000',
-    credentials: false,
     headers: {
       common: {
       }
