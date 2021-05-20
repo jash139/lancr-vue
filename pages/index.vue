@@ -65,6 +65,17 @@ export default {
     ContactSection,
     FeaturesSection,
   },
+  // created() {
+  //   const store = this.$store;
+  //   store
+  //     .dispatch("fetchUser", "testuid1234")
+  //     .then((res) => {
+  //       console.log(res);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // },
 };
 </script>
 
