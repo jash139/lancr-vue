@@ -7,5 +7,8 @@ export default {
     },
     setAllProjects(state, projects) {
         state.allProjects = projects;
+    },
+    setAllFreelancers(state, freelancers) {
+        state.allFreelancers = freelancers;
     }
 };
