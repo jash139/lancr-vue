@@ -5,15 +5,11 @@
       <BackButton />
       <div class="about-user card-shadow">
         <div class="details-div1">
-          <img
-            src="https://images.unsplash.com/photo-1562347851-32d44aa232ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-            alt=""
-            class="avatar"
-          />
+          <img :src="getUser.profilePicture" alt="" class="avatar" />
           <div class="details">
-            <h2 class="name">Doggo Gang</h2>
-            <p class="role">Mafia Leader</p>
-            <p class="rating">8.2 / 10</p>
+            <h2 class="name">{{ getUser.name }}</h2>
+            <p class="title">{{ getUser.title }}</p>
+            <p class="rating">{{ getUser.rating }} / 10</p>
             <button class="btn primary-btn btn-shadow connect-btn">
               Connect
             </button>
@@ -25,25 +21,29 @@
             <p class="detail-heading">Location</p>
           </div>
           <div class="grid-item">
-            <p class="detail-info">Banashankari, Karnataka, India</p>
+            <p class="detail-info">
+              {{ getUser.contact.location.city }},
+              {{ getUser.contact.location.state }},
+              {{ getUser.contact.location.country }}
+            </p>
           </div>
           <div class="grid-item">
             <p class="detail-heading">Phone</p>
           </div>
           <div class="grid-item">
-            <p class="detail-info">094 561 2378</p>
+            <p class="detail-info">{{ getUser.contact.phone }}</p>
           </div>
           <div class="grid-item">
             <p class="detail-heading">Email</p>
           </div>
           <div class="grid-item">
-            <p class="detail-info">freelancer@gmail.com</p>
+            <p class="detail-info">{{ getUser.contact.email }}</p>
           </div>
           <div class="grid-item">
-            <p class="detail-heading">Gender</p>
+            <p class="detail-heading">Date Of Birth</p>
           </div>
           <div class="grid-item">
-            <p class="detail-info">Male</p>
+            <p class="detail-info">{{ getUser.dateOfBirth }}</p>
           </div>
         </div>
       </div>
@@ -56,12 +56,22 @@
 import AppBar from "../../../components/AppBar";
 import BackButton from "../../../components/BackButton";
 import ProfileTabs from "../../../components/ProfileTabs";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   components: {
     AppBar,
     BackButton,
     ProfileTabs,
+  },
+  computed: {
+    ...mapGetters(["getUser"]),
+  },
+  methods: {
+    ...mapActions(["fetchUser"]),
+  },
+  created() {
+    this.fetchUser(this.$route.params.id);
   },
 };
 </script>
@@ -100,7 +110,7 @@ export default {
   color: #c21e39;
   font-size: 1.6rem;
 }
-.role {
+.title {
   color: #5d5755;
   font-size: 1rem;
   font-style: italic;
