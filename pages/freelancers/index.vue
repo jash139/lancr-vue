@@ -4,13 +4,11 @@
     <div class="content">
       <FreelancersHeader />
       <div class="freelancers">
-        <FreelancerCard />
-        <FreelancerCard />
-        <FreelancerCard />
-        <FreelancerCard />
-        <FreelancerCard />
-        <FreelancerCard />
-        <FreelancerCard />
+        <FreelancerCard
+          v-for="freelancer in allFreelancers"
+          :key="freelancer._id"
+          :freelancer="freelancer"
+        />
       </div>
     </div>
   </div>
@@ -22,10 +20,29 @@ import FreelancersHeader from "../../components/FreelancersHeader";
 import FreelancerCard from "../../components/FreelancerCard";
 
 export default {
+  computed: {
+    allFreelancers() {
+      return this.$store.state.allFreelancers;
+    },
+  },
   components: {
     AppBar,
     FreelancersHeader,
     FreelancerCard,
+  },
+  methods: {
+    fetchAllFreelancers() {
+      const store = this.$store;
+      store
+        .dispatch("fetchAllFreelancers")
+        .then((res) => {})
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+  created() {
+    this.fetchAllFreelancers();
   },
 };
 </script>
