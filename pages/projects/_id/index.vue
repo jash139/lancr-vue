@@ -5,10 +5,12 @@
       <BackButton />
       <div class="projects-card card-shadow">
         <div class="header">
-          <h2 class="title">Project Title</h2>
+          <h2 class="title">{{ getProject.title }}</h2>
           <div class="actions">
             <button class="apply-btn btn primary-btn btn-shadow">Apply</button>
-            <button class="client-btn btn outlined-btn">Doggo Gang</button>
+            <NuxtLink :to="'/freelancers/' + getProject.uid">
+              <button class="client-btn btn outlined-btn">Doggo Gang</button>
+            </NuxtLink>
           </div>
         </div>
         <div class="card-section">
@@ -41,25 +43,32 @@
               <p class="detail-heading">Posted on</p>
             </div>
             <div class="grid-item">
-              <p class="detail-info">10.01.2021</p>
+              <p class="detail-info">{{ getProject.createdAt }}</p>
             </div>
             <div class="grid-item">
               <p class="detail-heading">Start Date</p>
             </div>
             <div class="grid-item">
-              <p class="detail-info">10.01.2021</p>
+              <p class="detail-info">{{ getProject.timePeriod.start }}</p>
             </div>
             <div class="grid-item">
               <p class="detail-heading">End Date</p>
             </div>
             <div class="grid-item">
-              <p class="detail-info">10.01.2021</p>
+              <p class="detail-info">{{ getProject.timePeriod.end }}</p>
             </div>
             <div class="grid-item">
               <p class="detail-heading">Amount</p>
             </div>
             <div class="grid-item">
-              <p class="detail-info">$300 - 400</p>
+              <p class="detail-info">
+                {{
+                  getProject.offeredAmount.currencyType +
+                  getProject.offeredAmount.start +
+                  " - " +
+                  getProject.offeredAmount.end
+                }}
+              </p>
             </div>
           </div>
         </div>
@@ -68,31 +77,18 @@
             <h4 class="heading">Description</h4>
             <div class="stroke" />
           </div>
-          <p class="detail-info">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod magna aliqua.
-          </p>
+          <p class="detail-info">{{ getProject.description }}</p>
         </div>
         <div class="card-section">
           <div class="heading-div">
             <h4 class="heading">Requirements</h4>
             <div class="stroke" />
           </div>
-          <Chip text="React" />
-          <Chip text="Vue" />
-          <Chip text="Redux" />
-          <Chip text="Vuex" />
-          <Chip text="Nuxtjs" />
-          <Chip text="Nextjs" />
-          <Chip text="scss" />
-          <Chip text="Git" />
-          <Chip text="+4" />
+          <Chip
+            v-for="requirement in getProject.requirements"
+            :key="requirement"
+            :text="requirement"
+          />
         </div>
         <div class="card-section">
           <div class="heading-div">
@@ -100,21 +96,11 @@
             <div class="stroke" />
           </div>
           <div class="applicants">
-            <ApplicantCard />
-            <ApplicantCard />
-            <ApplicantCard />
-            <ApplicantCard />
-            <ApplicantCard />
-            <ApplicantCard />
-            <ApplicantCard />
-            <ApplicantCard />
-            <ApplicantCard />
-            <ApplicantCard />
-            <ApplicantCard />
-            <ApplicantCard />
-            <ApplicantCard />
-            <ApplicantCard />
-            <ApplicantCard />
+            <ApplicantCard
+              v-for="applicant in getProject.applicants"
+              :key="applicant"
+              :applicant="applicant"
+            />
           </div>
         </div>
       </div>
@@ -127,6 +113,7 @@ import AppBar from "../../../components/AppBar";
 import BackButton from "../../../components/BackButton";
 import Chip from "../../../components/Chip";
 import ApplicantCard from "../../../components/ApplicantCard";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   components: {
@@ -134,6 +121,15 @@ export default {
     BackButton,
     Chip,
     ApplicantCard,
+  },
+  computed: {
+    ...mapGetters(["getProject"]),
+  },
+  methods: {
+    ...mapActions(["fetchProject"]),
+  },
+  created() {
+    this.fetchProject(this.$route.params.id);
   },
 };
 </script>
