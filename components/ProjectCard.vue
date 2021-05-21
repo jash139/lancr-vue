@@ -1,29 +1,51 @@
 <template>
   <div class="project-card card-shadow">
     <div class="project-card-header">
-      <img
-        src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-        alt="Avatar"
-        class="avatar"
-      />
+      <img :src="ownerDetails.profilePicture" alt="Avatar" class="avatar" />
       <p class="sub-heading">A few hours ago</p>
     </div>
     <div class="divider" />
     <div class="card-body">
-      <p class="sub-heading">By Doggo Gang</p>
-      <h2 class="title">Project Title</h2>
-      <p class="description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor.
-      </p>
+      <p class="sub-heading">{{ "By " + ownerDetails.name }}</p>
+      <h2 class="title">{{ project.title }}</h2>
+      <p class="description">{{ project.description }}</p>
+      <!-- Add function to truncate description -->
     </div>
-    <button class="view-btn btn primary-btn btn-shadow">View Project</button>
+    <NuxtLink :to="'/projects/' + project._id">
+      <button class="view-btn btn primary-btn btn-shadow">View Project</button>
+    </NuxtLink>
   </div>
 </template>
 
 <script>
 export default {
   name: "ProjectCard",
+  props: {
+    project: {
+      type: Object,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      ownerDetails: {},
+    };
+  },
+  methods: {
+    fetchOwnerDetails() {
+      this.$axios
+        .get("/users/" + this.project.uid)
+        .then((res) => {
+          this.ownerDetails = res.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+  created() {
+    this.fetchOwnerDetails();
+  },
 };
 </script>
 
