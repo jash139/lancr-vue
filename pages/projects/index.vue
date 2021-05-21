@@ -4,13 +4,11 @@
     <div class="content">
       <ProjectsHeader />
       <div class="projects">
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
+        <ProjectCard
+          v-for="project in allProjects"
+          :key="project._id"
+          :project="project"
+        />
       </div>
     </div>
   </div>
@@ -22,10 +20,26 @@ import ProjectsHeader from "../../components/ProjectsHeader";
 import ProjectCard from "../../components/ProjectCard";
 
 export default {
+  data() {
+    return {
+      allProjects: [],
+    };
+  },
   components: {
     AppBar,
     ProjectsHeader,
     ProjectCard,
+  },
+  created() {
+    const store = this.$store;
+    store
+      .dispatch("fetchAllProjects")
+      .then((res) => {
+        this.allProjects = res;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>
