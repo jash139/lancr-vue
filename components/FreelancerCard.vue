@@ -34,7 +34,7 @@
       <Chip v-for="skill in freelancer.skills" :key="skill" :text="skill" />
       <!-- Add function to show only 2 and rest as +4 -->
     </div>
-    <NuxtLink :to="'/freelancers/' + freelancer._id">
+    <NuxtLink :to="'/freelancers/' + freelancer.uid">
       <button class="view-btn btn primary-btn btn-shadow">View Profile</button>
     </NuxtLink>
   </div>
