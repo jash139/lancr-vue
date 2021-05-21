@@ -5,7 +5,7 @@
       <ProjectsHeader />
       <div class="projects">
         <ProjectCard
-          v-for="project in allProjects"
+          v-for="project in getAllProjects"
           :key="project._id"
           :project="project"
         />
@@ -18,12 +18,11 @@
 import AppBar from "../../components/AppBar";
 import ProjectsHeader from "../../components/ProjectsHeader";
 import ProjectCard from "../../components/ProjectCard";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   computed: {
-    allProjects() {
-      return this.$store.state.allProjects;
-    },
+    ...mapGetters(["getAllProjects"]),
   },
   components: {
     AppBar,
@@ -31,15 +30,7 @@ export default {
     ProjectCard,
   },
   methods: {
-    fetchAllProjects() {
-      const store = this.$store;
-      store
-        .dispatch("fetchAllProjects")
-        .then((res) => {})
-        .catch((error) => {
-          console.log(error);
-        });
-    },
+    ...mapActions(["fetchAllProjects"]),
   },
   created() {
     this.fetchAllProjects();
