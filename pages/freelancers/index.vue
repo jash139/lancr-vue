@@ -5,7 +5,7 @@
       <FreelancersHeader />
       <div class="freelancers">
         <FreelancerCard
-          v-for="freelancer in allFreelancers"
+          v-for="freelancer in getAllFreelancers"
           :key="freelancer._id"
           :freelancer="freelancer"
         />
@@ -18,12 +18,11 @@
 import AppBar from "../../components/AppBar";
 import FreelancersHeader from "../../components/FreelancersHeader";
 import FreelancerCard from "../../components/FreelancerCard";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   computed: {
-    allFreelancers() {
-      return this.$store.state.allFreelancers;
-    },
+    ...mapGetters(["getAllFreelancers"]),
   },
   components: {
     AppBar,
@@ -31,15 +30,7 @@ export default {
     FreelancerCard,
   },
   methods: {
-    fetchAllFreelancers() {
-      const store = this.$store;
-      store
-        .dispatch("fetchAllFreelancers")
-        .then((res) => {})
-        .catch((error) => {
-          console.log(error);
-        });
-    },
+    ...mapActions(["fetchAllFreelancers"]),
   },
   created() {
     this.fetchAllFreelancers();
