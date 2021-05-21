@@ -20,26 +20,29 @@ import ProjectsHeader from "../../components/ProjectsHeader";
 import ProjectCard from "../../components/ProjectCard";
 
 export default {
-  data() {
-    return {
-      allProjects: [],
-    };
+  computed: {
+    allProjects() {
+      return this.$store.state.allProjects;
+    },
   },
   components: {
     AppBar,
     ProjectsHeader,
     ProjectCard,
   },
+  methods: {
+    fetchAllProjects() {
+      const store = this.$store;
+      store
+        .dispatch("fetchAllProjects")
+        .then((res) => {})
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
   created() {
-    const store = this.$store;
-    store
-      .dispatch("fetchAllProjects")
-      .then((res) => {
-        this.allProjects = res;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.fetchAllProjects();
   },
 };
 </script>
