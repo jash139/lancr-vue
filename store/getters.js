@@ -2,6 +2,9 @@ export default {
     getCurrentUser: state => {
         return state.currentUser;
     },
+    getUser: state => {
+        return state.user;
+    },
     getProject: state => {
         return state.project;
     },

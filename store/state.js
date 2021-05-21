@@ -55,6 +55,7 @@ const projectStructure = {
 export default function () {
     return {
         currentUser: userStructure,
+        user: userStructure,
         project: projectStructure,
         allProjects: [],
         allFreelancers: []

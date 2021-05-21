@@ -11,6 +11,18 @@ export default {
                 })
         });
     },
+    fetchUser({ commit }, uid) {
+        return new Promise((resolve, reject) => {
+            this.$axios.get("/users/" + uid)
+                .then(res => {
+                    commit("setUser", res.data)
+                    resolve(res.data)
+                })
+                .catch(error => {
+                    reject(error)
+                })
+        });
+    },
     fetchProject({ commit }, id) {
         return new Promise((resolve, reject) => {
             this.$axios.get("/projects/" + id)
