@@ -1,15 +1,17 @@
 <template>
   <div class="freelancer-card card-shadow">
     <div class="freelancer-card-header">
-      <img
-        src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-        alt="Avatar"
-        class="avatar"
-      />
+      <img :src="freelancer.profilePicture" alt="Avatar" class="avatar" />
       <div class="main-details">
-        <h2 class="name">Doggo Gang</h2>
-        <p class="location">New York, NY</p>
-        <div class="role">Underworld don</div>
+        <h2 class="name">{{ freelancer.name }}</h2>
+        <p class="location">
+          {{
+            freelancer.contact.location.city +
+            ", " +
+            freelancer.contact.location.state
+          }}
+        </p>
+        <div class="title">{{ freelancer.title }}</div>
       </div>
     </div>
     <div class="card-body">
@@ -18,10 +20,10 @@
         <div class="stroke" />
       </div>
       <div class="contacts">
-        <p>O</p>
-        <p class="contact-info">012 345 6789</p>
-        <p>O</p>
-        <p class="contact-info">freelancer@gmail.com</p>
+        <b-icon icon="phone" size="is-small" class="contact-info"></b-icon>
+        <p class="contact-info">{{ freelancer.contact.phone }}</p>
+        <b-icon icon="email" size="is-small" class="contact-info"></b-icon>
+        <p class="contact-info">{{ freelancer.contact.email }}</p>
       </div>
     </div>
     <div class="card-body">
@@ -29,11 +31,12 @@
         <h4 class="heading">Skills</h4>
         <div class="stroke" />
       </div>
-      <Chip text="React" />
-      <Chip text="Vue" />
-      <Chip text="+4" />
+      <Chip v-for="skill in freelancer.skills" :key="skill" :text="skill" />
+      <!-- Add function to show only 2 and rest as +4 -->
     </div>
-    <button class="view-btn btn primary-btn btn-shadow">View Profile</button>
+    <NuxtLink :to="'/freelancers/' + freelancer._id">
+      <button class="view-btn btn primary-btn btn-shadow">View Profile</button>
+    </NuxtLink>
   </div>
 </template>
 
@@ -42,6 +45,12 @@ import Chip from "./Chip";
 
 export default {
   name: "FreelancerCard",
+  props: {
+    freelancer: {
+      type: Object,
+      required: true,
+    },
+  },
   components: {
     Chip,
   },
@@ -73,7 +82,7 @@ export default {
   font-size: 1rem;
   font-weight: 700;
 }
-.role {
+.title {
   background-color: #c21e39;
   border-radius: 5rem;
   color: #ffffff;
