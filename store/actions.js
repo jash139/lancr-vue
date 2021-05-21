@@ -1,5 +1,5 @@
 export default {
-    fetchUser({ commit }, uid) {
+    fetchCurrentUser({ commit }, uid) {
         return new Promise((resolve, reject) => {
             this.$axios.get("/users/" + uid)
                 .then(res => {
