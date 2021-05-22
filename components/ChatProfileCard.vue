@@ -1,7 +1,15 @@
 <template>
   <div class="chat-profile-card">
     <div class="body">
-      <div class="indicator" />
+      <div
+        :class="
+          getActiveChatUser.selected
+            ? getActiveChatUser.user.uid === uid
+              ? 'indicator indicator-active'
+              : 'indicator'
+            : 'indicator'
+        "
+      />
       <img
         src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
         alt="Avatar"
@@ -14,8 +22,21 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   name: "ChatProfileCard",
+  props: {
+    uid: {
+      type: String,
+    },
+  },
+  computed: {
+    ...mapGetters(["getActiveChatUser"]),
+  },
+  methods: {
+    ...mapActions(["fetchActiveChatUser"]),
+  },
 };
 </script>
 
@@ -30,6 +51,9 @@ export default {
   width: 2px;
 }
 .chat-profile-card:hover .indicator {
+  background-color: #c21e39a4;
+}
+.indicator-active {
   background-color: #c21e39;
 }
 .body {

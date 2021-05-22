@@ -18,7 +18,7 @@
           <ChatProfileList />
         </div>
         <div class="chat-section">
-          <div class="chat-header">
+          <div v-if="getActiveChatUser.selected" class="chat-header">
             <b-button
               @click="sidebarOpen = true"
               icon-right="menu"
@@ -31,7 +31,7 @@
             />
             <h2 class="name">Doggo Gang</h2>
           </div>
-          <div class="chat-area">
+          <div v-if="getActiveChatUser.selected" class="chat-area">
             <div class="sender-message">Heya! How you doing?</div>
             <div class="receiver-message">
               I'm good. Lorem ipsum? Yeah, yeah lorem ipsum. Lo lo lo lo lo ip
@@ -42,21 +42,23 @@
               Good. lorem ipsum. Lo lo lo lo lo ip ip ip ip lorem ipsum.
             </div>
             <div class="sender-message">Good.</div>
-            <!-- <ChatSvg /> -->
           </div>
-          <!-- <h2 class="select-profile">Select a profile</h2> -->
+          <div v-else class="chat-area">
+            <ChatSvg />
+            <h2 class="select-profile">Select a profile</h2>
+          </div>
           <b-field grouped class="message-field">
             <b-input
               placeholder="Message"
               expanded
               v-model="message"
-              :disabled="disabled"
+              :disabled="!getActiveChatUser.selected"
             ></b-input>
             <p class="control">
               <b-button
                 icon-right="send"
                 class="send-btn"
-                :disabled="disabled"
+                :disabled="!getActiveChatUser.selected"
               />
             </p>
           </b-field>
@@ -72,12 +74,15 @@ import ChatProfileList from "../../components/ChatProfileList";
 import ChatSvg from "../../components/ChatSvg";
 import ChatProfile from "../../components/ChatProfile";
 import BackButton from "../../components/BackButton.vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
+  computed: {
+    ...mapGetters(["getActiveChatUser"]),
+  },
   data() {
     return {
       sidebarOpen: false,
-      disabled: true,
       message: "",
     };
   },
