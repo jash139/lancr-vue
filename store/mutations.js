@@ -16,5 +16,11 @@ export default {
     },
     setAllFreelancers(state, freelancers) {
         state.allFreelancers = freelancers;
-    }
+    },
+    setActiveChatUser(state, user) {
+        state.activeChatUser = {
+            selected: true,
+            user: user,
+        };
+    },
 };

@@ -59,4 +59,16 @@ export default {
                 })
         });
     },
+    fetchActiveChatUser({ commit }, uid) {
+        return new Promise((resolve, reject) => {
+            this.$axios.get("/users/" + uid)
+                .then(res => {
+                    commit("setActiveChatUser", res.data)
+                    resolve(res.data)
+                })
+                .catch(error => {
+                    reject(error)
+                })
+        });
+    }
 };

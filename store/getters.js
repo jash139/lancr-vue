@@ -13,5 +13,8 @@ export default {
     },
     getAllFreelancers: state => {
         return state.allFreelancers;
-    }
+    },
+    getActiveChatUser: state => {
+        return state.activeChatUser;
+    },
 };

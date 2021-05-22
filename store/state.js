@@ -56,6 +56,10 @@ export default function () {
     return {
         currentUser: userStructure,
         user: userStructure,
+        activeChatUser: {
+            selected: false,
+            user: userStructure
+        },
         project: projectStructure,
         allProjects: [],
         allFreelancers: []
