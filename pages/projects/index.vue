@@ -5,7 +5,7 @@
       <ProjectsHeader />
       <div class="projects">
         <ProjectCard
-          v-for="project in getAllProjects"
+          v-for="project in projects"
           :key="project._id"
           :project="project"
         />
@@ -22,7 +22,9 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["getAllProjects"]),
+    ...mapGetters({
+      projects: "getProjectsByType",
+    }),
   },
   components: {
     AppBar,
