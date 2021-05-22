@@ -11,6 +11,16 @@ export default {
                 })
         });
     },
+    signUpUserWithEmailAndPassword({ commit }, email, password) {
+        return new Promise((resolve, reject) => {
+            this.$fire.auth.createUserWithEmailAndPassword(email, password)
+                .then(data => {
+                    console.log(data.user)
+                }).catch((error) => {
+                    reject(error)
+                })
+        })
+    },
     fetchUser({ commit }, uid) {
         return new Promise((resolve, reject) => {
             this.$axios.get("/users/" + uid)
