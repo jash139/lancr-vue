@@ -1,3 +1,5 @@
+import { orderBy } from "natural-orderby";
+
 export default {
     getCurrentUser: state => {
         return state.currentUser;
@@ -17,4 +19,24 @@ export default {
     getActiveChatUser: state => {
         return state.activeChatUser;
     },
+    getProjectsByType: state => type => {
+        const allProjects = state.allProjects;
+        switch (type) {
+            case "none":
+                return allProjects;
+            case "active":
+                return allProjects.filter(project => project.status === "active");
+            case "closed":
+                return allProjects.filter(project => project.status === "closed");
+            case "recent":
+                return orderBy(
+                    allProjects,
+                    [project => project.createdAt],
+                    ["asc", "desc"]
+                );
+            default:
+                break;
+        }
+        return
+    }
 };
