@@ -26,6 +26,7 @@
         <b-button
           class="btn primary-btn btn-shadow signin-btn"
           @click="handleSubmit"
+          :loading="loading"
         >
           Sign in
         </b-button>
@@ -40,10 +41,12 @@
 
 <script>
 import AppBar from "../../components/AppBar";
+import { mapActions } from "vuex";
 
 export default {
   data() {
     return {
+      loading: false,
       show: false,
       email: "",
       password: "",
@@ -53,7 +56,24 @@ export default {
     AppBar,
   },
   methods: {
-    handleSubmit: () => console.log("submit"),
+    ...mapActions(["signInUserWithEmailAndPassword"]),
+    handleSubmit() {
+      this.loading = true;
+      if (this.email === "" || this.password === "") {
+        // display error message using global state for snackbar
+        this.loading = false;
+        return;
+      }
+      this.signInUserWithEmailAndPassword({
+        email: this.email,
+        password: this.password,
+      }).then(() => {
+        this.email = "";
+        this.password = "";
+        this.loading = false;
+        this.$router.push("/");
+      });
+    },
   },
 };
 </script>
