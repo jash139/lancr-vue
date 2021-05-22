@@ -104,6 +104,7 @@ export default {
 .avatar {
   border-radius: 20rem;
   margin: 0 1rem;
+  min-width: 140px;
   max-width: 140px;
 }
 .name {
