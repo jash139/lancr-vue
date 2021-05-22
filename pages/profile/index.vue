@@ -6,15 +6,11 @@
       <BackButton />
       <div class="about-user card-shadow">
         <div class="details-div1">
-          <img
-            src="https://images.unsplash.com/photo-1562347851-32d44aa232ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-            alt=""
-            class="avatar"
-          />
+          <img :src="user.profilePicture" alt="" class="avatar" />
           <div class="details">
-            <h2 class="name">Doggo Gang</h2>
-            <p class="role">Mafia Leader</p>
-            <p class="rating">8.2 / 10</p>
+            <h2 class="name">{{ user.name }}</h2>
+            <p class="title">{{ user.title }}</p>
+            <p class="rating">{{ user.rating }} / 10</p>
             <ProfileEditButton />
           </div>
         </div>
@@ -24,25 +20,29 @@
             <p class="detail-heading">Location</p>
           </div>
           <div class="grid-item">
-            <p class="detail-info">Banashankari, Karnataka, India</p>
+            <p class="detail-info">
+              {{ user.contact.location.city }},
+              {{ user.contact.location.state }},
+              {{ user.contact.location.country }}
+            </p>
           </div>
           <div class="grid-item">
             <p class="detail-heading">Phone</p>
           </div>
           <div class="grid-item">
-            <p class="detail-info">094 561 2378</p>
+            <p class="detail-info">{{ user.contact.phone }}</p>
           </div>
           <div class="grid-item">
             <p class="detail-heading">Email</p>
           </div>
           <div class="grid-item">
-            <p class="detail-info">freelancer@gmail.com</p>
+            <p class="detail-info">{{ user.contact.email }}</p>
           </div>
           <div class="grid-item">
-            <p class="detail-heading">Gender</p>
+            <p class="detail-heading">Date Of Birth</p>
           </div>
           <div class="grid-item">
-            <p class="detail-info">Male</p>
+            <p class="detail-info">{{ user.dateOfBirth }}</p>
           </div>
         </div>
       </div>
@@ -57,8 +57,14 @@ import AppBar from "../../components/AppBar";
 import BackButton from "../../components/BackButton";
 import ProfileEditButton from "../../components/ProfileEditButton";
 import ProfileTabs from "../../components/ProfileTabs";
+import { mapGetters } from "vuex";
 
 export default {
+  computed: {
+    ...mapGetters({
+      user: "getCurrentUser",
+    }),
+  },
   components: {
     ChatButton,
     AppBar,
@@ -97,13 +103,14 @@ export default {
 .avatar {
   border-radius: 20rem;
   margin: 0 1rem;
+  min-width: 140px;
   max-width: 140px;
 }
 .name {
   color: #c21e39;
   font-size: 1.6rem;
 }
-.role {
+.title {
   color: #5d5755;
   font-size: 1rem;
   font-style: italic;
