@@ -1,21 +1,16 @@
 <template>
   <div class="freelancers-header">
     <h2 class="heading">Freelancers</h2>
-    <div class="actions">
-      <SortByDropdown />
-      <Filters />
-    </div>
+    <Filters />
   </div>
 </template>
 
 <script>
-import SortByDropdown from "./SortByDropdown";
 import Filters from "./Filters";
 
 export default {
   name: "FreelancersHeader",
   components: {
-    SortByDropdown,
     Filters,
   },
 };
@@ -33,16 +28,8 @@ export default {
   font-size: 1.6rem;
   font-weight: 600;
 }
-.actions {
-  display: flex;
-  align-items: center;
-}
 @media only screen and (max-width: 1100px) {
   .freelancers-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .actions {
     flex-direction: column;
     align-items: flex-start;
   }
