@@ -21,12 +21,12 @@
           counter
           @click:append="show = !show"
         />
-        <button
+        <b-button
           class="btn primary-btn btn-shadow signin-btn"
           @click="handleSubmit"
         >
           Sign in
-        </button>
+        </b-button>
         <p class="account-message">
           Don't have an account?
           <NuxtLink to="/signup" class="link">Create a new account</NuxtLink>
@@ -92,7 +92,9 @@ export default {
   font-weight: 700;
 }
 .signin-btn {
+  color: #ffffff;
   margin: 1rem 0 0.5rem;
+  padding: 1.1rem 2rem;
   width: 100%;
 }
 .link {
