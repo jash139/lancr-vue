@@ -11,7 +11,7 @@ export default {
                 })
         });
     },
-    signUpUserWithEmailAndPassword({ commit }, email, password) {
+    signUpUserWithEmailAndPassword({ commit }, { email, password }) {
         return new Promise((resolve, reject) => {
             this.$fire.auth.createUserWithEmailAndPassword(email, password)
                 .then(data => {
