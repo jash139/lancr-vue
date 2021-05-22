@@ -9,7 +9,9 @@
           <div class="actions">
             <button class="apply-btn btn primary-btn btn-shadow">Apply</button>
             <NuxtLink :to="'/freelancers/' + getProject.uid">
-              <button class="client-btn btn outlined-btn">Doggo Gang</button>
+              <button class="client-btn btn outlined-btn">
+                {{ ownerDetails.name }}
+              </button>
             </NuxtLink>
           </div>
         </div>
@@ -23,13 +25,13 @@
               <p class="detail-heading">Phone</p>
             </div>
             <div class="grid-item">
-              <p class="detail-info">094 561 2378</p>
+              <p class="detail-info">{{ ownerDetails.contact.phone }}</p>
             </div>
             <div class="grid-item">
               <p class="detail-heading">Email</p>
             </div>
             <div class="grid-item">
-              <p class="detail-info">freelancer@gmail.com</p>
+              <p class="detail-info">{{ ownerDetails.contact.email }}</p>
             </div>
           </div>
         </div>
@@ -116,6 +118,17 @@ import ApplicantCard from "../../../components/ApplicantCard";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
+  data() {
+    return {
+      ownerDetails: {
+        name: "",
+        contact: {
+          phone: "",
+          email: "",
+        },
+      },
+    };
+  },
   components: {
     AppBar,
     BackButton,
@@ -127,9 +140,21 @@ export default {
   },
   methods: {
     ...mapActions(["fetchProject"]),
+    fetchOwnerDetails(uid) {
+      this.$axios
+        .get("/users/" + uid)
+        .then((res) => {
+          this.ownerDetails = res.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
   created() {
-    this.fetchProject(this.$route.params.id);
+    this.fetchProject(this.$route.params.id).then(() =>
+      this.fetchOwnerDetails(this.getProject.uid)
+    );
   },
 };
 </script>
