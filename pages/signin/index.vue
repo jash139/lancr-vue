@@ -10,17 +10,19 @@
             forget your password?
           </NuxtLink>
         </p>
-        <v-text-field class="sign-text-field" v-model="email" label="Email" />
-        <v-text-field
-          class="sign-text-field"
-          v-model="password"
-          :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-          :type="show ? 'text' : 'password'"
-          name="input-10-1"
-          label="Password"
-          counter
-          @click:append="show = !show"
-        />
+        <v-form>
+          <v-text-field class="sign-text-field" v-model="email" label="Email" />
+          <v-text-field
+            class="sign-text-field"
+            v-model="password"
+            :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="show ? 'text' : 'password'"
+            name="input-10-1"
+            label="Password"
+            counter
+            @click:append="show = !show"
+          />
+        </v-form>
         <b-button
           class="btn primary-btn btn-shadow signin-btn"
           @click="handleSubmit"

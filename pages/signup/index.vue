@@ -5,17 +5,19 @@
       <div class="card">
         <h2 class="heading">Sign up</h2>
         <p class="top-message">Welcome! Sign up to get started</p>
-        <v-text-field class="sign-text-field" v-model="email" label="Email" />
-        <v-text-field
-          class="sign-text-field"
-          v-model="password"
-          :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-          :type="show ? 'text' : 'password'"
-          name="input-10-1"
-          label="Password"
-          counter
-          @click:append="show = !show"
-        />
+        <v-form>
+          <v-text-field class="sign-text-field" v-model="email" label="Email" />
+          <v-text-field
+            class="sign-text-field"
+            v-model="password"
+            :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="show ? 'text' : 'password'"
+            name="input-10-1"
+            label="Password"
+            counter
+            @click:append="show = !show"
+          />
+        </v-form>
         <b-button
           class="btn primary-btn btn-shadow signup-btn"
           @click="handleSubmit"
@@ -46,7 +48,9 @@ export default {
     AppBar,
   },
   methods: {
-    handleSubmit: () => console.log("submit"),
+    handleSubmit() {
+      console.log("submit");
+    },
   },
 };
 </script>
