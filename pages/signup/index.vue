@@ -21,6 +21,7 @@
         <b-button
           class="btn primary-btn btn-shadow signup-btn"
           @click="handleSubmit"
+          :loading="loading"
         >
           Create Account
         </b-button>
@@ -35,10 +36,12 @@
 
 <script>
 import AppBar from "../../components/AppBar";
+import { mapActions } from "vuex";
 
 export default {
   data() {
     return {
+      loading: false,
       show: false,
       email: "",
       password: "",
@@ -48,8 +51,18 @@ export default {
     AppBar,
   },
   methods: {
+    ...mapActions(["signUpUserWithEmailAndPassword"]),
     handleSubmit() {
-      console.log("submit");
+      this.loading = true;
+      if (this.email === "" || this.password === "") {
+        // display error message using global state for snackbar
+        this.loading = false;
+        return;
+      }
+      this.signUpUserWithEmailAndPassword({
+        email: this.email,
+        password: this.password,
+      });
     },
   },
 };
