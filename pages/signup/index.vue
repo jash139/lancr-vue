@@ -62,6 +62,11 @@ export default {
       this.signUpUserWithEmailAndPassword({
         email: this.email,
         password: this.password,
+      }).then(() => {
+        this.email = "";
+        this.password = "";
+        this.loading = false;
+        this.$router.push("/");
       });
     },
   },

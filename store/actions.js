@@ -15,7 +15,7 @@ export default {
         return new Promise((resolve, reject) => {
             this.$fire.auth.createUserWithEmailAndPassword(email, password)
                 .then(data => {
-                    console.log(data.user)
+                    resolve(data.user)
                 }).catch((error) => {
                     reject(error)
                 })
