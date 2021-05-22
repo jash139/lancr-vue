@@ -2,10 +2,10 @@
   <div class="root">
     <AppBar />
     <div class="content">
-      <ProjectsHeader />
+      <ProjectsHeader @set-sort-type="setSortType" />
       <div class="projects">
         <ProjectCard
-          v-for="project in projects"
+          v-for="project in projects(sortType)"
           :key="project._id"
           :project="project"
         />
@@ -21,6 +21,11 @@ import ProjectCard from "../../components/ProjectCard";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
+  data() {
+    return {
+      sortType: "none",
+    };
+  },
   computed: {
     ...mapGetters({
       projects: "getProjectsByType",
@@ -33,6 +38,9 @@ export default {
   },
   methods: {
     ...mapActions(["fetchAllProjects"]),
+    setSortType(type) {
+      this.sortType = type;
+    },
   },
   created() {
     this.fetchAllProjects();

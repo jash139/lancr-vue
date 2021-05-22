@@ -2,7 +2,7 @@
   <div class="projects-header">
     <h2 class="heading">Projects</h2>
     <div class="actions">
-      <SortByDropdown />
+      <SortByDropdown @set-sort-type="setSortType" />
       <Filters />
     </div>
   </div>
@@ -17,6 +17,11 @@ export default {
   components: {
     SortByDropdown,
     Filters,
+  },
+  methods: {
+    setSortType(type) {
+      this.$emit("set-sort-type", type);
+    },
   },
 };
 </script>

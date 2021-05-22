@@ -13,17 +13,16 @@
           icon-right="menu-down"
         />
       </template>
-
-      <b-dropdown-item @click="setSelectedOption('None')">
+      <b-dropdown-item @click="setSelectedOption('none')">
         <p class="dropdown-item">None</p>
       </b-dropdown-item>
-      <b-dropdown-item @click="setSelectedOption('Active')">
+      <b-dropdown-item @click="setSelectedOption('active')">
         <p class="dropdown-item">Active</p>
       </b-dropdown-item>
-      <b-dropdown-item @click="setSelectedOption('Closed')">
+      <b-dropdown-item @click="setSelectedOption('closed')">
         <p class="dropdown-item">Closed</p>
       </b-dropdown-item>
-      <b-dropdown-item @click="setSelectedOption('Recent')">
+      <b-dropdown-item @click="setSelectedOption('recent')">
         <p class="dropdown-item">Recent</p>
       </b-dropdown-item>
     </b-dropdown>
@@ -42,7 +41,8 @@ export default {
   },
   methods: {
     setSelectedOption(option) {
-      this.selectedOption = option;
+      this.$emit("set-sort-type", option);
+      this.selectedOption = option.charAt(0).toUpperCase() + option.slice(1); // capitalizing first letter of option
     },
   },
 };
