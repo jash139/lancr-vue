@@ -11,11 +11,21 @@ export default {
                 })
         });
     },
+    signInUserWithEmailAndPassword({ commit }, { email, password }) {
+        return new Promise((resolve, reject) => {
+            this.$fire.auth.signInWithEmailAndPassword(email, password)
+                .then(res => {
+                    resolve(res)
+                }).catch((error) => {
+                    reject(error)
+                })
+        })
+    },
     signUpUserWithEmailAndPassword({ commit }, { email, password }) {
         return new Promise((resolve, reject) => {
             this.$fire.auth.createUserWithEmailAndPassword(email, password)
-                .then(data => {
-                    resolve(data.user)
+                .then(res => {
+                    resolve(res)
                 }).catch((error) => {
                     reject(error)
                 })
