@@ -35,6 +35,7 @@ export default {
                     ["asc", "desc"]
                 );
             default:
+                return allProjects;
                 break;
         }
         return
