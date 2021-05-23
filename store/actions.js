@@ -25,6 +25,19 @@ export default {
         return new Promise((resolve, reject) => {
             this.$fire.auth.createUserWithEmailAndPassword(email, password)
                 .then(res => {
+                    const user = {
+                        uid: res.user.uid,
+                        name: res.user.email.substr(0, res.user.email.indexOf('@')),
+                        // add total ratings given to calculate new rating                
+                    };
+                    this.$axios.post("/users/", user)
+                        .then(res => {
+                            // commit("setCurrentUser", res.data)
+                            // resolve(res.data)
+                        })
+                        .catch(error => {
+                            reject(error)
+                        })
                     resolve(res)
                 }).catch((error) => {
                     reject(error)
