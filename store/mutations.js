@@ -2,9 +2,9 @@ import Vue from "vue";
 import getDefaultState from "./state";
 
 export default {
-    setCurrentUser(state, user) {
+    setCurrentUser(state, { user, signedInStatus }) {
         state.currentUser = user;
-        state.signedInStatus = true;
+        state.signedInStatus = signedInStatus;
     },
     setUser(state, user) {
         state.user = user;
