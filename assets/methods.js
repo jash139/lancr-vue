@@ -8,7 +8,13 @@ const scrollToSection = (id) => {
     element.scrollIntoView();
 };
 
+const openTab = (url) => {
+    window.open(url, '_blank')
+};
+
+
 export {
     scrollToTop,
-    scrollToSection
+    scrollToSection,
+    openTab,
 };
