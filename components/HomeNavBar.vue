@@ -47,7 +47,14 @@
         </li>
         <div class="navbar-bubble" />
       </ul>
-      <div class="right-section">
+      <div v-if="isSignedIn" class="right-section">
+        <NuxtLink to="/profile">
+          <button class="profile-btn">
+            {{ getCurrentUser.name.charAt(0).toUpperCase() }}
+          </button>
+        </NuxtLink>
+      </div>
+      <div v-else class="right-section">
         <NuxtLink to="/signin">
           <button class="btn outlined-btn">Signin</button>
         </NuxtLink>
@@ -63,6 +70,7 @@
 import Logo from "./Logo";
 import SidebarNavContent from "./SidebarNavContent";
 import { scrollToTop, scrollToSection } from "../assets/methods";
+import { mapGetters } from "vuex";
 
 export default {
   name: "HomeNavBar",
@@ -70,6 +78,9 @@ export default {
     return {
       sidebarOpen: false,
     };
+  },
+  computed: {
+    ...mapGetters(["isSignedIn", "getCurrentUser"]),
   },
   components: {
     Logo,
@@ -102,6 +113,14 @@ export default {
   border-radius: 5rem;
   display: none;
   margin-right: 1rem;
+}
+.profile-btn {
+  background-color: #c21e39;
+  border-radius: 5rem;
+  color: #ffffff;
+  margin: 0.2rem 0;
+  height: 40px;
+  width: 40px;
 }
 .signup-btn {
   margin-left: 1rem;

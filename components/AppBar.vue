@@ -18,7 +18,14 @@
         />
         <Logo />
       </div>
-      <div class="right-section">
+      <div v-if="isSignedIn" class="right-section">
+        <NuxtLink to="/profile">
+          <button class="profile-btn">
+            {{ getCurrentUser.name.charAt(0).toUpperCase() }}
+          </button>
+        </NuxtLink>
+      </div>
+      <div v-else class="right-section">
         <button class="btn outlined-btn logout-btn">Logout</button>
       </div>
     </nav>
@@ -28,6 +35,7 @@
 <script>
 import SidebarNavContent from "./SidebarNavContent";
 import Logo from "./Logo";
+import { mapGetters } from "vuex";
 
 export default {
   name: "AppBar",
@@ -35,6 +43,9 @@ export default {
     return {
       sidebarOpen: false,
     };
+  },
+  computed: {
+    ...mapGetters(["isSignedIn", "getCurrentUser"]),
   },
   components: {
     SidebarNavContent,
@@ -77,6 +88,14 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.profile-btn {
+  background-color: #c21e39;
+  border-radius: 5rem;
+  color: #ffffff;
+  margin: 0.2rem 0;
+  height: 40px;
+  width: 40px;
 }
 @media only screen and (max-width: 960px) {
   .sidebar-btn {
