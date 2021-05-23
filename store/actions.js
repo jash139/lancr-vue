@@ -3,7 +3,7 @@ export default {
         return new Promise((resolve, reject) => {
             this.$axios.get("/users/" + uid)
                 .then(res => {
-                    commit("setCurrentUser", res.data)
+                    commit("setCurrentUser", { user: res.data, signedInStatus: true })
                     resolve(res.data)
                 })
                 .catch(error => {
