@@ -17,8 +17,8 @@ export default {
   },
   created() {
     this.unsubscribe = this.$store.subscribe((mutation, state) => {
-      if (mutation.type === "setNotification") {
-        this.notify(state.simple);
+      if (mutation.type === "setNotificationMessage") {
+        this.notify(state.notificationMessage);
       }
     });
   },
