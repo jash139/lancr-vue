@@ -1,15 +1,19 @@
 import { userStructure } from "./defaultStructures";
+import axios from "axios";
 
 export default {
-    onAuthStateChangedAction({ dispatch, state }, { authUser }) {
+    onAuthStateChangedAction({ dispatch, state, commit }, { authUser }) {
         if (state.signedInStatus) {
             return;
         }
         if (!authUser) {
             dispatch("signOut");
         } else {
-            dispatch("fetchCurrentUser", authUser.uid)
-                .catch(error => console.log(error));
+            axios.get(process.env.baseURL + "/users/" + authUser.uid)
+                .then(res => {
+                    commit("setCurrentUser", { user: res.data, signedInStatus: true })
+                })
+                .catch(error => console.log(error))
         }
     },
     fetchCurrentUser({ commit }, uid) {
