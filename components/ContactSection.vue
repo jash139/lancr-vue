@@ -3,27 +3,27 @@
     <h2 class="heading">Get in Touch</h2>
     <div class="contact-links">
       <div class="contact">
-        <v-btn icon class="contact-btn" onClick="handleEmailClick">
-          <LinkedinIcon :light="true" />
-        </v-btn>
-        <p class="link" onClick="handleEmailClick">
-          {{ linkedin }}
-        </p>
-      </div>
-      <div class="contact">
-        <v-btn icon class="contact-btn" onClick="openTab">
-          <GithubIcon :light="true" />
-        </v-btn>
-        <p class="link" onClick="openTab">
-          {{ github }}
-        </p>
-      </div>
-      <div class="contact">
         <v-btn icon class="contact-btn" onClick="openTab">
           <EmailIcon :light="true" />
         </v-btn>
         <p class="link" onClick="openTab">
           {{ email }}
+        </p>
+      </div>
+      <div class="contact">
+        <v-btn icon class="contact-btn" @click="handleClick(linkedin)">
+          <LinkedinIcon :light="true" />
+        </v-btn>
+        <p class="link" @click="handleClick(linkedin)">
+          {{ linkedin }}
+        </p>
+      </div>
+      <div class="contact">
+        <v-btn icon class="contact-btn" @click="handleClick(github)">
+          <GithubIcon :light="true" />
+        </v-btn>
+        <p class="link" @click="handleClick(github)">
+          {{ github }}
         </p>
       </div>
     </div>
@@ -35,6 +35,7 @@ import LinkedinIcon from "./LinkedinIcon";
 import GithubIcon from "./GithubIcon";
 import EmailIcon from "./EmailIcon";
 import homeContent from "../assets/homeContent";
+import { openTab } from "../assets/methods";
 
 export default {
   name: "ContactSection",
@@ -49,6 +50,11 @@ export default {
     LinkedinIcon,
     GithubIcon,
     EmailIcon,
+  },
+  methods: {
+    handleClick(link) {
+      openTab(link);
+    },
   },
   created() {
     this.linkedin = homeContent.contactLinks.linkedin;
