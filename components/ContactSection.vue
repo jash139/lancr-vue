@@ -3,10 +3,10 @@
     <h2 class="heading">Get in Touch</h2>
     <div class="contact-links">
       <div class="contact">
-        <v-btn icon class="contact-btn" onClick="openTab">
+        <v-btn icon class="contact-btn" @click="handleEmailClick(email)">
           <EmailIcon :light="true" />
         </v-btn>
-        <p class="link" onClick="openTab">
+        <p class="link" @click="handleEmailClick(email)">
           {{ email }}
         </p>
       </div>
@@ -35,7 +35,8 @@ import LinkedinIcon from "./LinkedinIcon";
 import GithubIcon from "./GithubIcon";
 import EmailIcon from "./EmailIcon";
 import homeContent from "../assets/homeContent";
-import { openTab } from "../assets/methods";
+import { openTab, copyEmail } from "../assets/methods";
+import { mapActions } from "vuex";
 
 export default {
   name: "ContactSection",
@@ -52,8 +53,13 @@ export default {
     EmailIcon,
   },
   methods: {
+    ...mapActions(["showNotificationMessage"]),
     handleClick(link) {
       openTab(link);
+    },
+    handleEmailClick(link) {
+      copyEmail(link);
+      this.showNotificationMessage("Email copied!");
     },
   },
   created() {
