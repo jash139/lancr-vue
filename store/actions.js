@@ -1,6 +1,17 @@
 import { userStructure } from "./defaultStructures";
 
 export default {
+    onAuthStateChangedAction({ dispatch, state }, { authUser }) {
+        if (state.signedInStatus) {
+            return;
+        }
+        if (!authUser) {
+            dispatch("signOut");
+        } else {
+            dispatch("fetchCurrentUser", authUser.uid)
+                .catch(error => console.log(error));
+        }
+    },
     fetchCurrentUser({ commit }, uid) {
         return new Promise((resolve, reject) => {
             this.$axios.get("/users/" + uid)
