@@ -1,6 +1,9 @@
 import { orderBy } from "natural-orderby";
 
 export default {
+    isSignedIn: state => {
+        return state.signedInStatus;
+    },
     getCurrentUser: state => {
         return state.currentUser;
     },

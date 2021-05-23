@@ -4,6 +4,7 @@ import getDefaultState from "./state";
 export default {
     setCurrentUser(state, user) {
         state.currentUser = user;
+        state.signedInStatus = true;
     },
     setUser(state, user) {
         state.user = user;

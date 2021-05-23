@@ -54,6 +54,7 @@ const projectStructure = {
 
 export default function () {
     return {
+        signedInStatus: false,
         currentUser: userStructure,
         user: userStructure,
         activeChatUser: {
