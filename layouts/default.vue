@@ -1,7 +1,15 @@
 <template>
-  <Nuxt />
+  <div>
+    <Nuxt />
+    <Snackbar />
+  </div>
 </template>
 
 <script>
-export default {};
+import Snackbar from "../components/Snackbar";
+export default {
+  components: {
+    Snackbar,
+  },
+};
 </script>
