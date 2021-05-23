@@ -19,14 +19,7 @@
         <Logo />
       </div>
       <div v-if="isSignedIn" class="right-section">
-        <NuxtLink to="/profile">
-          <button class="profile-btn">
-            {{ getCurrentUser.name.charAt(0).toUpperCase() }}
-          </button>
-        </NuxtLink>
-      </div>
-      <div v-else class="right-section">
-        <button class="btn outlined-btn logout-btn">Logout</button>
+        <ProfileButton />
       </div>
     </nav>
   </header>
@@ -35,6 +28,7 @@
 <script>
 import SidebarNavContent from "./SidebarNavContent";
 import Logo from "./Logo";
+import ProfileButton from "./ProfileButton";
 import { mapGetters } from "vuex";
 
 export default {
@@ -45,11 +39,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["isSignedIn", "getCurrentUser"]),
+    ...mapGetters(["isSignedIn"]),
   },
   components: {
     SidebarNavContent,
     Logo,
+    ProfileButton,
   },
 };
 </script>
