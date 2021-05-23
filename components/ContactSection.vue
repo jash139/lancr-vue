@@ -34,7 +34,7 @@
 import LinkedinIcon from "./LinkedinIcon";
 import GithubIcon from "./GithubIcon";
 import EmailIcon from "./EmailIcon";
-import homeContent from "../static/homeContent";
+import homeContent from "../assets/homeContent";
 
 export default {
   name: "ContactSection",

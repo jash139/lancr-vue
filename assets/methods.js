@@ -11,4 +11,4 @@ const scrollToSection = (id) => {
 export {
     scrollToTop,
     scrollToSection
-}
+};

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { scrollToTop } from "../static/methods";
+import { scrollToTop } from "../assets/methods";
 
 export default {
   name: "Logo",

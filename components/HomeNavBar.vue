@@ -62,7 +62,7 @@
 <script>
 import Logo from "./Logo";
 import SidebarNavContent from "./SidebarNavContent";
-import { scrollToTop, scrollToSection } from "../static/methods";
+import { scrollToTop, scrollToSection } from "../assets/methods";
 
 export default {
   name: "HomeNavBar",
