@@ -21,7 +21,7 @@ export default {
                 })
         })
     },
-    signUpUserWithEmailAndPassword({ commit }, { email, password }) {
+    signUpUserWithEmailAndPassword({ dispatch }, { email, password }) {
         return new Promise((resolve, reject) => {
             this.$fire.auth.createUserWithEmailAndPassword(email, password)
                 .then(res => {
@@ -32,8 +32,7 @@ export default {
                     };
                     this.$axios.post("/users/", user)
                         .then(res => {
-                            // commit("setCurrentUser", res.data)
-                            // resolve(res.data)
+                            dispatch("fetchCurrentUser", user.uid)
                         })
                         .catch(error => {
                             reject(error)
