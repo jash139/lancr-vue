@@ -1,3 +1,5 @@
+import { userStructure } from "./defaultStructures";
+
 export default {
     fetchCurrentUser({ commit }, uid) {
         return new Promise((resolve, reject) => {
@@ -42,6 +44,13 @@ export default {
                     reject(error)
                 })
         })
+    },
+    signOut({ commit }) {
+        return this.$fire.auth.signOut()
+            .then(() => {
+                commit("setCurrentUser", { user: userStructure, signedInStatus: false })
+                this.$router.push('/')
+            })
     },
     fetchUser({ commit }, uid) {
         return new Promise((resolve, reject) => {
