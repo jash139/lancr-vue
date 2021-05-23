@@ -126,5 +126,8 @@ export default {
                     reject(error)
                 })
         });
-    }
+    },
+    showNotificationMessage({ commit }, message) {
+        commit("setNotificationMessage", message)
+    },
 };

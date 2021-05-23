@@ -1,6 +1,3 @@
-import Vue from "vue";
-import getDefaultState from "./state";
-
 export default {
     setCurrentUser(state, { user, signedInStatus }) {
         state.currentUser = user;
@@ -23,5 +20,8 @@ export default {
             selected: true,
             user: user,
         };
+    },
+    setNotificationMessage(state, message) {
+        state.notificationMessage = message;
     },
 };
