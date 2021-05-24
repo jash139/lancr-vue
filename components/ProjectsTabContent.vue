@@ -1,9 +1,14 @@
 <template>
   <div>
-    <b-collapse animation="slide" :open="false">
+    <b-collapse
+      v-for="project in projects"
+      :key="project._id"
+      animation="slide"
+      :open="false"
+    >
       <template #trigger="props">
         <div class="card-header" role="button">
-          <p class="card-header-title">Project Title</p>
+          <p class="card-header-title">{{ project.title }}</p>
           <a class="card-header-icon">
             <b-icon
               :icon="props.open ? 'menu-up' : 'menu-down'"
@@ -16,12 +21,13 @@
 
       <div class="card-content">
         <div class="content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-          iaculis mauris.
+          {{ project.description }}
         </div>
       </div>
       <footer class="card-footer">
-        <button class="card-footer-item btn view-btn">View</button>
+        <NuxtLink :to="'/projects/' + project._id">
+          <button class="card-footer-item btn view-btn">View</button>
+        </NuxtLink>
         <button class="card-footer-item btn edit-btn">Edit</button>
       </footer>
     </b-collapse>
@@ -29,7 +35,14 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
+  computed: {
+    ...mapGetters({
+      projects: "getCurrentUserProjects",
+    }),
+  },
   name: "ProjectsTabContent",
 };
 </script>
