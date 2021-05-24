@@ -67,6 +67,17 @@ export default {
                 this.$router.push('/')
             })
     },
+    resetPassword({ dispatch }, { email }) {
+        return new Promise((resolve, reject) => {
+            this.$fire.auth.sendPasswordResetEmail(email)
+                .then(res => {
+                    dispatch("showNotificationMessage", "Check email for further instructions!")
+                    resolve(res)
+                }).catch(error => {
+                    reject(error)
+                });
+        })
+    },
     fetchUser({ commit }, uid) {
         return new Promise((resolve, reject) => {
             this.$axios.get("/users/" + uid)
