@@ -20,7 +20,7 @@
     </div>
 
     <div id="profile-tab-2" class="tabcontent">
-      <ProjectsTabContent :projects="user.projects" />
+      <ProjectsTabContent :uid="user.uid" />
     </div>
 
     <div id="profile-tab-3" class="tabcontent">
