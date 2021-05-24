@@ -6,61 +6,16 @@
         <div class="stroke" />
       </div>
       <div class="exp">
-        <div class="experience">
+        <div
+          v-for="experience in user.experience"
+          :key="experience.start"
+          class="experience"
+        >
           <div>
-            <h3 class="org">Netflix</h3>
-            <p class="role">Full Stack Developer</p>
+            <h3 class="org">{{ experience.organization }}</h3>
+            <p class="role">{{ experience.role }}</p>
           </div>
-          <p class="duration">May 2000 - Dec 2001</p>
-        </div>
-        <div class="experience">
-          <div>
-            <h3 class="org">Netflix</h3>
-            <p class="role">Full Stack Developer</p>
-          </div>
-          <p class="duration">May 2000 - Dec 2001</p>
-        </div>
-        <div class="experience">
-          <div>
-            <h3 class="org">Netflix</h3>
-            <p class="role">Full Stack Developer</p>
-          </div>
-          <p class="duration">May 2000 - Dec 2001</p>
-        </div>
-        <div class="experience">
-          <div>
-            <h3 class="org">Netflix</h3>
-            <p class="role">Full Stack Developer</p>
-          </div>
-          <p class="duration">May 2000 - Dec 2001</p>
-        </div>
-        <div class="experience">
-          <div>
-            <h3 class="org">Netflix</h3>
-            <p class="role">Full Stack Developer</p>
-          </div>
-          <p class="duration">May 2000 - Dec 2001</p>
-        </div>
-        <div class="experience">
-          <div>
-            <h3 class="org">Netflix</h3>
-            <p class="role">Full Stack Developer</p>
-          </div>
-          <p class="duration">May 2000 - Dec 2001</p>
-        </div>
-        <div class="experience">
-          <div>
-            <h3 class="org">Netflix</h3>
-            <p class="role">Full Stack Developer</p>
-          </div>
-          <p class="duration">May 2000 - Dec 2001</p>
-        </div>
-        <div class="experience">
-          <div>
-            <h3 class="org">Netflix</h3>
-            <p class="role">Full Stack Developer</p>
-          </div>
-          <p class="duration">May 2000 - Dec 2001</p>
+          <p class="duration">{{ experience.start }} - {{ experience.end }}</p>
         </div>
       </div>
     </div>
@@ -69,51 +24,22 @@
         <h4 class="heading">Skills</h4>
         <div class="stroke" />
       </div>
-      <Chip text="React" />
-      <Chip text="Redux" />
-      <Chip text="Vue" />
-      <Chip text="Vuex" />
-      <Chip text="Html" />
-      <Chip text="Css" />
-      <Chip text="Javascript" />
-      <Chip text="React" />
-      <Chip text="Redux" />
-      <Chip text="Vue" />
-      <Chip text="Vuex" />
-      <Chip text="Html" />
-      <Chip text="Css" />
-      <Chip text="Javascript" />
+      <Chip v-for="skill in user.skills" :key="skill" :text="skill" />
     </div>
     <div class="card-section">
       <div class="heading-div">
         <h4 class="heading">About</h4>
         <div class="stroke" />
       </div>
-      <p class="details-info">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit
-        amet, consectetur adipiscing elit, sed do eiusmod magna aliqua. Ut enim
-        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod magna aliqua.
-      </p>
+      <p class="details-info">{{ user.about }}</p>
     </div>
     <div class="card-section">
       <div class="heading-div">
         <h4 class="heading">Languages</h4>
         <div class="stroke" />
       </div>
-      <div class="language">
-        French
-        <div class="divider" />
-      </div>
-      <div class="language">
-        German
-        <div class="divider" />
-      </div>
-      <div class="language">
-        Bhojpuri
+      <div v-for="language in user.languages" :key="language" class="language">
+        {{ language }}
         <div class="divider" />
       </div>
     </div>
@@ -122,9 +48,15 @@
 
 <script>
 import Chip from "./Chip";
+import { mapGetters } from "vuex";
 
 export default {
   name: "ProfileTabContent",
+  computed: {
+    ...mapGetters({
+      user: "getCurrentUser",
+    }),
+  },
   components: {
     Chip,
   },
