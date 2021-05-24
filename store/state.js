@@ -5,6 +5,7 @@ export default function () {
         signedInStatus: false,
         notificationMessage: "",
         currentUser: userStructure,
+        currentUserProjects: [],
         user: userStructure,
         activeChatUser: {
             selected: false,

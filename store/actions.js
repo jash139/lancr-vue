@@ -12,15 +12,29 @@ export default {
             axios.get(process.env.baseURL + "/users/" + authUser.uid)
                 .then(res => {
                     commit("setCurrentUser", { user: res.data, signedInStatus: true })
+                    dispatch("fetchCurrentUserProjects", { uid: authUser.uid })
                 })
                 .catch(error => console.log(error))
         }
     },
-    fetchCurrentUser({ commit }, uid) {
+    fetchCurrentUser({ commit, dispatch }, uid) {
         return new Promise((resolve, reject) => {
             this.$axios.get("/users/" + uid)
                 .then(res => {
                     commit("setCurrentUser", { user: res.data, signedInStatus: true })
+                    dispatch("fetchCurrentUserProjects", { uid })
+                    resolve(res.data)
+                })
+                .catch(error => {
+                    reject(error)
+                })
+        });
+    },
+    fetchCurrentUserProjects({ commit }, { uid }) {
+        return new Promise((resolve, reject) => {
+            this.$axios.get("/projects/uid/" + uid)
+                .then(res => {
+                    commit("setCurrentUserProjects", res.data)
                     resolve(res.data)
                 })
                 .catch(error => {

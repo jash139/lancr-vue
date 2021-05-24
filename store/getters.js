@@ -7,6 +7,9 @@ export default {
     getCurrentUser: state => {
         return state.currentUser;
     },
+    getCurrentUserProjects: state => {
+        return state.currentUserProjects;
+    },
     getUser: state => {
         return state.user;
     },

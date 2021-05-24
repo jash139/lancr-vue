@@ -3,6 +3,9 @@ export default {
         state.currentUser = user;
         state.signedInStatus = signedInStatus;
     },
+    setCurrentUserProjects(state, projects) {
+        state.currentUserProjects = projects;
+    },
     setUser(state, user) {
         state.user = user;
     },
