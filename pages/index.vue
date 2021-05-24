@@ -140,5 +140,11 @@ export default {
   .white-stroke {
     display: none;
   }
+  .cta-btn {
+    margin: 0 0.5rem;
+  }
+  .shift-right {
+    justify-content: center;
+  }
 }
 </style>
