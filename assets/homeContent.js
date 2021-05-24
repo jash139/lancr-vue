@@ -1,6 +1,14 @@
 const homeContent = {
-    mainHeading: "Find a project that aligns with your passion.",
-    subHeading: "Browse projects or hire a freelancer according to your location and skills.",
+    mainHeading: {
+        para1: "Find a project that",
+        para2: "aligns with your ",
+        para3: "passion.",
+    },
+    subHeading: {
+        para1: "Browse projects or hire a freelancer ",
+        para2: "according to your location and ",
+        para3: "skills."
+    },
     about: {
         para1: "Lancr is a freelance online market, where users can contact each other based on the project and skill requirement.",
         para2: "Create one account for both as client and freelancer. The platform allows browsing based on region or skills."

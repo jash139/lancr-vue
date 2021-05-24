@@ -5,14 +5,22 @@
     <div class="hero-section">
       <div class="content">
         <div class="cta-section">
-          <h1 class="main-heading">DESCRIBE YOUR APP <br />IN BOLD LETTERS</h1>
+          <h1 class="main-heading">
+            {{ mainHeading.para1 }}
+            <br />
+            {{ mainHeading.para2 }}
+            <br />
+            {{ mainHeading.para3 }}
+          </h1>
           <div class="shift-right">
             <div class="white-stroke" />
             <div>
               <p class="sub-heading">
-                Browse projects or hire a freelancer<br />
-                according to your location and<br />
-                skills.
+                {{ subHeading.para1 }}
+                <br />
+                {{ subHeading.para2 }}
+                <br />
+                {{ subHeading.para3 }}
               </p>
               <div class="btns">
                 <div class="dots">
@@ -53,8 +61,13 @@ import LightDotsSvg from "../components/LightDotsSvg";
 import AboutSection from "../components/AboutSection";
 import FeaturesSection from "../components/FeaturesSection";
 import ContactSection from "../components/ContactSection";
+import homeContent from "../assets/homeContent";
 
 export default {
+  computed: {
+    mainHeading: () => homeContent.mainHeading,
+    subHeading: () => homeContent.subHeading,
+  },
   components: {
     ChatButton,
     WorkSvg,
@@ -65,17 +78,6 @@ export default {
     ContactSection,
     FeaturesSection,
   },
-  // created() {
-  //   const store = this.$store;
-  //   store
-  //     .dispatch("fetchUser", "testuid1234")
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // },
 };
 </script>
 
