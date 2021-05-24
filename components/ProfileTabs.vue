@@ -20,11 +20,11 @@
     </div>
 
     <div id="profile-tab-2" class="tabcontent">
-      <ProjectsTabContent />
+      <ProjectsTabContent :projects="user.projects" />
     </div>
 
     <div id="profile-tab-3" class="tabcontent">
-      <ConnectionsTabContent />
+      <ConnectionsTabContent :connections="user.connections" />
     </div>
   </div>
 </template>
@@ -36,6 +36,11 @@ import ConnectionsTabContent from "./ConnectionsTabContent";
 
 export default {
   name: "ProfileTabs",
+  props: {
+    user: {
+      type: Object,
+    },
+  },
   components: {
     ProfileTabContent,
     ProjectsTabContent,

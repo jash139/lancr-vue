@@ -46,7 +46,7 @@
           </div>
         </div>
       </div>
-      <ProfileTabs />
+      <ProfileTabs :user="user" />
     </div>
   </div>
 </template>
