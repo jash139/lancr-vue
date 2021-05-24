@@ -6,20 +6,12 @@
         <BoySvg />
       </div>
       <div class="about-errands">
-        <h1 class="heading">What is Errands?</h1>
+        <h1 class="heading">What is Lancr?</h1>
         <div class="shift-right">
           <div class="pink-stroke" />
           <div>
-            <p class="about">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            <p class="about">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.
-            </p>
+            <p class="about">{{ about.para1 }}</p>
+            <p class="about">{{ about.para2 }}</p>
           </div>
         </div>
       </div>
@@ -29,11 +21,24 @@
 
 <script>
 import BoySvg from "./BoySvg";
+import homeContent from "../assets/homeContent";
 
 export default {
   name: "AboutSection",
+  data() {
+    return {
+      about: {
+        para1: "",
+        para2: "",
+      },
+    };
+  },
   components: {
     BoySvg,
+  },
+  created() {
+    this.about.para1 = homeContent.about.para1;
+    this.about.para2 = homeContent.about.para2;
   },
 };
 </script>

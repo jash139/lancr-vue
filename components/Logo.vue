@@ -1,6 +1,6 @@
 <template>
   <NuxtLink to="/" class="link">
-    <h2 class="logo" @click="scrollToTop"><span class="e">E</span>rrands</h2>
+    <h2 class="logo" @click="scrollToTop"><span class="e">L</span>ancr</h2>
   </NuxtLink>
 </template>
 

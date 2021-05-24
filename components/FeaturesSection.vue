@@ -8,15 +8,15 @@
       <div class="features">
         <div class="feature-card">
           <p class="number-indicator">01</p>
-          <p class="feature">Find services or jobs near you</p>
+          <p class="feature">{{ features.feature1 }}</p>
         </div>
         <div class="feature-card">
           <p class="number-indicator">02</p>
-          <p class="feature">Browse projects according to your skillset</p>
+          <p class="feature">{{ features.feature2 }}</p>
         </div>
         <div class="feature-card">
           <p class="number-indicator">03</p>
-          <p class="feature">One platform to earn or hire</p>
+          <p class="feature">{{ features.feature3 }}</p>
         </div>
       </div>
     </div>
@@ -25,11 +25,26 @@
 
 <script>
 import DarkDotsSvg from "./DarkDotsSvg";
+import homeContent from "../assets/homeContent";
 
 export default {
   name: "FeaturesSection",
+  data() {
+    return {
+      features: {
+        feature1: "",
+        feature2: "",
+        feature3: "",
+      },
+    };
+  },
   components: {
     DarkDotsSvg,
+  },
+  created() {
+    this.features.feature1 = homeContent.features.feature1;
+    this.features.feature2 = homeContent.features.feature2;
+    this.features.feature3 = homeContent.features.feature3;
   },
 };
 </script>
