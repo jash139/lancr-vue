@@ -21,6 +21,14 @@
       <div v-if="isSignedIn" class="right-section">
         <ProfileButton />
       </div>
+      <div v-else class="right-section">
+        <NuxtLink to="/signin">
+          <button class="btn outlined-btn">Signin</button>
+        </NuxtLink>
+        <NuxtLink to="/signup">
+          <button class="btn secondary-btn signup-btn">Signup</button>
+        </NuxtLink>
+      </div>
     </nav>
   </header>
 </template>
@@ -70,6 +78,9 @@ export default {
   display: none;
   margin-right: 1rem;
 }
+.signup-btn {
+  margin-left: 1rem;
+}
 .nav {
   display: flex;
   align-items: center;
@@ -95,6 +106,9 @@ export default {
 @media only screen and (max-width: 960px) {
   .sidebar-btn {
     display: block;
+  }
+  .signup-btn {
+    display: none;
   }
 }
 </style>
