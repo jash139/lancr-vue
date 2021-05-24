@@ -1,15 +1,31 @@
 <template>
-  <v-expansion-panels>
-    <v-expansion-panel v-for="(item, i) in 5" :key="i" class="content">
-      <v-expansion-panel-header> Project {{ i + 1 }} </v-expansion-panel-header>
-      <v-expansion-panel-content>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
-      </v-expansion-panel-content>
-    </v-expansion-panel>
-  </v-expansion-panels>
+  <div>
+    <b-collapse animation="slide" :open="false">
+      <template #trigger="props">
+        <div class="card-header" role="button">
+          <p class="card-header-title">Project Title</p>
+          <a class="card-header-icon">
+            <b-icon
+              :icon="props.open ? 'menu-up' : 'menu-down'"
+              class="open-icon"
+            >
+            </b-icon>
+          </a>
+        </div>
+      </template>
+
+      <div class="card-content">
+        <div class="content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
+          iaculis mauris.
+        </div>
+      </div>
+      <footer class="card-footer">
+        <button class="card-footer-item btn view-btn">View</button>
+        <button class="card-footer-item btn edit-btn">Edit</button>
+      </footer>
+    </b-collapse>
+  </div>
 </template>
 
 <script>
@@ -19,7 +35,12 @@ export default {
 </script>
 
 <style scoped>
-.content::before {
-  box-shadow: none;
+.open-icon {
+  color: #c21e39;
+}
+.view-btn {
+  color: #c21e39;
+}
+.edit-btn {
 }
 </style>
