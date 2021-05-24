@@ -19,21 +19,26 @@
       <p class="sidebar-link">Freelancers</p>
     </NuxtLink>
     <div class="divider" />
-    <NuxtLink to="/signin">
+    <NuxtLink v-if="!isSignedIn" to="/signin">
       <p class="sidebar-link">Signin</p>
     </NuxtLink>
-    <NuxtLink to="/signup">
+    <NuxtLink v-if="!isSignedIn" to="/signup">
       <p class="sidebar-link">Signup</p>
     </NuxtLink>
-    <NuxtLink to="/">
+    <NuxtLink v-if="isSignedIn" to="/">
       <p class="sidebar-link">Signout</p>
     </NuxtLink>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "SidebarNavContent",
+  computed: {
+    ...mapGetters(["isSignedIn"]),
+  },
 };
 </script>
 
