@@ -2,7 +2,11 @@
   <b-dropdown position="is-bottom-left">
     <template #trigger>
       <button class="profile-btn">
-        {{ getCurrentUser.name.charAt(0).toUpperCase() }}
+        {{
+          getCurrentUser !== null
+            ? getCurrentUser.name.charAt(0).toUpperCase()
+            : ""
+        }}
       </button>
     </template>
     <NuxtLink to="/profile">
