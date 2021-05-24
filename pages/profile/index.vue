@@ -6,7 +6,10 @@
       <BackButton />
       <div class="about-user card-shadow">
         <div class="details-div1">
-          <img :src="user.profilePicture" alt="" class="avatar" />
+          <div v-if="user.profilePicture === ''" class="default-avatar">
+            {{ user.name.charAt(0).toUpperCase() }}
+          </div>
+          <img v-else :src="user.profilePicture" alt="" class="avatar" />
           <div class="details">
             <h2 class="name">{{ user.name }}</h2>
             <p class="title">{{ user.title }}</p>
@@ -99,6 +102,19 @@ export default {
 }
 .details {
   margin: 0 1rem;
+}
+.default-avatar {
+  background-color: #f2e9e6;
+  border-radius: 20rem;
+  color: #c21e39;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1rem;
+  min-height: 140px;
+  min-width: 140px;
+  max-width: 140px;
 }
 .avatar {
   border-radius: 20rem;
