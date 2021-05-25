@@ -18,18 +18,36 @@
           <ChatProfileList />
         </div>
         <div class="chat-section">
-          <div v-if="getActiveChatUser.selected" class="chat-header">
+          <div class="chat-header">
             <b-button
               @click="sidebarOpen = true"
               icon-right="menu"
               class="sidebar-btn"
             />
-            <img
-              src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Avatar"
-              class="avatar"
-            />
-            <h2 class="name">Doggo Gang</h2>
+            <div v-if="getActiveChatUser.selected" class="user-header">
+              <NuxtLink
+                v-if="getActiveChatUser.user.profilePicture === ''"
+                :to="'/freelancers/' + getActiveChatUser.user.uid"
+              >
+                <div class="default-avatar">
+                  {{ getActiveChatUser.user.name.charAt(0).toUpperCase() }}
+                </div>
+              </NuxtLink>
+              <NuxtLink
+                v-else
+                :to="'/freelancers/' + getActiveChatUser.user.uid"
+              >
+                <img
+                  :src="getActiveChatUser.user.profilePicture"
+                  alt=""
+                  class="avatar"
+                />
+              </NuxtLink>
+              <NuxtLink :to="'/freelancers/' + getActiveChatUser.user.uid">
+                <h2 class="name">{{ getActiveChatUser.user.name }}</h2>
+              </NuxtLink>
+            </div>
+            <h2 v-else class="name">Select profile</h2>
           </div>
           <div v-if="getActiveChatUser.selected" class="chat-area">
             <div class="sender-message">Heya! How you doing?</div>
@@ -74,7 +92,7 @@ import ChatProfileList from "../../components/ChatProfileList";
 import ChatSvg from "../../components/ChatSvg";
 import ChatProfile from "../../components/ChatProfile";
 import BackButton from "../../components/BackButton.vue";
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   computed: {
@@ -125,6 +143,10 @@ export default {
   align-items: center;
   padding-bottom: 0.5rem;
 }
+.user-header {
+  display: flex;
+  align-items: center;
+}
 .sender-message {
   background-color: #c21e39;
   border-radius: 0.6rem 0.6rem 0 0.6rem;
@@ -151,9 +173,24 @@ export default {
   display: none;
   margin-right: 1rem;
 }
+.default-avatar {
+  background-color: #f2e9e6;
+  border-radius: 20rem;
+  color: #c21e39;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  min-height: 40px;
+  min-width: 40px;
+  max-width: 40px;
+}
 .avatar {
   border-radius: 20rem;
   margin-right: 1rem;
+  min-width: 40px;
   max-width: 40px;
 }
 .name {
