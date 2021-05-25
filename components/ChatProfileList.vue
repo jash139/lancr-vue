@@ -4,7 +4,7 @@
     <!-- Additional feature idea - add search names field -->
     <div class="profile-list">
       <ChatProfileCard
-        v-for="connection in connections(currentUser.uid)"
+        v-for="connection in connections(currentUser.connections)"
         :key="connection.uid"
         :user="connection"
       />
