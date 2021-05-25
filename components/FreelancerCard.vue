@@ -1,7 +1,10 @@
 <template>
   <div class="freelancer-card card-shadow">
     <div class="freelancer-card-header">
-      <img :src="freelancer.profilePicture" alt="Avatar" class="avatar" />
+      <div v-if="freelancer.profilePicture === ''" class="default-avatar">
+        {{ freelancer.name.charAt(0).toUpperCase() }}
+      </div>
+      <img v-else :src="user.profilePicture" alt="" class="avatar" />
       <div class="main-details">
         <h2 class="name">{{ freelancer.name }}</h2>
         <p class="location">
@@ -32,7 +35,6 @@
         <div class="stroke" />
       </div>
       <Chip v-for="skill in skills" :key="skill" :text="skill" />
-      <!-- Add function to show only 2 and rest as +4 -->
     </div>
     <NuxtLink :to="'/freelancers/' + freelancer.uid">
       <button class="view-btn btn primary-btn btn-shadow">View Profile</button>
@@ -87,8 +89,21 @@ export default {
 .freelancer-card-header {
   display: flex;
 }
+.default-avatar {
+  background-color: #f2e9e6;
+  border-radius: 20rem;
+  color: #c21e39;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
+  min-width: 90px;
+  max-width: 90px;
+}
 .avatar {
   border-radius: 20rem;
+  min-width: 90px;
   max-width: 90px;
 }
 .name {
