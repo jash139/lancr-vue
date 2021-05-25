@@ -2,6 +2,7 @@
   <div class="root">
     <AppBar />
     <div class="content">
+      <BackButton />
       <ProjectsHeader @set-sort-type="setSortType" />
       <div class="projects">
         <ProjectCard
@@ -16,6 +17,7 @@
 
 <script>
 import AppBar from "../../components/AppBar";
+import BackButton from "../../components/BackButton";
 import ProjectsHeader from "../../components/ProjectsHeader";
 import ProjectCard from "../../components/ProjectCard";
 import { mapGetters, mapActions } from "vuex";
@@ -33,6 +35,7 @@ export default {
   },
   components: {
     AppBar,
+    BackButton,
     ProjectsHeader,
     ProjectCard,
   },

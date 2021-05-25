@@ -2,6 +2,7 @@
   <div class="root">
     <AppBar />
     <div class="content">
+      <BackButton />
       <FreelancersHeader />
       <div class="freelancers">
         <FreelancerCard
@@ -16,6 +17,7 @@
 
 <script>
 import AppBar from "../../components/AppBar";
+import BackButton from "../../components/BackButton";
 import FreelancersHeader from "../../components/FreelancersHeader";
 import FreelancerCard from "../../components/FreelancerCard";
 import { mapGetters, mapActions } from "vuex";
@@ -26,6 +28,7 @@ export default {
   },
   components: {
     AppBar,
+    BackButton,
     FreelancersHeader,
     FreelancerCard,
   },
