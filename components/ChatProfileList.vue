@@ -3,28 +3,35 @@
     <h2 class="chat-heading">Chat</h2>
     <!-- Additional feature idea - add search names field -->
     <div class="profile-list">
-      <ChatProfileCard />
-      <ChatProfileCard />
-      <ChatProfileCard />
-      <ChatProfileCard />
-      <ChatProfileCard />
-      <ChatProfileCard />
-      <ChatProfileCard />
-      <ChatProfileCard />
-      <ChatProfileCard />
-      <ChatProfileCard />
-      <ChatProfileCard />
+      <ChatProfileCard
+        v-for="connection in connections(currentUser.uid)"
+        :key="connection.uid"
+        :user="connection"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import ChatProfileCard from "./ChatProfileCard";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "ChatProfileList",
   components: {
     ChatProfileCard,
+  },
+  computed: {
+    ...mapGetters({
+      connections: "getCurrentUserConnections",
+      currentUser: "getCurrentUser",
+    }),
+  },
+  methods: {
+    ...mapActions(["fetchAllFreelancers"]),
+  },
+  created() {
+    this.fetchAllFreelancers();
   },
 };
 </script>
