@@ -50,18 +50,16 @@
             <h2 v-else class="name">Select profile</h2>
           </div>
           <div v-if="getActiveChatUser.selected" class="chat-area">
-            <div class="sender-message">Heya! How you doing?</div>
-            <div class="receiver-message">
-              I'm good. Lorem ipsum? Yeah, yeah lorem ipsum. Lo lo lo lo lo ip
-              ip ip ip lorem ipsum. Good?
+            <div
+              v-for="(message, index) in messages"
+              :key="message + index"
+              :class="[getMessageClass(message.userUID)]"
+            >
+              {{ message.text }}
             </div>
-            <div class="receiver-message">I'm good.</div>
-            <div class="sender-message">
-              Good. lorem ipsum. Lo lo lo lo lo ip ip ip ip lorem ipsum.
-            </div>
-            <div class="sender-message">Good.</div>
+            <div ref="scrollable" />
           </div>
-          <div v-else class="chat-area">
+          <div v-else class="chat-svg-area">
             <ChatSvg />
             <h2 class="select-profile">Select a profile</h2>
           </div>
@@ -76,6 +74,7 @@
               <b-button
                 icon-right="send"
                 class="send-btn"
+                @click="sendMessage"
                 :disabled="!getActiveChatUser.selected"
               />
             </p>
@@ -96,12 +95,15 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["getActiveChatUser"]),
+    ...mapGetters(["getActiveChatUser", "getCurrentUser"]),
   },
   data() {
     return {
       sidebarOpen: false,
+      db: this.$fire.firestore,
+      user: mapGetters(["getCurrentUser"]),
       message: "",
+      messages: [],
     };
   },
   components: {
@@ -109,6 +111,36 @@ export default {
     ChatSvg,
     ChatProfile,
     BackButton,
+  },
+  methods: {
+    async sendMessage() {
+      if (this.message === "") {
+        return;
+      }
+      const messageDetails = {
+        userUID: this.getCurrentUser.uid,
+        text: this.message,
+        createdAt: Date.now(),
+      };
+      await this.db.collection("messages").add(messageDetails);
+      this.message = "";
+      this.$refs["scrollable"].scrollIntoView({ behavior: "smooth" });
+    },
+    getMessageClass(uid) {
+      if (uid === this.user.uid) {
+        return "sender-message";
+      } else {
+        return "receiver-message";
+      }
+    },
+  },
+  mounted() {
+    this.db
+      .collection("messages")
+      .orderBy("createdAt")
+      .onSnapshot((querySnap) => {
+        this.messages = querySnap.docs.map((doc) => doc.data());
+      });
   },
 };
 </script>
@@ -147,7 +179,7 @@ export default {
   display: flex;
   align-items: center;
 }
-.sender-message {
+.receiver-message {
   background-color: #c21e39;
   border-radius: 0.6rem 0.6rem 0 0.6rem;
   color: #ffffff;
@@ -155,17 +187,17 @@ export default {
   font-size: 0.9rem;
   font-weight: 500;
   margin-top: 1rem;
-  max-width: 80%;
+  max-width: 70%;
   padding: 1rem;
 }
-.receiver-message {
+.sender-message {
   border: 1px solid #939498;
   border-radius: 0.6rem 0.6rem 0.6rem 0;
   color: #050303;
   font-size: 0.9rem;
   font-weight: 500;
   margin-top: 1rem;
-  max-width: 80%;
+  max-width: 70%;
   padding: 1rem;
 }
 .sidebar-btn {
@@ -200,10 +232,12 @@ export default {
 }
 .chat-area {
   margin: auto;
-}
-.chat-area {
+  width: 100%;
   max-height: 470px;
   overflow-y: auto;
+}
+.chat-svg-area {
+  margin: auto;
 }
 .chat-area::-webkit-scrollbar {
   width: 1.5rem;

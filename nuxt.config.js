@@ -73,7 +73,7 @@ export default {
         },
         ssr: false,
       },
-      // messaging: true
+      firestore: true,
     },
   },
 
