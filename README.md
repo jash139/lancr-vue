@@ -4,7 +4,7 @@
 * Website: [https://lancr.netlify.app]
 * Backend: [https://github.com/jash139/lancr-vue-backend]
 
-## Installation and Setup
+## Setup
 
 ```bash
 # install dependencies
