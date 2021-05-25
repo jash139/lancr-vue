@@ -1,4 +1,4 @@
-# ev2-vue
+# Lancr-vue
 
 ## Build Setup
 
