@@ -1,22 +1,37 @@
 <template>
-  <div class="chat-profile">
+  <div v-if="activeUser.selected" class="chat-profile">
     <div class="profile-details">
-      <img
-        src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-        alt="Avatar"
-        class="avatar"
-      />
-      <h2 class="name">Doggo Gang</h2>
-      <p class="location">New York, NY</p>
-      <div class="role">Underworld don</div>
+      <div v-if="activeUser.user.profilePicture === ''" class="default-avatar">
+        {{ activeUser.user.name.charAt(0).toUpperCase() }}
+      </div>
+      <img v-else :src="activeUser.user.profilePicture" alt="" class="avatar" />
+      <h2 class="name">{{ activeUser.user.name }}</h2>
+      <p class="location">
+        {{ activeUser.user.contact.location.city }},
+        {{ activeUser.user.contact.location.state }},
+        {{ activeUser.user.contact.location.country }},
+      </p>
+      <div class="title">{{ activeUser.title }}</div>
     </div>
-    <button class="view-btn btn primary-btn btn-shadow">View Profile</button>
+    <NuxtLink :to="'/freelancers/' + activeUser.user.uid">
+      <button class="view-btn btn primary-btn btn-shadow">View Profile</button>
+    </NuxtLink>
+  </div>
+  <div v-else class="chat-profile">
+    <h1 class="select-profile">Select a profile</h1>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "ChatProfile",
+  computed: {
+    ...mapGetters({
+      activeUser: "getActiveChatUser",
+    }),
+  },
 };
 </script>
 
@@ -33,9 +48,23 @@ export default {
   flex-direction: column;
   align-items: center;
 }
+.default-avatar {
+  background-color: #f2e9e6;
+  border-radius: 20rem;
+  color: #c21e39;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  min-height: 140px;
+  min-width: 140px;
+  max-width: 140px;
+}
 .avatar {
   border-radius: 20rem;
   margin-bottom: 1rem;
+  min-width: 140px;
   max-width: 140px;
 }
 .name {
@@ -49,7 +78,7 @@ export default {
   font-weight: 700;
   padding-bottom: 0.5rem;
 }
-.role {
+.title {
   background-color: #c21e39;
   border-radius: 5rem;
   color: #ffffff;
@@ -58,8 +87,12 @@ export default {
   font-weight: 600;
   padding: 0.3rem 1.2rem;
 }
-.view-btn {
-  width: 50%;
+.select-profile {
+  color: #c21e39;
+  font-size: 1.6rem;
+  font-weight: 700;
+  opacity: 0.5;
+  text-align: center;
 }
 @media only screen and (max-width: 1000px) {
   .chat-profile {
