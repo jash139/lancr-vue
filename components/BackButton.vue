@@ -36,4 +36,7 @@ export default {
   font-weight: 700;
   margin: 1rem 0 0;
 }
+.back-btn:hover {
+  color: #050303;
+}
 </style>
