@@ -31,7 +31,7 @@
         <h4 class="heading">Skills</h4>
         <div class="stroke" />
       </div>
-      <Chip v-for="skill in freelancer.skills" :key="skill" :text="skill" />
+      <Chip v-for="skill in skills" :key="skill" :text="skill" />
       <!-- Add function to show only 2 and rest as +4 -->
     </div>
     <NuxtLink :to="'/freelancers/' + freelancer.uid">
@@ -51,8 +51,26 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      skills: [],
+    };
+  },
   components: {
     Chip,
+  },
+  methods: {
+    setSkills(allSkills) {
+      if (allSkills.length > 2) {
+        this.skills = allSkills.slice(0, 2);
+        this.skills.push("+" + (allSkills.length - 2).toString());
+      } else {
+        this.skills = allSkills;
+      }
+    },
+  },
+  created() {
+    this.setSkills(this.freelancer.skills);
   },
 };
 </script>
