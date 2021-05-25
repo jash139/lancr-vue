@@ -198,7 +198,7 @@ export default {
 }
 .section-content {
   display: grid;
-  grid-template-columns: 15% auto;
+  grid-template-columns: auto auto;
 }
 .grid-item {
   margin: 0.3rem 0;
@@ -238,5 +238,16 @@ export default {
   border-radius: 1rem;
   border: 9px solid transparent;
   background-clip: content-box;
+}
+@media only screen and (max-width: 960px) {
+  .projects-card {
+    padding: 1rem;
+  }
+  .header {
+    flex-direction: column;
+  }
+  .actions {
+    margin: 1rem 0;
+  }
 }
 </style>
