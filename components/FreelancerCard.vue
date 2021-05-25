@@ -4,7 +4,7 @@
       <div v-if="freelancer.profilePicture === ''" class="default-avatar">
         {{ freelancer.name.charAt(0).toUpperCase() }}
       </div>
-      <img v-else :src="user.profilePicture" alt="" class="avatar" />
+      <img v-else :src="freelancer.profilePicture" alt="" class="avatar" />
       <div class="main-details">
         <h2 class="name">{{ freelancer.name }}</h2>
         <p class="location">
