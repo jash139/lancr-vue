@@ -1,21 +1,12 @@
 <template>
-  <div class="chat-profile-card">
+  <div class="chat-profile-card" @click="handleClick">
     <div class="body">
-      <div
-        :class="
-          getActiveChatUser.selected
-            ? getActiveChatUser.user.uid === uid
-              ? 'indicator indicator-active'
-              : 'indicator'
-            : 'indicator'
-        "
-      />
-      <img
-        src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-        alt="Avatar"
-        class="avatar"
-      />
-      <h2 class="name">Doggo Gang</h2>
+      <div :class="[isIndicatorActive(getActiveChatUser.selected)]" />
+      <div v-if="user.profilePicture === ''" class="default-avatar">
+        {{ user.name.charAt(0).toUpperCase() }}
+      </div>
+      <img v-else :src="user.profilePicture" alt="" class="avatar" />
+      <h2 class="name">{{ user.name }}</h2>
     </div>
     <div class="divider" />
   </div>
@@ -27,8 +18,9 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "ChatProfileCard",
   props: {
-    uid: {
-      type: String,
+    user: {
+      type: Object,
+      required: true,
     },
   },
   computed: {
@@ -36,6 +28,16 @@ export default {
   },
   methods: {
     ...mapActions(["fetchActiveChatUser"]),
+    isIndicatorActive(isSelected) {
+      if (isSelected) {
+        return "indicator indicator-active";
+      } else {
+        return "indicator";
+      }
+    },
+    handleClick() {
+      this.fetchActiveChatUser(this.user.uid);
+    },
   },
 };
 </script>
@@ -47,7 +49,7 @@ export default {
 .indicator {
   background-color: transparent;
   border-radius: 2rem;
-  max-height: 50px;
+  height: 50px;
   width: 2px;
 }
 .chat-profile-card:hover .indicator {
@@ -58,12 +60,29 @@ export default {
 }
 .body {
   display: flex;
+  align-items: center;
   padding: 0.8rem 0;
+}
+.default-avatar {
+  background-color: #f2e9e6;
+  border-radius: 20rem;
+  color: #c21e39;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+  min-height: 50px;
+  min-width: 50px;
+  max-width: 50px;
 }
 .avatar {
   border-radius: 20rem;
   margin-left: 0.5rem;
   margin-right: 1rem;
+  min-width: 50px;
   max-width: 50px;
 }
 .name {
