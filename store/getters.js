@@ -10,6 +10,16 @@ export default {
     getCurrentUserProjects: state => {
         return state.currentUserProjects;
     },
+    getCurrentUserConnections: state => connectionIds => {
+        const allFreelancers = state.allFreelancers;
+        let connections = [];
+        allFreelancers.forEach(freelancer => {
+            if (connectionIds.includes(freelancer.uid)) {
+                connections.push(freelancer);
+            }
+        });
+        return connections;
+    },
     getUser: state => {
         return state.user;
     },
