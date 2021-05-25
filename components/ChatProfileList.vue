@@ -45,6 +45,7 @@ export default {
   border-right: 2px solid #f2e9e6;
 }
 .profile-list {
+  min-height: 400px;
   max-height: 470px;
   overflow-y: auto;
 }
