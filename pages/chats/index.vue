@@ -127,7 +127,7 @@ export default {
       this.$refs["scrollable"].scrollIntoView({ behavior: "smooth" });
     },
     getMessageClass(uid) {
-      if (uid === this.user.uid) {
+      if (uid === this.getCurrentUser.uid) {
         return "sender-message";
       } else {
         return "receiver-message";
@@ -179,7 +179,7 @@ export default {
   display: flex;
   align-items: center;
 }
-.receiver-message {
+.sender-message {
   background-color: #c21e39;
   border-radius: 0.6rem 0.6rem 0 0.6rem;
   color: #ffffff;
@@ -190,7 +190,7 @@ export default {
   max-width: 70%;
   padding: 1rem;
 }
-.sender-message {
+.receiver-message {
   border: 1px solid #939498;
   border-radius: 0.6rem 0.6rem 0.6rem 0;
   color: #050303;
