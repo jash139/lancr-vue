@@ -1,7 +1,10 @@
 <template>
   <div class="project-card card-shadow">
     <div class="project-card-header">
-      <img :src="ownerDetails.profilePicture" alt="Avatar" class="avatar" />
+      <div v-if="ownerDetails.profilePicture === ''" class="default-avatar">
+        {{ ownerDetails.name.charAt(0).toUpperCase() }}
+      </div>
+      <img v-else :src="ownerDetails.profilePicture" alt="" class="avatar" />
       <p class="sub-heading">A few hours ago</p>
     </div>
     <div class="divider" />
@@ -62,8 +65,21 @@ export default {
   display: flex;
   justify-content: space-between;
 }
+.default-avatar {
+  background-color: #f2e9e6;
+  border-radius: 20rem;
+  color: #c21e39;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
+  min-width: 90px;
+  max-width: 90px;
+}
 .avatar {
   border-radius: 20rem;
+  min-width: 90px;
   max-width: 90px;
 }
 .sub-heading {
