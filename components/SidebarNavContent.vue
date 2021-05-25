@@ -25,19 +25,20 @@
     <NuxtLink v-if="!isSignedIn" to="/signup">
       <p class="sidebar-link">Signup</p>
     </NuxtLink>
-    <NuxtLink v-if="isSignedIn" to="/">
-      <p class="sidebar-link">Signout</p>
-    </NuxtLink>
+    <p v-if="isSignedIn" class="sidebar-link" @click="signOut">Signout</p>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "SidebarNavContent",
   computed: {
     ...mapGetters(["isSignedIn"]),
+  },
+  methods: {
+    ...mapActions(["signOut"]),
   },
 };
 </script>
