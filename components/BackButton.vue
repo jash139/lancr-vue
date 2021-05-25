@@ -1,5 +1,5 @@
 <template>
-  <p class="back-btn" @click="goBack(link)">
+  <p class="back-btn" @click="goBack">
     <svg
       width="12"
       height="12"
@@ -19,15 +19,9 @@
 <script>
 export default {
   name: "BackButton",
-  props: {
-    link: {
-      type: String,
-      required: true,
-    },
-  },
   methods: {
-    goBack(link) {
-      this.$router.push(link);
+    goBack() {
+      this.$router.back();
     },
   },
 };
