@@ -53,7 +53,7 @@
             <div
               v-for="(message, index) in messages"
               :key="message + index"
-              :class="[getMessageClass(message.userUID)]"
+              :class="[getMessageClass(message)]"
             >
               {{ message.text }}
             </div>
@@ -118,7 +118,8 @@ export default {
         return;
       }
       const messageDetails = {
-        userUID: this.getCurrentUser.uid,
+        senderUID: this.getCurrentUser.uid,
+        receiverUID: this.getActiveChatUser.user.uid,
         text: this.message,
         createdAt: Date.now(),
       };
@@ -126,11 +127,22 @@ export default {
       this.message = "";
       this.$refs["scrollable"].scrollIntoView({ behavior: "smooth" });
     },
-    getMessageClass(uid) {
-      if (uid === this.getCurrentUser.uid) {
+    getMessageClass(message) {
+      const senderUID = message.senderUID;
+      const receiverUID = message.receiverUID;
+
+      if (
+        senderUID === this.getCurrentUser.uid &&
+        receiverUID === this.getActiveChatUser.user.uid
+      ) {
         return "sender-message";
-      } else {
+      } else if (
+        senderUID === this.getActiveChatUser.user.uid &&
+        receiverUID === this.getCurrentUser.uid
+      ) {
         return "receiver-message";
+      } else {
+        return "hide-message";
       }
     },
   },
@@ -199,6 +211,9 @@ export default {
   margin-top: 1rem;
   max-width: 70%;
   padding: 1rem;
+}
+.hide-message {
+  display: none;
 }
 .sidebar-btn {
   border-radius: 5rem;
