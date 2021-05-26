@@ -1,7 +1,7 @@
 <template>
   <div class="chat-profile-card" @click="handleClick">
     <div class="body">
-      <div :class="[isIndicatorActive(getActiveChatUser.selected)]" />
+      <div :class="[isIndicatorActive(getActiveChatUser.user.uid)]" />
       <div v-if="user.profilePicture === ''" class="default-avatar">
         {{ user.name.charAt(0).toUpperCase() }}
       </div>
@@ -28,8 +28,8 @@ export default {
   },
   methods: {
     ...mapActions(["fetchActiveChatUser"]),
-    isIndicatorActive(isSelected) {
-      if (isSelected) {
+    isIndicatorActive(uid) {
+      if (uid === this.user.uid) {
         return "indicator indicator-active";
       } else {
         return "indicator";
