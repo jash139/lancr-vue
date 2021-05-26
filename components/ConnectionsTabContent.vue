@@ -1,154 +1,34 @@
 <template>
   <div class="tab-card">
     <div class="tab-content">
-      <div>
+      <div
+        v-for="connection in connections(currentUser.connections)"
+        :key="connection.uid"
+        :user="connection"
+      >
         <div class="connection-card">
-          <div class="body">
-            <img
-              src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Avatar"
-              class="avatar"
-            />
-            <div class="details">
-              <h2 class="name">Doggo Gang</h2>
-              <div class="role">Underworld don</div>
+          <NuxtLink :to="'/freelancers/' + connection.uid">
+            <div class="body">
+              <div
+                v-if="connection.profilePicture === ''"
+                class="default-avatar"
+              >
+                {{ connection.name.charAt(0).toUpperCase() }}
+              </div>
+              <img
+                v-else
+                :src="connection.profilePicture"
+                :alt="connection.name.charAt(0).toUpperCase()"
+                class="avatar"
+              />
+              <div class="details">
+                <h2 class="name">{{ connection.name }}</h2>
+                <div class="title">{{ connection.title }}</div>
+              </div>
             </div>
-          </div>
-          <v-btn icon class="message-btn">
-            <b-icon icon="send"> </b-icon>
-          </v-btn>
-        </div>
-        <div class="divider" />
-      </div>
-      <div>
-        <div class="connection-card">
-          <div class="body">
-            <img
-              src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Avatar"
-              class="avatar"
-            />
-            <div class="details">
-              <h2 class="name">Doggo Gang</h2>
-              <div class="role">Underworld don</div>
-            </div>
-          </div>
-          <v-btn icon class="message-btn">
-            <b-icon icon="send"> </b-icon>
-          </v-btn>
-        </div>
-        <div class="divider" />
-      </div>
-      <div>
-        <div class="connection-card">
-          <div class="body">
-            <img
-              src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Avatar"
-              class="avatar"
-            />
-            <div class="details">
-              <h2 class="name">Doggo Gang</h2>
-              <div class="role">Underworld don</div>
-            </div>
-          </div>
-          <v-btn icon class="message-btn">
-            <b-icon icon="send"> </b-icon>
-          </v-btn>
-        </div>
-        <div class="divider" />
-      </div>
-      <div>
-        <div class="connection-card">
-          <div class="body">
-            <img
-              src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Avatar"
-              class="avatar"
-            />
-            <div class="details">
-              <h2 class="name">Doggo Gang</h2>
-              <div class="role">Underworld don</div>
-            </div>
-          </div>
-          <v-btn icon class="message-btn">
-            <b-icon icon="send"> </b-icon>
-          </v-btn>
-        </div>
-        <div class="divider" />
-      </div>
-      <div>
-        <div class="connection-card">
-          <div class="body">
-            <img
-              src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Avatar"
-              class="avatar"
-            />
-            <div class="details">
-              <h2 class="name">Doggo Gang</h2>
-              <div class="role">Underworld don</div>
-            </div>
-          </div>
-          <v-btn icon class="message-btn">
-            <b-icon icon="send"> </b-icon>
-          </v-btn>
-        </div>
-        <div class="divider" />
-      </div>
-      <div>
-        <div class="connection-card">
-          <div class="body">
-            <img
-              src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Avatar"
-              class="avatar"
-            />
-            <div class="details">
-              <h2 class="name">Doggo Gang</h2>
-              <div class="role">Underworld don</div>
-            </div>
-          </div>
-          <v-btn icon class="message-btn">
-            <b-icon icon="send"> </b-icon>
-          </v-btn>
-        </div>
-        <div class="divider" />
-      </div>
-      <div>
-        <div class="connection-card">
-          <div class="body">
-            <img
-              src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Avatar"
-              class="avatar"
-            />
-            <div class="details">
-              <h2 class="name">Doggo Gang</h2>
-              <div class="role">Underworld don</div>
-            </div>
-          </div>
-          <v-btn icon class="message-btn">
-            <b-icon icon="send"> </b-icon>
-          </v-btn>
-        </div>
-        <div class="divider" />
-      </div>
-      <div>
-        <div class="connection-card">
-          <div class="body">
-            <img
-              src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Avatar"
-              class="avatar"
-            />
-            <div class="details">
-              <h2 class="name">Doggo Gang</h2>
-              <div class="role">Underworld don</div>
-            </div>
-          </div>
-          <v-btn icon class="message-btn">
-            <b-icon icon="send"> </b-icon>
+          </NuxtLink>
+          <v-btn icon class="message-btn" @click="openChat(connection)">
+            <b-icon icon="send"></b-icon>
           </v-btn>
         </div>
         <div class="divider" />
@@ -158,8 +38,26 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   name: "ConnectionsTabContent",
+  computed: {
+    ...mapGetters({
+      connections: "getCurrentUserConnections",
+      currentUser: "getCurrentUser",
+    }),
+  },
+  methods: {
+    ...mapActions(["fetchAllFreelancers", "fetchActiveChatUser"]),
+    openChat(connection) {
+      this.fetchActiveChatUser(connection.uid);
+      this.$router.push("/chats");
+    },
+  },
+  created() {
+    this.fetchAllFreelancers();
+  },
 };
 </script>
 
@@ -198,16 +96,29 @@ export default {
   justify-content: space-between;
   margin-left: 1rem;
 }
+.default-avatar {
+  background-color: #f2e9e6;
+  border-radius: 20rem;
+  color: #c21e39;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+}
 .avatar {
   border-radius: 20rem;
-  max-width: 50px;
+  height: 50px;
+  width: 50px;
 }
 .name {
   color: #5d5755;
   font-size: 1rem;
   font-weight: 700;
 }
-.role {
+.title {
   background-color: #c21e39;
   border-radius: 5rem;
   color: #ffffff;
