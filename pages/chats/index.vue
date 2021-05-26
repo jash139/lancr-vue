@@ -37,11 +37,6 @@
               :key="message + index"
               :class="[getMessageClass(message)]"
             >
-              <img
-                class="avatar"
-                src="https://randomuser.me/api/portraits/women/17.jpg"
-                alt=""
-              />
               <p>{{ message.text }}</p>
             </li>
           </ul>
@@ -238,14 +233,14 @@ export default {
 }
 
 .message {
-  border-radius: 50px;
   position: relative;
   margin-bottom: 1.5rem;
   max-width: 80%;
 }
 
 .message.receiver {
-  padding: 15px 20px 15px 60px;
+  border-radius: 0.5rem 0.5rem 0.5rem 0;
+  padding: 0.8rem;
   background-color: #fff;
   border: 2px solid #cccccc;
   text-align: left;
@@ -253,7 +248,8 @@ export default {
 
 .message.sender {
   align-self: flex-end;
-  padding: 15px 60px 15px 20px;
+  border-radius: 0.5rem 0.5rem 0 0.5rem;
+  padding: 0.8rem;
   background-color: #c21e39;
   color: #ffffff;
 }
