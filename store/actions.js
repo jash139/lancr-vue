@@ -58,7 +58,7 @@ export default {
                 .then(res => {
                     const user = {
                         uid: res.user.uid,
-                        name: res.user.email.substr(0, res.user.email.indexOf('@')),
+                        name: res.user.email.substr(0, res.user.email.indexOf('@')).toUpperCase(),
                         // add total ratings given to calculate new rating                
                     };
                     this.$axios.post("/users/", user)
