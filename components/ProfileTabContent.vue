@@ -26,7 +26,7 @@
       <div class="heading-div">
         <h4 class="heading">Skills</h4>
         <div class="stroke" />
-        <v-btn icon class="edit-btn">
+        <v-btn icon class="edit-btn" @click="isSkillsModalActive = true">
           <v-icon>mdi-plus</v-icon>
         </v-btn>
       </div>
@@ -141,6 +141,31 @@
       </div>
     </b-modal>
 
+    <b-modal v-model="isSkillsModalActive" scroll="keep">
+      <div class="edit-modal">
+        <div class="modal-header">
+          <h2 class="edit-details">Edit Skills</h2>
+        </div>
+        <v-select
+          v-model="skills"
+          :items="allSkills"
+          attach
+          chips
+          label="Chips"
+          multiple
+          color="#c21e39"
+        ></v-select>
+        <div class="card-actions">
+          <button class="btn outlined-btn action-btns" @click="handleCancel">
+            Cancel
+          </button>
+          <button class="btn primary-btn action-btns" @click="saveSkills">
+            Save
+          </button>
+        </div>
+      </div>
+    </b-modal>
+
     <b-modal v-model="isAboutModalActive" scroll="keep">
       <div class="edit-modal">
         <div class="modal-header">
@@ -162,6 +187,7 @@
 
 <script>
 import Chip from "./Chip";
+import skills from "../assets/skills";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -173,7 +199,9 @@ export default {
       activePicker: null,
       isAboutModalActive: false,
       isExperienceModalActive: false,
+      isSkillsModalActive: false,
       about: "",
+      skills: [],
       experience: {
         organization: "",
         role: "",
@@ -184,6 +212,7 @@ export default {
   },
   computed: {
     ...mapGetters(["getCurrentUser"]),
+    allSkills: () => skills,
   },
   components: {
     Chip,
@@ -199,6 +228,7 @@ export default {
     handleCancel() {
       this.isAboutModalActive = false;
       this.isExperienceModalActive = false;
+      this.isSkillsModalActive = false;
     },
     saveExperience() {
       const patchObj = {
@@ -213,6 +243,13 @@ export default {
       };
       this.handleCancel();
     },
+    saveSkills() {
+      const patchObj = {
+        skills: this.skills,
+      };
+      this.patchCurrentUser({ uid: this.getCurrentUser.uid, patchObj });
+      this.handleCancel();
+    },
     saveAbout() {
       const patchObj = {
         about: this.about,
@@ -223,6 +260,7 @@ export default {
   },
   created() {
     this.about = this.getCurrentUser.about;
+    this.skills = this.getCurrentUser.skills;
   },
 };
 </script>
@@ -319,6 +357,7 @@ export default {
   background-color: #ffffff;
   border-radius: 3px;
   margin: auto;
+  max-height: 600px;
   width: 600px;
   max-width: 95%;
   padding: 2rem;
