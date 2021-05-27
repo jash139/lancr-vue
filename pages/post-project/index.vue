@@ -7,12 +7,19 @@
         <div class="header">
           <h2 class="title">By Robert</h2>
           <div class="actions">
-            <button class="apply-btn btn primary-btn btn-shadow">Post</button>
-            <button class="client-btn btn outlined-btn">Cancel</button>
+            <button
+              class="apply-btn btn primary-btn btn-shadow"
+              @click="postProject"
+            >
+              Post
+            </button>
+            <button class="client-btn btn outlined-btn" @click="cancelPost">
+              Cancel
+            </button>
           </div>
         </div>
         <div class="card-section">
-          <h3>Project Title</h3>
+          <v-text-field color="#c21e39" v-model="title" label="Title" />
         </div>
         <div class="card-section">
           <div class="section-content">
@@ -59,26 +66,24 @@
         </div>
         <div class="card-section">
           <div class="heading-div">
-            <h4 class="heading">Description</h4>
-            <div class="stroke" />
-          </div>
-          <p class="detail-info">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
-          </p>
-        </div>
-        <div class="card-section">
-          <div class="heading-div">
             <h4 class="heading">Requirements</h4>
             <div class="stroke" />
           </div>
-          <Chip text="requ" />
-          <Chip text="irem" />
-          <Chip text="ents" />
+          <v-select
+            v-model="requirements"
+            :items="allSkills"
+            attach
+            chips
+            multiple
+            color="#c21e39"
+          ></v-select>
+        </div>
+        <div class="card-section">
+          <div class="heading-div">
+            <h4 class="heading">Description</h4>
+            <div class="stroke" />
+          </div>
+          <v-textarea color="#c21e39" v-model="description" />
         </div>
       </div>
     </div>
@@ -88,11 +93,48 @@
 <script>
 import AppBar from "../../components/AppBar";
 import BackButton from "../../components/BackButton";
+import skills from "../../assets/skills";
 
 export default {
+  data() {
+    return {
+      uid: "",
+      title: "",
+      description: "",
+      status: "",
+      requirements: [],
+      offeredAmount: {
+        currencyType: "",
+        start: "",
+        end: "",
+      },
+      timePeriod: {
+        start: "",
+        end: "",
+      },
+      location: {
+        country: "",
+        state: "",
+        city: "",
+        applicants: [],
+      },
+    };
+  },
   components: {
     AppBar,
     BackButton,
+  },
+  computed: {
+    // ...mapGetters(["getCurrentUser"]),
+    allSkills: () => skills,
+  },
+  methods: {
+    postProject() {
+      const postObj = {};
+    },
+    cancelPost() {
+      this.$router.push("/profile");
+    },
   },
 };
 </script>
