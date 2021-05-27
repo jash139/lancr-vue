@@ -12,6 +12,11 @@
           <h2 class="edit-details">Edit Details</h2>
         </div>
         <v-text-field color="#c21e39" v-model="name" label="Name" />
+        <v-text-field
+          color="#c21e39"
+          v-model="profilePicture"
+          label="Profile Picture"
+        />
         <v-text-field color="#c21e39" v-model="title" label="Title" />
         <v-text-field color="#c21e39" v-model="phone" label="Phone" />
         <v-text-field color="#c21e39" v-model="email" label="email" />
@@ -116,6 +121,7 @@ export default {
       isModalActive: false,
       activePicker: null,
       name: "",
+      profilePicture: "",
       title: "",
       phone: "",
       email: "",
@@ -157,6 +163,7 @@ export default {
       const patchObj = {
         name: this.name,
         title: this.title,
+        profilePicture: this.profilePicture,
         contact: {
           phone: this.phone,
           location: {
@@ -168,12 +175,13 @@ export default {
         },
         dateOfBirth: this.dateOfBirth,
       };
-      console.log(patchObj);
-      // this.patchCurrentUser({uid: this.getCurrentUser.uid, patchObj});
+      this.patchCurrentUser({ uid: this.getCurrentUser.uid, patchObj });
+      this.handleCancel();
     },
   },
   created() {
     this.name = this.getCurrentUser.name;
+    this.profilePicture = this.getCurrentUser.profilePicture;
     this.title = this.getCurrentUser.title;
     this.phone = this.getCurrentUser.contact.phone;
     this.email = this.getCurrentUser.contact.email;
