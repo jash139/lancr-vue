@@ -10,7 +10,7 @@
       </div>
       <div class="exp">
         <div
-          v-for="experience in user.experience"
+          v-for="experience in getCurrentUser.experience"
           :key="experience.start"
           class="experience"
         >
@@ -30,17 +30,17 @@
           <v-icon>mdi-plus</v-icon>
         </v-btn>
       </div>
-      <Chip v-for="skill in user.skills" :key="skill" :text="skill" />
+      <Chip v-for="skill in getCurrentUser.skills" :key="skill" :text="skill" />
     </div>
     <div class="card-section">
       <div class="heading-div">
         <h4 class="heading">About</h4>
         <div class="stroke" />
-        <v-btn icon class="edit-btn">
+        <v-btn icon class="edit-btn" @click="isAboutModalActive = true">
           <v-icon>mdi-pencil</v-icon>
         </v-btn>
       </div>
-      <p class="details-info">{{ user.about }}</p>
+      <p class="details-info">{{ getCurrentUser.about }}</p>
     </div>
     <div class="card-section">
       <div class="heading-div">
@@ -50,27 +50,67 @@
           <v-icon>mdi-plus</v-icon>
         </v-btn>
       </div>
-      <div v-for="language in user.languages" :key="language" class="language">
+      <div
+        v-for="language in getCurrentUser.languages"
+        :key="language"
+        class="language"
+      >
         {{ language }}
         <div class="divider" />
       </div>
     </div>
+    <b-modal v-model="isAboutModalActive" scroll="keep">
+      <div class="edit-modal">
+        <div class="modal-header">
+          <h2 class="edit-details">Edit About</h2>
+        </div>
+        <v-textarea color="#c21e39" v-model="about" label="About" />
+        <div class="card-actions">
+          <button class="btn outlined-btn action-btns" @click="handleCancel">
+            Cancel
+          </button>
+          <button class="btn primary-btn action-btns" @click="saveAbout">
+            Save
+          </button>
+        </div>
+      </div>
+    </b-modal>
   </div>
 </template>
 
 <script>
 import Chip from "./Chip";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "ProfileTabContent",
+  data() {
+    return {
+      isAboutModalActive: false,
+      about: "",
+    };
+  },
   computed: {
-    ...mapGetters({
-      user: "getCurrentUser",
-    }),
+    ...mapGetters(["getCurrentUser"]),
   },
   components: {
     Chip,
+  },
+  methods: {
+    ...mapActions(["patchCurrentUser"]),
+    handleCancel() {
+      this.isAboutModalActive = false;
+    },
+    saveAbout() {
+      const patchObj = {
+        about: this.about,
+      };
+      this.patchCurrentUser({ uid: this.getCurrentUser.uid, patchObj });
+      this.handleCancel();
+    },
+  },
+  created() {
+    this.about = this.getCurrentUser.about;
   },
 };
 </script>
@@ -162,5 +202,26 @@ export default {
   height: 1.5rem;
   margin: 0 1.5rem;
   width: 0.5px;
+}
+.edit-modal {
+  background-color: #ffffff;
+  border-radius: 3px;
+  margin: auto;
+  width: 600px;
+  max-width: 95%;
+  padding: 2rem;
+}
+.edit-details {
+  color: #c21e39;
+  padding-bottom: 1rem;
+}
+.action-btns {
+  margin: 0.5rem;
+  width: 7rem;
+}
+@media only screen and (max-width: 960px) {
+  .edit-modal {
+    padding: 1rem;
+  }
 }
 </style>
