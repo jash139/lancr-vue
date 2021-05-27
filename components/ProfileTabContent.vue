@@ -4,7 +4,7 @@
       <div class="heading-div">
         <h4 class="heading">Experience</h4>
         <div class="stroke" />
-        <v-btn icon class="edit-btn">
+        <v-btn icon class="edit-btn" @click="isExperienceModalActive = true">
           <v-icon>mdi-plus</v-icon>
         </v-btn>
       </div>
@@ -59,6 +59,88 @@
         <div class="divider" />
       </div>
     </div>
+
+    <b-modal v-model="isExperienceModalActive" scroll="keep">
+      <div class="edit-modal">
+        <div class="modal-header">
+          <h2 class="edit-details">Add Experience</h2>
+        </div>
+        <v-text-field
+          color="#c21e39"
+          v-model="experience.organization"
+          label="Organization"
+        />
+        <v-text-field color="#c21e39" v-model="experience.role" label="Role" />
+        <div data-app>
+          <v-menu
+            ref="menu"
+            v-model="menuStart"
+            :close-on-content-click="false"
+            transition="scale-transition"
+            offset-y
+            min-width="auto"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-text-field
+                v-model="experience.start"
+                label="Start Date"
+                prepend-icon="mdi-calendar"
+                readonly
+                v-bind="attrs"
+                v-on="on"
+                color="#c21e39"
+              ></v-text-field>
+            </template>
+            <v-date-picker
+              color="#c21e39"
+              v-model="experience.start"
+              :active-picker.sync="activePicker"
+              :max="new Date().toISOString().substr(0, 10)"
+              min="1950-01-01"
+              @change="saveStartDate"
+            ></v-date-picker>
+          </v-menu>
+          <v-menu
+            ref="menu"
+            v-model="menuEnd"
+            :close-on-content-click="false"
+            transition="scale-transition"
+            offset-y
+            min-width="auto"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-text-field
+                v-model="experience.end"
+                label="End Date"
+                prepend-icon="mdi-calendar"
+                readonly
+                v-bind="attrs"
+                v-on="on"
+                color="#c21e39"
+              ></v-text-field>
+            </template>
+            <v-date-picker
+              color="#c21e39"
+              v-model="experience.end"
+              :active-picker.sync="activePicker"
+              :max="new Date().toISOString().substr(0, 10)"
+              min="1950-01-01"
+              @change="saveEndDate"
+            ></v-date-picker>
+          </v-menu>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn outlined-btn action-btns" @click="handleCancel">
+            Cancel
+          </button>
+          <button class="btn primary-btn action-btns" @click="saveExperience">
+            Save
+          </button>
+        </div>
+      </div>
+    </b-modal>
+
     <b-modal v-model="isAboutModalActive" scroll="keep">
       <div class="edit-modal">
         <div class="modal-header">
@@ -86,8 +168,18 @@ export default {
   name: "ProfileTabContent",
   data() {
     return {
+      menuStart: false,
+      menuEnd: false,
+      activePicker: null,
       isAboutModalActive: false,
+      isExperienceModalActive: false,
       about: "",
+      experience: {
+        organization: "",
+        role: "",
+        start: "",
+        end: "",
+      },
     };
   },
   computed: {
@@ -98,8 +190,28 @@ export default {
   },
   methods: {
     ...mapActions(["patchCurrentUser"]),
+    saveStartDate(date) {
+      this.$refs.menu.save(date);
+    },
+    saveEndDate(date) {
+      this.$refs.menu.save(date);
+    },
     handleCancel() {
       this.isAboutModalActive = false;
+      this.isExperienceModalActive = false;
+    },
+    saveExperience() {
+      const patchObj = {
+        experience: [...this.getCurrentUser.experience, this.experience],
+      };
+      this.patchCurrentUser({ uid: this.getCurrentUser.uid, patchObj });
+      this.experience = {
+        organization: "",
+        role: "",
+        start: "",
+        end: "",
+      };
+      this.handleCancel();
     },
     saveAbout() {
       const patchObj = {
