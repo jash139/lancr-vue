@@ -63,9 +63,9 @@ export default {
   },
   methods: {
     setSkills(allSkills) {
-      if (allSkills.length > 2) {
-        this.skills = allSkills.slice(0, 2);
-        this.skills.push("+" + (allSkills.length - 2).toString());
+      if (allSkills.length > 1) {
+        this.skills = allSkills.slice(0, 1);
+        this.skills.push("+" + (allSkills.length - 1).toString());
       } else {
         this.skills = allSkills;
       }
