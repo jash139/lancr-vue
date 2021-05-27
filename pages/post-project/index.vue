@@ -24,10 +24,28 @@
         <div class="card-section">
           <div class="section-content">
             <div class="grid-item">
-              <p class="detail-heading">Status</p>
+              <p class="heading">Status</p>
             </div>
             <div class="grid-item">
-              <p class="detail-info">Active</p>
+              <b-dropdown
+                :scrollable="isScrollable"
+                :max-height="maxHeight"
+                v-model="status"
+              >
+                <template #trigger>
+                  <b-button
+                    class="sortby-dropdown-btn btn"
+                    :label="status"
+                    icon-right="menu-down"
+                  />
+                </template>
+                <b-dropdown-item @click="setStatus('active')">
+                  <p class="dropdown-item">Active</p>
+                </b-dropdown-item>
+                <b-dropdown-item @click="setStatus('closed')">
+                  <p class="dropdown-item">Closed</p>
+                </b-dropdown-item>
+              </b-dropdown>
             </div>
           </div>
         </div>
@@ -98,10 +116,12 @@ import skills from "../../assets/skills";
 export default {
   data() {
     return {
+      isScrollable: true,
+      maxHeight: 300,
       uid: "",
       title: "",
       description: "",
-      status: "",
+      status: "Active",
       requirements: [],
       offeredAmount: {
         currencyType: "",
@@ -129,6 +149,9 @@ export default {
     allSkills: () => skills,
   },
   methods: {
+    setStatus(option) {
+      this.status = option;
+    },
     postProject() {
       const postObj = {};
     },
@@ -221,6 +244,29 @@ export default {
   border-radius: 1rem;
   border: 9px solid transparent;
   background-clip: content-box;
+}
+.sortby-dropdown-btn {
+  background-color: #ffffff;
+  border: 1px solid #cdcdcd;
+  border-radius: 5rem;
+  color: #5d5755;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 700;
+  min-width: 6rem;
+  outline: none;
+  padding: 0.4rem 1rem;
+  text-transform: capitalize;
+}
+.sortby-dropdown-btn:focus {
+  background-color: #fcfcfc;
+}
+.dropdown-item {
+  color: #5d5755;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 @media only screen and (max-width: 960px) {
   .projects-card {
