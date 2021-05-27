@@ -13,7 +13,9 @@
           <div class="details">
             <h2 class="name">{{ user.name }}</h2>
             <p class="title">{{ user.title }}</p>
-            <p class="rating">{{ user.rating }} / 10</p>
+            <p class="rating">
+              {{ user.totalRatings === 0 ? "No rating" : user.rating + "/10" }}
+            </p>
             <ProfileEditButton />
           </div>
         </div>
