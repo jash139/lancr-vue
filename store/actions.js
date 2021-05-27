@@ -128,6 +128,19 @@ export default {
                 })
         });
     },
+    postProject({ dispatch }, { postObj }) {
+        return new Promise((resolve, reject) => {
+            this.$axios.post("/projects/", postObj)
+                .then(res => {
+                    dispatch("showNotificationMessage", "Project posted successfully!")
+                    resolve(res.data)
+                })
+                .catch(error => {
+                    dispatch("showNotificationMessage", "Failed to post project. Try again!")
+                    reject(error)
+                })
+        });
+    },
     fetchAllProjects({ commit }) {
         return new Promise((resolve, reject) => {
             this.$axios.get("/projects/")
