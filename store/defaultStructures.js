@@ -8,6 +8,7 @@ const userStructure = {
     about: "",
     dateOfBirth: "",
     rating: "",
+    totalRatings: 0,
     experience: [
         {
             organization: "",
