@@ -4,6 +4,9 @@
       <div class="heading-div">
         <h4 class="heading">Experience</h4>
         <div class="stroke" />
+        <v-btn icon class="edit-btn">
+          <v-icon>mdi-plus</v-icon>
+        </v-btn>
       </div>
       <div class="exp">
         <div
@@ -23,6 +26,9 @@
       <div class="heading-div">
         <h4 class="heading">Skills</h4>
         <div class="stroke" />
+        <v-btn icon class="edit-btn">
+          <v-icon>mdi-plus</v-icon>
+        </v-btn>
       </div>
       <Chip v-for="skill in user.skills" :key="skill" :text="skill" />
     </div>
@@ -30,6 +36,9 @@
       <div class="heading-div">
         <h4 class="heading">About</h4>
         <div class="stroke" />
+        <v-btn icon class="edit-btn">
+          <v-icon>mdi-pencil</v-icon>
+        </v-btn>
       </div>
       <p class="details-info">{{ user.about }}</p>
     </div>
@@ -37,6 +46,9 @@
       <div class="heading-div">
         <h4 class="heading">Languages</h4>
         <div class="stroke" />
+        <v-btn icon class="edit-btn">
+          <v-icon>mdi-plus</v-icon>
+        </v-btn>
       </div>
       <div v-for="language in user.languages" :key="language" class="language">
         {{ language }}
@@ -88,6 +100,14 @@ export default {
   height: 0.5px;
   margin-left: 1rem;
   width: 100%;
+}
+.edit-btn {
+  border: 2px solid #e5ecee;
+  border-radius: 5rem;
+  margin-left: 1rem;
+  padding: 0.5rem;
+  height: 30px;
+  width: 30px;
 }
 .experience {
   display: flex;
