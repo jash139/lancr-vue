@@ -46,7 +46,7 @@
       <div class="heading-div">
         <h4 class="heading">Languages</h4>
         <div class="stroke" />
-        <v-btn icon class="edit-btn">
+        <v-btn icon class="edit-btn" @click="isLanguagesModalActive = true">
           <v-icon>mdi-plus</v-icon>
         </v-btn>
       </div>
@@ -182,12 +182,38 @@
         </div>
       </div>
     </b-modal>
+
+    <b-modal v-model="isLanguagesModalActive" scroll="keep">
+      <div class="edit-modal">
+        <div class="modal-header">
+          <h2 class="edit-details">Edit Languages</h2>
+        </div>
+        <v-select
+          v-model="languages"
+          :items="allLanguages"
+          attach
+          chips
+          label="Chips"
+          multiple
+          color="#c21e39"
+        ></v-select>
+        <div class="card-actions">
+          <button class="btn outlined-btn action-btns" @click="handleCancel">
+            Cancel
+          </button>
+          <button class="btn primary-btn action-btns" @click="saveLanguages">
+            Save
+          </button>
+        </div>
+      </div>
+    </b-modal>
   </div>
 </template>
 
 <script>
 import Chip from "./Chip";
 import skills from "../assets/skills";
+import isoLangs from "../assets/isoLangs";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -200,8 +226,10 @@ export default {
       isAboutModalActive: false,
       isExperienceModalActive: false,
       isSkillsModalActive: false,
+      isLanguagesModalActive: false,
       about: "",
       skills: [],
+      languages: [],
       experience: {
         organization: "",
         role: "",
@@ -213,6 +241,13 @@ export default {
   computed: {
     ...mapGetters(["getCurrentUser"]),
     allSkills: () => skills,
+    allLanguages: () => {
+      let langs = [];
+      for (const property in isoLangs) {
+        langs.push(isoLangs[property].name);
+      }
+      return langs;
+    },
   },
   components: {
     Chip,
@@ -229,6 +264,7 @@ export default {
       this.isAboutModalActive = false;
       this.isExperienceModalActive = false;
       this.isSkillsModalActive = false;
+      this.isLanguagesModalActive = false;
     },
     saveExperience() {
       const patchObj = {
@@ -250,6 +286,13 @@ export default {
       this.patchCurrentUser({ uid: this.getCurrentUser.uid, patchObj });
       this.handleCancel();
     },
+    saveLanguages() {
+      const patchObj = {
+        languages: this.languages,
+      };
+      this.patchCurrentUser({ uid: this.getCurrentUser.uid, patchObj });
+      this.handleCancel();
+    },
     saveAbout() {
       const patchObj = {
         about: this.about,
@@ -261,6 +304,7 @@ export default {
   created() {
     this.about = this.getCurrentUser.about;
     this.skills = this.getCurrentUser.skills;
+    this.languages = this.getCurrentUser.languages;
   },
 };
 </script>
