@@ -9,9 +9,9 @@
         <h2 class="name">{{ freelancer.name }}</h2>
         <p class="location">
           {{
-            freelancer.contact.location.city +
-            ", " +
-            freelancer.contact.location.state
+            freelancer.contact.location.state === ""
+              ? "-"
+              : freelancer.contact.location.state
           }}
         </p>
         <div class="title">{{ freelancer.title }}</div>
