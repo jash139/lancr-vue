@@ -112,6 +112,7 @@
 import AppBar from "../../components/AppBar";
 import BackButton from "../../components/BackButton";
 import skills from "../../assets/skills";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   data() {
@@ -136,7 +137,6 @@ export default {
         country: "",
         state: "",
         city: "",
-        applicants: [],
       },
     };
   },
@@ -149,14 +149,31 @@ export default {
     allSkills: () => skills,
   },
   methods: {
+    ...mapActions(["postProject", "showNotificationMessage"]),
     setStatus(option) {
       this.status = option;
     },
-    postProject() {
-      const postObj = {};
-    },
     cancelPost() {
       this.$router.push("/profile");
+    },
+    postProject() {
+      const postObj = {
+        uid: this.uid,
+        title: this.title,
+        description: this.description,
+        status: this.status,
+        requirements: this.requirements,
+        offeredAmount: this.offeredAmount,
+        timePeriod: this.timePeriod,
+        location: this.location,
+        applicants: [],
+      };
+      //   if (this.validate()) {
+      //     this.postProject({ postObj });
+      //     this.cancelPost();
+      //     return;
+      //   }
+      this.showNotificationMessage("Please fill all the details.");
     },
   },
 };
