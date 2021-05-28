@@ -1,6 +1,11 @@
 <template>
   <div class="projects-header">
-    <h2 class="heading">Projects</h2>
+    <div class="main-header">
+      <h2 class="heading">Projects</h2>
+      <NuxtLink to="/post-project">
+        <button class="btn primary-btn post-project-btn">Post Project</button>
+      </NuxtLink>
+    </div>
     <div class="actions">
       <SortByDropdown @set-sort-type="setSortType" />
       <Filters />
@@ -32,6 +37,14 @@ export default {
   align-items: center;
   justify-content: space-between;
   margin: 2rem 0;
+}
+.main-header {
+  display: flex;
+  align-items: center;
+}
+.post-project-btn {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
 }
 .heading {
   color: #050303;
