@@ -5,14 +5,15 @@
         {{ ownerDetails.name.charAt(0).toUpperCase() }}
       </div>
       <img v-else :src="ownerDetails.profilePicture" alt="" class="avatar" />
-      <p class="sub-heading">A few hours ago</p>
+      <p class="sub-heading">
+        {{ new Date(project.createdAt).toDateString() }}
+      </p>
     </div>
     <div class="divider" />
     <div class="card-body">
       <p class="sub-heading">{{ "By " + ownerDetails.name }}</p>
       <h2 class="title">{{ project.title }}</h2>
-      <p class="description">{{ project.description }}</p>
-      <!-- Add function to truncate description -->
+      <p class="description">{{ project.description.substring(0, 50) }}</p>
     </div>
     <NuxtLink :to="'/projects/' + project._id">
       <button class="view-btn btn primary-btn btn-shadow">View Project</button>
