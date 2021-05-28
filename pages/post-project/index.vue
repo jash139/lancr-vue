@@ -57,12 +57,6 @@
           </div>
           <div class="section-content">
             <div class="grid-item">
-              <p class="detail-heading">Posted on</p>
-            </div>
-            <div class="grid-item">
-              <p class="detail-info">13-13-2001</p>
-            </div>
-            <div class="grid-item">
               <p class="detail-heading">Start Date</p>
             </div>
             <div class="grid-item">
@@ -155,6 +149,23 @@ export default {
     },
     cancelPost() {
       this.$router.push("/profile");
+    },
+    validate() {
+      if (
+        this.title === "" ||
+        this.description === "" ||
+        this.status === "" ||
+        this.requirements.length === 0 ||
+        this.offeredAmount.currencyType === "" ||
+        this.offeredAmount.start === "" ||
+        this.offeredAmount.end === "" ||
+        this.timePeriod.start === "" ||
+        this.timePeriod.end === ""
+      ) {
+        return false;
+      } else {
+        return true;
+      }
     },
     postProject() {
       const postObj = {
