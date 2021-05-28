@@ -75,10 +75,11 @@
           <v-menu
             ref="menu"
             v-model="menuStart"
-            :close-on-content-click="false"
+            :close-on-content-click="true"
             transition="scale-transition"
             offset-y
             min-width="auto"
+            nudge-top="100px"
           >
             <template v-slot:activator="{ on, attrs }">
               <v-text-field
@@ -103,10 +104,11 @@
           <v-menu
             ref="menu"
             v-model="menuEnd"
-            :close-on-content-click="false"
+            :close-on-content-click="true"
             transition="scale-transition"
             offset-y
             min-width="auto"
+            nudge-top="100px"
           >
             <template v-slot:activator="{ on, attrs }">
               <v-text-field

@@ -5,11 +5,11 @@
       <BackButton />
       <div class="projects-card card-shadow">
         <div class="header">
-          <h2 class="title">By Robert</h2>
+          <h2 class="title">By {{ getCurrentUser.name }}</h2>
           <div class="actions">
             <button
               class="apply-btn btn primary-btn btn-shadow"
-              @click="postProject"
+              @click="saveProject"
             >
               Post
             </button>
@@ -59,20 +59,102 @@
             <div class="grid-item">
               <p class="detail-heading">Start Date</p>
             </div>
-            <div class="grid-item">
-              <p class="detail-info">13-13-2001</p>
+            <div class="grid-item" data-app>
+              <v-menu
+                ref="menu"
+                v-model="menuStart"
+                :close-on-content-click="true"
+                transition="scale-transition"
+                offset-y
+                min-width="auto"
+                nudge-left="100px"
+                nudge-top="100px"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-text-field
+                    v-model="timePeriod.start"
+                    prepend-icon="mdi-calendar"
+                    readonly
+                    v-bind="attrs"
+                    v-on="on"
+                    color="#c21e39"
+                  ></v-text-field>
+                </template>
+                <v-date-picker
+                  color="#c21e39"
+                  v-model="timePeriod.start"
+                  :active-picker.sync="activePicker"
+                  :max="new Date().toISOString().substr(0, 10)"
+                  min="1950-01-01"
+                  @change="saveStartDate"
+                ></v-date-picker>
+              </v-menu>
             </div>
+
             <div class="grid-item">
               <p class="detail-heading">End Date</p>
             </div>
-            <div class="grid-item">
-              <p class="detail-info">13-13-2001</p>
+            <div class="grid-item" data-app>
+              <v-menu
+                ref="menu"
+                v-model="menuEnd"
+                :close-on-content-click="true"
+                transition="scale-transition"
+                offset-y
+                min-width="auto"
+                nudge-left="100px"
+                nudge-top="100px"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-text-field
+                    v-model="timePeriod.end"
+                    prepend-icon="mdi-calendar"
+                    readonly
+                    v-bind="attrs"
+                    v-on="on"
+                    color="#c21e39"
+                  ></v-text-field>
+                </template>
+                <v-date-picker
+                  color="#c21e39"
+                  v-model="timePeriod.end"
+                  :active-picker.sync="activePicker"
+                  :max="new Date().toISOString().substr(0, 10)"
+                  min="1950-01-01"
+                  @change="saveEndDate"
+                ></v-date-picker>
+              </v-menu>
             </div>
             <div class="grid-item">
               <p class="detail-heading">Amount</p>
             </div>
             <div class="grid-item">
-              <p class="detail-info">$100 - 200</p>
+              <b-field>
+                <b-select
+                  placeholder="Currency Type"
+                  v-model="offeredAmount.currencyType"
+                >
+                  <option
+                    v-for="currency in getCurrencies"
+                    :key="currency.code"
+                    :value="currency.symbol"
+                  >
+                    {{ currency.symbol }}
+                  </option>
+                </b-select>
+              </b-field>
+              <b-field>
+                <b-numberinput
+                  v-model="offeredAmount.start"
+                  type="is-danger"
+                ></b-numberinput>
+              </b-field>
+              <b-field>
+                <b-numberinput
+                  v-model="offeredAmount.end"
+                  type="is-danger"
+                ></b-numberinput>
+              </b-field>
             </div>
           </div>
         </div>
@@ -81,14 +163,17 @@
             <h4 class="heading">Requirements</h4>
             <div class="stroke" />
           </div>
-          <v-select
-            v-model="requirements"
-            :items="allSkills"
-            attach
-            chips
-            multiple
-            color="#c21e39"
-          ></v-select>
+          <b-field>
+            <b-taginput
+              v-model="requirements"
+              :data="filteredTags"
+              autocomplete
+              :allow-new="false"
+              :open-on-focus="true"
+              @typing="getFilteredTags"
+            >
+            </b-taginput>
+          </b-field>
         </div>
         <div class="card-section">
           <div class="heading-div">
@@ -106,31 +191,30 @@
 import AppBar from "../../components/AppBar";
 import BackButton from "../../components/BackButton";
 import skills from "../../assets/skills";
+import currencies from "../../assets/currencies";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   data() {
     return {
+      menuStart: false,
+      menuEnd: false,
+      activePicker: null,
       isScrollable: true,
       maxHeight: 300,
-      uid: "",
       title: "",
       description: "",
       status: "Active",
       requirements: [],
+      filteredTags: skills,
       offeredAmount: {
         currencyType: "",
-        start: "",
-        end: "",
+        start: null,
+        end: null,
       },
       timePeriod: {
         start: "",
         end: "",
-      },
-      location: {
-        country: "",
-        state: "",
-        city: "",
       },
     };
   },
@@ -139,11 +223,23 @@ export default {
     BackButton,
   },
   computed: {
-    // ...mapGetters(["getCurrentUser"]),
+    ...mapGetters(["getCurrentUser"]),
     allSkills: () => skills,
+    getCurrencies: () => currencies,
   },
   methods: {
     ...mapActions(["postProject", "showNotificationMessage"]),
+    getFilteredTags(text) {
+      this.filteredTags = this.allSkills.filter((option) => {
+        return option.toString().toLowerCase().indexOf(text.toLowerCase()) >= 0;
+      });
+    },
+    saveStartDate(date) {
+      this.$refs.menu.save(date);
+    },
+    saveEndDate(date) {
+      this.$refs.menu.save(date);
+    },
     setStatus(option) {
       this.status = option;
     },
@@ -157,8 +253,8 @@ export default {
         this.status === "" ||
         this.requirements.length === 0 ||
         this.offeredAmount.currencyType === "" ||
-        this.offeredAmount.start === "" ||
-        this.offeredAmount.end === "" ||
+        this.offeredAmount.start === null ||
+        this.offeredAmount.end === null ||
         this.timePeriod.start === "" ||
         this.timePeriod.end === ""
       ) {
@@ -167,23 +263,23 @@ export default {
         return true;
       }
     },
-    postProject() {
-      const postObj = {
-        uid: this.uid,
-        title: this.title,
-        description: this.description,
-        status: this.status,
-        requirements: this.requirements,
-        offeredAmount: this.offeredAmount,
-        timePeriod: this.timePeriod,
-        location: this.location,
-        applicants: [],
-      };
-      //   if (this.validate()) {
-      //     this.postProject({ postObj });
-      //     this.cancelPost();
-      //     return;
-      //   }
+    saveProject() {
+      if (this.validate()) {
+        const postObj = {
+          uid: this.getCurrentUser.uid,
+          title: this.title,
+          description: this.description,
+          status: this.status,
+          requirements: this.requirements,
+          offeredAmount: this.offeredAmount,
+          timePeriod: this.timePeriod,
+          location: this.getCurrentUser.contact.location,
+          applicants: [],
+        };
+        this.postProject({ postObj });
+        this.cancelPost();
+        return;
+      }
       this.showNotificationMessage("Please fill all the details.");
     },
   },
