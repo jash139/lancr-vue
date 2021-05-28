@@ -1,5 +1,11 @@
 <template>
   <div>
+    <NuxtLink to="/post-project">
+      <button class="post-project">
+        <p>Post Project</p>
+        <v-icon>mdi-plus</v-icon>
+      </button>
+    </NuxtLink>
     <b-collapse
       v-for="project in projects"
       :key="project._id"
@@ -48,6 +54,16 @@ export default {
 </script>
 
 <style scoped>
+.post-project {
+  color: #c21e39;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
 .open-icon {
   color: #c21e39;
 }
