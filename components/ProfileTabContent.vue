@@ -153,7 +153,6 @@
           :items="allSkills"
           attach
           chips
-          label="Chips"
           multiple
           color="#c21e39"
         ></v-select>
@@ -195,7 +194,6 @@
           :items="allLanguages"
           attach
           chips
-          label="Chips"
           multiple
           color="#c21e39"
         ></v-select>
