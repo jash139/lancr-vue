@@ -97,14 +97,14 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 90px;
-  min-width: 90px;
-  max-width: 90px;
+  height: 90px;
+  width: 90px;
 }
 .avatar {
   border-radius: 20rem;
-  min-width: 90px;
-  max-width: 90px;
+  height: 90px;
+  object-fit: cover;
+  width: 90px;
 }
 .name {
   color: #c21e39;
