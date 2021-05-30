@@ -229,6 +229,25 @@ export default {
   },
   methods: {
     ...mapActions(["patchCurrentUserProject", "showNotificationMessage"]),
+    fetchProject() {
+      this.$axios
+        .get("/projects/" + this.$route.params.id)
+        .then((res) => {
+          const projectDetails = res.data;
+          if (projectDetails.uid !== this.getCurrentUser.uid) {
+            this.cancelPost();
+          }
+          this.title = projectDetails.title;
+          this.status = projectDetails.status;
+          this.timePeriod = projectDetails.timePeriod;
+          this.offeredAmount = projectDetails.offeredAmount;
+          this.description = projectDetails.description;
+          this.requirements = projectDetails.requirements;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     getFilteredTags(text) {
       this.filteredTags = this.allSkills.filter((option) => {
         return option.toString().toLowerCase().indexOf(text.toLowerCase()) >= 0;
@@ -265,7 +284,7 @@ export default {
     },
     saveProject() {
       if (this.validate()) {
-        const postObj = {
+        const patchObj = {
           title: this.title,
           description: this.description,
           status: this.status,
@@ -276,7 +295,7 @@ export default {
         this.patchCurrentUserProject({
           uid: this.getCurrentUser.uid,
           id: this.$route.params.id,
-          postObj,
+          patchObj,
         })
           .then((res) =>
             this.showNotificationMessage("Project updated successfully!")
@@ -289,6 +308,9 @@ export default {
       }
       this.showNotificationMessage("Please fill all the details.");
     },
+  },
+  created() {
+    this.fetchProject();
   },
 };
 </script>
