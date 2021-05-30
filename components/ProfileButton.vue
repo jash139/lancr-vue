@@ -1,13 +1,19 @@
 <template>
   <b-dropdown position="is-bottom-left">
     <template #trigger>
-      <button class="profile-btn">
-        {{
-          getCurrentUser !== null
-            ? getCurrentUser.name.charAt(0).toUpperCase()
-            : ""
-        }}
+      <img
+        v-if="getCurrentUser !== null && getCurrentUser.profilePicture !== ''"
+        class="profile-btn-avatar"
+        :src="getCurrentUser.profilePicture"
+        :alt="getCurrentUser.name.charAt(0).toUpperCase()"
+      />
+      <button
+        v-if="getCurrentUser !== null && getCurrentUser.profilePicture === ''"
+        class="profile-btn"
+      >
+        {{ getCurrentUser.name.charAt(0).toUpperCase() }}
       </button>
+      <button v-if="getCurrentUser === null" class="profile-btn"></button>
     </template>
     <NuxtLink to="/profile">
       <b-dropdown-item
@@ -46,6 +52,13 @@ export default {
   margin: 0.2rem 0;
   height: 40px;
   width: 40px;
+}
+.profile-btn-avatar {
+  border-radius: 10rem;
+  margin: 0.2rem 0;
+  object-fit: cover;
+  height: 40px;
+  widows: 40px;
 }
 .dropdown-icon {
   margin-right: 0.5rem;
