@@ -18,7 +18,14 @@
             <h3 class="org">{{ experience.organization }}</h3>
             <p class="role">{{ experience.role }}</p>
           </div>
-          <p class="duration">{{ experience.start }} - {{ experience.end }}</p>
+          <div class="experience-right">
+            <p class="duration">
+              {{ experience.start }} - {{ experience.end }}
+            </p>
+            <v-btn icon class="delete-btn">
+              <v-icon>mdi-delete</v-icon>
+            </v-btn>
+          </div>
         </div>
       </div>
     </div>
@@ -343,11 +350,26 @@ export default {
   height: 30px;
   width: 30px;
 }
+.delete-btn {
+  border: 2px solid #e5ecee;
+  border-radius: 5rem;
+  display: none;
+  margin-left: 1rem;
+  height: 30px;
+  width: 30px;
+}
 .experience {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   margin: 1.5rem 0;
+}
+.experience:hover .delete-btn {
+  display: block;
+}
+.experience-right {
+  display: flex;
+  align-items: center;
 }
 .org {
   color: #5d5755;
