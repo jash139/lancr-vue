@@ -228,7 +228,7 @@ export default {
     getCurrencies: () => currencies,
   },
   methods: {
-    ...mapActions(["showNotificationMessage"]),
+    ...mapActions(["patchCurrentUserProject", "showNotificationMessage"]),
     getFilteredTags(text) {
       this.filteredTags = this.allSkills.filter((option) => {
         return option.toString().toLowerCase().indexOf(text.toLowerCase()) >= 0;
@@ -273,9 +273,18 @@ export default {
           offeredAmount: this.offeredAmount,
           timePeriod: this.timePeriod,
         };
-        // this.postProject({ postObj });
-        console.log(postObj);
-        // this.cancelPost();
+        this.patchCurrentUserProject({
+          uid: this.getCurrentUser.uid,
+          id: this.$route.params.id,
+          postObj,
+        })
+          .then((res) =>
+            this.showNotificationMessage("Project updated successfully!")
+          )
+          .catch((err) =>
+            this.showNotificationMessage("Project update failed! Try again.")
+          );
+        this.cancelPost();
         return;
       }
       this.showNotificationMessage("Please fill all the details.");
