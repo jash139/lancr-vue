@@ -31,10 +31,12 @@
         </div>
       </div>
       <footer class="card-footer">
-        <NuxtLink :to="'/projects/' + project._id">
-          <button class="card-footer-item btn view-btn">View</button>
+        <NuxtLink class="card-footer-item" :to="'/projects/' + project._id">
+          <button class="btn view-btn">View</button>
         </NuxtLink>
-        <button class="card-footer-item btn edit-btn">Edit</button>
+        <NuxtLink class="card-footer-item" :to="'/edit-project/' + project._id">
+          <button class="btn edit-btn">Edit</button>
+        </NuxtLink>
       </footer>
     </b-collapse>
   </div>
@@ -71,5 +73,6 @@ export default {
   color: #c21e39;
 }
 .edit-btn {
+  color: #050303;
 }
 </style>
