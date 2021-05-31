@@ -58,7 +58,7 @@ export default {
   margin: 0.2rem 0;
   object-fit: cover;
   height: 40px;
-  widows: 40px;
+  width: 40px;
 }
 .dropdown-icon {
   margin-right: 0.5rem;
