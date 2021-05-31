@@ -31,7 +31,7 @@
               <p class="detail-heading">Email</p>
             </div>
             <div class="grid-item">
-              <p class="detail-info">{{ ownerDetails.contact.email }}</p>
+              <p class="detail-info-email">{{ ownerDetails.contact.email }}</p>
             </div>
           </div>
         </div>
@@ -200,7 +200,7 @@ export default {
 }
 .section-content {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 50% 50%;
 }
 .grid-item {
   margin: 0.3rem 0;
@@ -227,6 +227,13 @@ export default {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
+}
+.detail-info-email {
+  color: #5d5755;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  word-break: break-all;
 }
 .applicants {
   max-height: 500px;
