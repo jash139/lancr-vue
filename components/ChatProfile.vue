@@ -57,15 +57,15 @@ export default {
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
-  min-height: 140px;
-  min-width: 140px;
-  max-width: 140px;
+  height: 140px;
+  width: 140px;
 }
 .avatar {
   border-radius: 20rem;
   margin-bottom: 1rem;
-  min-width: 140px;
-  max-width: 140px;
+  object-fit: cover;
+  height: 140px;
+  width: 140px;
 }
 .name {
   color: #c21e39;

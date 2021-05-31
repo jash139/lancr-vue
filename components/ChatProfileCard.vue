@@ -5,7 +5,7 @@
       <div v-if="user.profilePicture === ''" class="default-avatar">
         {{ user.name.charAt(0).toUpperCase() }}
       </div>
-      <img v-else :src="user.profilePicture" alt="" class="avatar" />
+      <img v-else :src="user.profilePicture" :alt="user.name" class="avatar" />
       <h2 class="name">{{ user.name }}</h2>
     </div>
     <div class="divider" />
@@ -74,16 +74,16 @@ export default {
   justify-content: center;
   margin-left: 0.5rem;
   margin-right: 1rem;
-  min-height: 50px;
-  min-width: 50px;
-  max-width: 50px;
+  height: 50px;
+  width: 50px;
 }
 .avatar {
   border-radius: 20rem;
   margin-left: 0.5rem;
   margin-right: 1rem;
-  min-width: 50px;
-  max-width: 50px;
+  object-fit: cover;
+  height: 50px;
+  width: 50px;
 }
 .name {
   color: #5d5755;
