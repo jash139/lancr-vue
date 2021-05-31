@@ -140,6 +140,18 @@ export default {
                 })
         });
     },
+    patchProject({ dispatch }, { id, patchObj }) {
+        return new Promise((resolve, reject) => {
+            this.$axios.patch("/projects/" + id, patchObj)
+                .then(res => {
+                    dispatch("fetchAllProjects")
+                    resolve(res.data)
+                })
+                .catch(error => {
+                    reject(error)
+                })
+        });
+    },
     postProject({ dispatch }, { postObj }) {
         return new Promise((resolve, reject) => {
             this.$axios.post("/projects/", postObj)
