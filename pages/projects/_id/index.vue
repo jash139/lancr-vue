@@ -150,7 +150,7 @@ export default {
     ...mapGetters(["getProject", "getCurrentUser"]),
   },
   methods: {
-    ...mapActions(["fetchProject", "showNotificationMessage"]),
+    ...mapActions(["fetchProject", "patchProject", "showNotificationMessage"]),
     fetchOwnerDetails(uid) {
       this.$axios
         .get("/users/" + uid)
@@ -165,7 +165,22 @@ export default {
       if (this.getCurrentUser.uid === this.getProject.uid) {
         this.showNotificationMessage("Can't apply to own projects.");
       } else {
-        // handle dispatch patch project
+        const patchObj = {
+          applicants: [...this.getProject.applicants],
+        };
+        if (patchObj.applicants.includes(this.getCurrentUser.uid)) {
+          const index = patchObj.applicants.indexOf(this.getCurrentUser.uid);
+          patchObj.applicants.splice(index, 1);
+        } else {
+          patchObj.applicants.push(this.getCurrentUser.uid);
+        }
+        this.patchProject({ id: this.getProject._id, patchObj })
+          .then((res) => {
+            this.fetchProject(this.$route.params.id);
+          })
+          .catch((err) =>
+            this.showNotificationMessage("Failed to apply! Try again.")
+          );
       }
     },
   },
