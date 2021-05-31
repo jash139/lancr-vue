@@ -1,21 +1,23 @@
 <template>
   <div>
     <div class="applicant-card">
-      <div class="body">
-        <div v-if="user.profilePicture === ''" class="default-avatar">
-          {{ user.name.charAt(0).toUpperCase() }}
+      <NuxtLink :to="'/freelancers/' + applicant">
+        <div class="body">
+          <div v-if="user.profilePicture === ''" class="default-avatar">
+            {{ user.name.charAt(0).toUpperCase() }}
+          </div>
+          <img
+            v-else
+            :src="user.profilePicture"
+            :alt="user.name.charAt(0)"
+            class="avatar"
+          />
+          <div class="details">
+            <h2 class="name">{{ user.name }}</h2>
+            <div class="title">{{ user.title }}</div>
+          </div>
         </div>
-        <img
-          v-else
-          :src="user.profilePicture"
-          :alt="user.name.charAt(0)"
-          class="avatar"
-        />
-        <div class="details">
-          <h2 class="name">{{ user.name }}</h2>
-          <div class="title">{{ user.title }}</div>
-        </div>
-      </div>
+      </NuxtLink>
       <v-btn
         v-if="
           getCurrentUser.connections.includes(applicant) &&
