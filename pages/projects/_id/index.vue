@@ -7,7 +7,16 @@
         <div class="header">
           <h2 class="title">{{ getProject.title }}</h2>
           <div class="actions">
-            <button class="apply-btn btn primary-btn btn-shadow">Apply</button>
+            <button
+              class="apply-btn btn primary-btn btn-shadow"
+              @click="handleApply"
+            >
+              {{
+                getProject.applicants.includes(getCurrentUser.uid)
+                  ? "Applied"
+                  : "Apply"
+              }}
+            </button>
             <NuxtLink :to="'/freelancers/' + getProject.uid">
               <button class="client-btn btn outlined-btn">
                 {{ ownerDetails.name }}
@@ -138,10 +147,10 @@ export default {
     ApplicantCard,
   },
   computed: {
-    ...mapGetters(["getProject"]),
+    ...mapGetters(["getProject", "getCurrentUser"]),
   },
   methods: {
-    ...mapActions(["fetchProject"]),
+    ...mapActions(["fetchProject", "showNotificationMessage"]),
     fetchOwnerDetails(uid) {
       this.$axios
         .get("/users/" + uid)
@@ -151,6 +160,13 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    handleApply() {
+      if (this.getCurrentUser.uid === this.getProject.uid) {
+        this.showNotificationMessage("Can't apply to own projects.");
+      } else {
+        // handle dispatch patch project
+      }
     },
   },
   created() {
