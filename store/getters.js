@@ -55,5 +55,8 @@ export default {
                 break;
         }
         return
-    }
+    },
+    getProjectsByUID: state => uid => {
+        return state.allProjects.filter(project => project.uid === uid);
+    },
 };
