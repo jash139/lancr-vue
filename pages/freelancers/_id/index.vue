@@ -5,11 +5,20 @@
       <BackButton />
       <div class="about-user card-shadow">
         <div class="details-div1">
-          <img :src="getUser.profilePicture" alt="" class="avatar" />
+          <div v-if="getUser.profilePicture === ''" class="default-avatar">
+            {{ getUser.name.charAt(0).toUpperCase() }}
+          </div>
+          <img v-else :src="getUser.profilePicture" alt="" class="avatar" />
           <div class="details">
             <h2 class="name">{{ getUser.name }}</h2>
             <p class="title">{{ getUser.title }}</p>
-            <p class="rating">{{ getUser.rating }} / 10</p>
+            <p class="rating">
+              {{
+                getUser.totalRatings === 0
+                  ? "No rating"
+                  : getUser.rating + "/10"
+              }}
+            </p>
             <button class="btn primary-btn btn-shadow connect-btn">
               Connect
             </button>
@@ -101,11 +110,24 @@ export default {
 .details {
   margin: 0 1rem;
 }
+.default-avatar {
+  background-color: #f2e9e6;
+  border-radius: 20rem;
+  color: #c21e39;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1rem;
+  height: 140px;
+  width: 140px;
+}
 .avatar {
   border-radius: 20rem;
   margin: 0 1rem;
-  min-width: 140px;
-  max-width: 140px;
+  object-fit: cover;
+  height: 140px;
+  width: 140px;
 }
 .name {
   color: #c21e39;
