@@ -2,14 +2,18 @@
   <div>
     <div class="applicant-card">
       <div class="body">
+        <div v-if="user.profilePicture === ''" class="default-avatar">
+          {{ user.name.charAt(0).toUpperCase() }}
+        </div>
         <img
-          src="https://images.unsplash.com/photo-1563497425252-36b755215241?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-          alt="Avatar"
+          v-else
+          :src="user.profilePicture"
+          :alt="user.name.charAt(0)"
           class="avatar"
         />
         <div class="details">
-          <h2 class="name">Doggo Gang</h2>
-          <div class="role">Underworld don</div>
+          <h2 class="name">{{ user.name }}</h2>
+          <div class="title">{{ user.title }}</div>
         </div>
       </div>
       <v-btn icon class="connect-btn">
@@ -45,6 +49,36 @@
 <script>
 export default {
   name: "ApplicantCard",
+  props: {
+    applicant: {
+      type: String,
+    },
+  },
+  data() {
+    return {
+      user: {
+        name: "-",
+        title: "-",
+        profilePicture: "",
+      },
+    };
+  },
+  methods: {
+    fetchApplicantDetails() {
+      this.$axios
+        .get("/users/" + this.applicant)
+        .then((res) => {
+          this.user = res.data;
+          console.log(this.user);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+  created() {
+    this.fetchApplicantDetails();
+  },
 };
 </script>
 
@@ -65,16 +99,30 @@ export default {
   justify-content: space-between;
   margin-left: 1rem;
 }
+.default-avatar {
+  background-color: #f2e9e6;
+  border-radius: 20rem;
+  color: #c21e39;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+}
 .avatar {
   border-radius: 20rem;
-  max-width: 50px;
+  object-fit: cover;
+  height: 50px;
+  width: 50px;
 }
 .name {
   color: #5d5755;
   font-size: 1rem;
   font-weight: 700;
 }
-.role {
+.title {
   background-color: #c21e39;
   border-radius: 5rem;
   color: #ffffff;
