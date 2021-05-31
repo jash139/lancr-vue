@@ -45,7 +45,9 @@
               <p class="detail-heading">Posted on</p>
             </div>
             <div class="grid-item">
-              <p class="detail-info">{{ getProject.createdAt }}</p>
+              <p class="detail-info">
+                {{ new Date(getProject.createdAt).toDateString() }}
+              </p>
             </div>
             <div class="grid-item">
               <p class="detail-heading">Start Date</p>
