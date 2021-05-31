@@ -56,7 +56,7 @@
           </div>
         </div>
       </div>
-      <ProfileTabs />
+      <FreelancerTabs />
     </div>
   </div>
 </template>
@@ -64,14 +64,14 @@
 <script>
 import AppBar from "../../../components/AppBar";
 import BackButton from "../../../components/BackButton";
-import ProfileTabs from "../../../components/ProfileTabs";
+import FreelancerTabs from "../../../components/FreelancerTabs";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   components: {
     AppBar,
     BackButton,
-    ProfileTabs,
+    FreelancerTabs,
   },
   computed: {
     ...mapGetters(["getUser"]),
