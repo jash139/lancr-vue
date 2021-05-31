@@ -70,7 +70,36 @@
     </div>
 
     <div id="freelancer-tab-2" class="tabcontent">
-      <ProjectsTabContent />
+      <b-collapse
+        v-for="project in getProjectsByUID(getUser.uid)"
+        :key="project._id"
+        animation="slide"
+        :open="false"
+      >
+        <template #trigger="props">
+          <div class="card-header" role="button">
+            <p class="card-header-title">{{ project.title }}</p>
+            <a class="card-header-icon">
+              <b-icon
+                :icon="props.open ? 'menu-up' : 'menu-down'"
+                class="open-icon"
+              >
+              </b-icon>
+            </a>
+          </div>
+        </template>
+
+        <div class="card-content">
+          <div class="content">
+            {{ project.description }}
+          </div>
+        </div>
+        <footer class="card-footer">
+          <NuxtLink class="card-footer-item" :to="'/projects/' + project._id">
+            <button class="btn view-btn">View</button>
+          </NuxtLink>
+        </footer>
+      </b-collapse>
     </div>
 
     <div id="freelancer-tab-3" class="tabcontent">
@@ -80,20 +109,19 @@
 </template>
 
 <script>
-import ProjectsTabContent from "./ProjectsTabContent";
 import ConnectionsTabContent from "./ConnectionsTabContent";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "FreelancerTabs",
   components: {
-    ProjectsTabContent,
     ConnectionsTabContent,
   },
   computed: {
-    ...mapGetters(["getUser"]),
+    ...mapGetters(["getUser", "getProjectsByUID"]),
   },
   methods: {
+    ...mapActions(["fetchAllProjects"]),
     changeTab: (evt, cityName) => {
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
@@ -107,6 +135,9 @@ export default {
       document.getElementById(cityName).style.display = "block";
       evt.currentTarget.className += " active";
     },
+  },
+  created() {
+    this.fetchAllProjects();
   },
 };
 </script>
@@ -231,6 +262,12 @@ export default {
   height: 1.5rem;
   margin: 0 1.5rem;
   width: 0.5px;
+}
+.open-icon {
+  color: #c21e39;
+}
+.view-btn {
+  color: #c21e39;
 }
 @media only screen and (max-width: 600px) {
   .tab button {
