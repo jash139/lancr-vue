@@ -59,4 +59,14 @@ export default {
     getProjectsByUID: state => uid => {
         return state.allProjects.filter(project => project.uid === uid);
     },
+    getUserConnections: state => connectionIds => {
+        const allFreelancers = state.allFreelancers;
+        let connections = [];
+        allFreelancers.forEach(freelancer => {
+            if (connectionIds.includes(freelancer.uid)) {
+                connections.push(freelancer);
+            }
+        });
+        return connections;
+    }
 };
