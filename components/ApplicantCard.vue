@@ -16,7 +16,22 @@
           <div class="title">{{ user.title }}</div>
         </div>
       </div>
-      <v-btn icon class="connect-btn">
+      <v-btn
+        v-if="
+          getCurrentUser.connections.includes(applicant) &&
+          getCurrentUser.uid !== applicant
+        "
+        icon
+        class="connect-btn"
+        @click="openChat"
+      >
+        <b-icon icon="send"></b-icon>
+      </v-btn>
+      <v-btn
+        v-else-if="getCurrentUser.uid !== applicant"
+        icon
+        class="connect-btn"
+      >
         <svg
           width="20"
           height="20"
@@ -47,12 +62,17 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   name: "ApplicantCard",
   props: {
     applicant: {
       type: String,
     },
+  },
+  computed: {
+    ...mapGetters(["getCurrentUser"]),
   },
   data() {
     return {
@@ -64,16 +84,20 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["fetchActiveChatUser"]),
     fetchApplicantDetails() {
       this.$axios
         .get("/users/" + this.applicant)
         .then((res) => {
           this.user = res.data;
-          console.log(this.user);
         })
         .catch((error) => {
           console.log(error);
         });
+    },
+    openChat() {
+      this.fetchActiveChatUser(this.applicant);
+      this.$router.push("/chats");
     },
   },
   created() {
