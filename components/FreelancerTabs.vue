@@ -103,25 +103,53 @@
     </div>
 
     <div id="freelancer-tab-3" class="tabcontent">
-      <ConnectionsTabContent />
+      <div class="tab-card">
+        <div class="tab-content">
+          <div
+            v-for="connection in getUserConnections(getUser.connections)"
+            :key="connection.uid"
+            :user="connection"
+          >
+            <div class="connection-card">
+              <NuxtLink :to="'/freelancers/' + connection.uid">
+                <div class="body">
+                  <div
+                    v-if="connection.profilePicture === ''"
+                    class="default-avatar"
+                  >
+                    {{ connection.name.charAt(0).toUpperCase() }}
+                  </div>
+                  <img
+                    v-else
+                    :src="connection.profilePicture"
+                    :alt="connection.name.charAt(0).toUpperCase()"
+                    class="avatar"
+                  />
+                  <div class="details">
+                    <h2 class="name">{{ connection.name }}</h2>
+                    <div class="title">{{ connection.title }}</div>
+                  </div>
+                </div>
+              </NuxtLink>
+            </div>
+            <div class="divider" />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import ConnectionsTabContent from "./ConnectionsTabContent";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "FreelancerTabs",
-  components: {
-    ConnectionsTabContent,
-  },
   computed: {
-    ...mapGetters(["getUser", "getProjectsByUID"]),
+    ...mapGetters(["getUser", "getProjectsByUID", "getUserConnections"]),
   },
   methods: {
-    ...mapActions(["fetchAllProjects"]),
+    ...mapActions(["fetchAllProjects", "fetchAllFreelancers"]),
     changeTab: (evt, cityName) => {
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
@@ -138,6 +166,7 @@ export default {
   },
   created() {
     this.fetchAllProjects();
+    this.fetchAllFreelancers();
   },
 };
 </script>
@@ -256,18 +285,64 @@ export default {
   display: inline-flex;
   align-items: center;
 }
-.divider {
-  background-color: #f2e9e6;
-  border-radius: 2rem;
-  height: 1.5rem;
-  margin: 0 1.5rem;
-  width: 0.5px;
-}
 .open-icon {
   color: #c21e39;
 }
 .view-btn {
   color: #c21e39;
+}
+.connection-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.5rem 0;
+}
+.body {
+  display: flex;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-left: 1rem;
+}
+.default-avatar {
+  background-color: #f2e9e6;
+  border-radius: 20rem;
+  color: #c21e39;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+}
+.avatar {
+  border-radius: 20rem;
+  height: 50px;
+  width: 50px;
+}
+.name {
+  color: #5d5755;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.title {
+  background-color: #c21e39;
+  border-radius: 5rem;
+  color: #ffffff;
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 1rem;
+}
+.divider {
+  background-color: #f2e9e6;
+  border-radius: 2rem;
+  height: 0.5px;
+  width: 100%;
 }
 @media only screen and (max-width: 600px) {
   .tab button {
