@@ -123,10 +123,10 @@ export default {
   data() {
     return {
       ownerDetails: {
-        name: "",
+        name: "-",
         contact: {
-          phone: "",
-          email: "",
+          phone: "-",
+          email: "-",
         },
       },
     };
