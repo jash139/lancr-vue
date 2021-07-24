@@ -269,7 +269,7 @@ export default {
           uid: this.getCurrentUser.uid,
           title: this.title,
           description: this.description,
-          status: this.status,
+          status: this.status.toLowerCase(),
           requirements: this.requirements,
           offeredAmount: this.offeredAmount,
           timePeriod: this.timePeriod,

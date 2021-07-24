@@ -42,7 +42,7 @@ export default {
   methods: {
     ...mapActions(["fetchAllProjects"]),
     setSortType(type) {
-      this.sortType = type;
+      this.sortType = type.toLowerCase();
     },
   },
   created() {

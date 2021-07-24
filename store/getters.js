@@ -36,8 +36,9 @@ export default {
         return state.activeChatUser;
     },
     getProjectsByType: state => type => {
+        const statusType = type.toLowerCase();
         const allProjects = state.allProjects;
-        switch (type) {
+        switch (statusType) {
             case "none":
                 return allProjects;
             case "active":
@@ -48,7 +49,7 @@ export default {
                 return orderBy(
                     allProjects,
                     [project => project.createdAt],
-                    ["asc", "desc"]
+                    ["desc", "asc"]
                 );
             default:
                 return allProjects;
