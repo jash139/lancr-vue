@@ -47,6 +47,11 @@ export default {
       } else {
         this.selectedOptions.push(option);
       }
+      if (this.$route.path.includes("/freelancers")) {
+        console.log("freelancer filter");
+      } else {
+        console.log("project filter");
+      }
     },
   },
   created() {
