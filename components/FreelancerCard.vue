@@ -1,5 +1,8 @@
 <template>
-  <div class="freelancer-card card-shadow">
+  <div
+    v-if="freelancer.uid !== getCurrentUser.uid"
+    class="freelancer-card card-shadow"
+  >
     <div class="freelancer-card-header">
       <div v-if="freelancer.profilePicture === ''" class="default-avatar">
         {{ freelancer.name.charAt(0).toUpperCase() }}
@@ -44,6 +47,7 @@
 
 <script>
 import Chip from "./Chip";
+import { mapGetters } from "vuex";
 
 export default {
   name: "FreelancerCard",
@@ -57,6 +61,9 @@ export default {
     return {
       skills: [],
     };
+  },
+  computed: {
+    ...mapGetters(["getCurrentUser"]),
   },
   components: {
     Chip,

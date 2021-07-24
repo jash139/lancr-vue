@@ -1,5 +1,8 @@
 <template>
-  <div class="project-card card-shadow">
+  <div
+    v-if="project.uid !== getCurrentUser.uid"
+    class="project-card card-shadow"
+  >
     <div class="project-card-header">
       <div v-if="ownerDetails.profilePicture === ''" class="default-avatar">
         {{ ownerDetails.name.charAt(0).toUpperCase() }}
@@ -22,6 +25,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "ProjectCard",
   props: {
@@ -34,6 +39,9 @@ export default {
     return {
       ownerDetails: {},
     };
+  },
+  computed: {
+    ...mapGetters(["getCurrentUser"]),
   },
   methods: {
     fetchOwnerDetails() {
