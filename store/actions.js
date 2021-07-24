@@ -116,6 +116,18 @@ export default {
                 })
         });
     },
+    patchUserDetails({ dispatch }, { uid, patchObj }) {
+        return new Promise((resolve, reject) => {
+            this.$axios.patch("/users/" + uid, patchObj)
+                .then(res => {
+                    dispatch("fetchUser", uid);
+                    resolve(res.data)
+                })
+                .catch(error => {
+                    reject(error)
+                })
+        });
+    },
     fetchProject({ commit }, id) {
         return new Promise((resolve, reject) => {
             this.$axios.get("/projects/" + id)

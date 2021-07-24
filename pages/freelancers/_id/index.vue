@@ -19,8 +19,15 @@
                   : getUser.rating + "/10"
               }}
             </p>
-            <button class="btn primary-btn btn-shadow connect-btn">
-              Connect
+            <button
+              class="btn primary-btn btn-shadow connect-btn"
+              @click="handleConnect"
+            >
+              {{
+                getCurrentUser.connections.includes($route.params.id)
+                  ? "Disconnect"
+                  : "Connect"
+              }}
             </button>
           </div>
         </div>
@@ -74,10 +81,50 @@ export default {
     FreelancerTabs,
   },
   computed: {
-    ...mapGetters(["getUser"]),
+    ...mapGetters(["getUser", "getCurrentUser"]),
   },
   methods: {
-    ...mapActions(["fetchUser"]),
+    ...mapActions(["fetchUser", "patchCurrentUser", "patchUserDetails"]),
+    handleConnect() {
+      let patchObj1 = {};
+      let patchObj2 = {};
+
+      let currConnections = [...this.getCurrentUser.connections];
+      let sendToConnections = [...this.getUser.connections];
+
+      if (currConnections.includes(this.$route.params.id)) {
+        const index = currConnections.indexOf(this.$route.params.id);
+        if (index > -1) {
+          currConnections.splice(index, 1);
+        }
+        patchObj1 = {
+          connections: currConnections,
+        };
+      } else {
+        patchObj1 = {
+          connections: [...currConnections, this.$route.params.id],
+        };
+      }
+
+      if (sendToConnections.includes(this.getCurrentUser.uid)) {
+        const index = sendToConnections.indexOf(this.getCurrentUser.uid);
+        if (index > -1) {
+          sendToConnections.splice(index, 1);
+        }
+        patchObj2 = {
+          connections: sendToConnections,
+        };
+      } else {
+        patchObj2 = {
+          connections: [...sendToConnections, this.getCurrentUser.uid],
+        };
+      }
+      this.patchCurrentUser({
+        uid: this.getCurrentUser.uid,
+        patchObj: patchObj1,
+      });
+      this.patchUserDetails({ uid: this.getUser.uid, patchObj: patchObj2 });
+    },
   },
   created() {
     this.fetchUser(this.$route.params.id);
