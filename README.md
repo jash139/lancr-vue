@@ -2,7 +2,7 @@
   Lancr is a full-stack application which allows user to create profiles, projects, etc and hire as well as work for someone based on requirements. Users can also connect and interact with each other.
 
   The app uses `Nuxtjs`, `Vue` and `Vuex` for state management.
-  `Vuetify` and `Buefy` has been used for UI components.
+  `Vuetify` and `Buefy` have been used for UI components.
   `Firebase` is used for user authentication and chat functionality.
 
 * Website: [https://lancr.netlify.app]
