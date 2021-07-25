@@ -2,7 +2,7 @@
   <div class="filters">
     <p class="filter">Filter</p>
     <SkillsDropdown />
-    <LocationDropdown />
+    <!-- <LocationDropdown /> -->
   </div>
 </template>
 
