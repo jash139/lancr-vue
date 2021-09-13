@@ -5,7 +5,7 @@
       <div class="boy-svg">
         <BoySvg />
       </div>
-      <div class="about-errands">
+      <div class="about-lancr">
         <h1 class="heading">What is Lancr?</h1>
         <div class="shift-right">
           <div class="pink-stroke" />
@@ -68,7 +68,7 @@ export default {
   left: 0;
   z-index: -1;
 }
-.about-errands {
+.about-lancr {
   max-width: 600px;
 }
 .heading {
